@@ -1,0 +1,1983 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Chatbots to Agentic AI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/white.css">
+  <link rel="stylesheet" href="../ie-scitech-reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap">
+  <style>
+    .reveal .ie-slide .profile-panel {
+      background: radial-gradient(circle at 55% 20%, rgba(201, 255, 138, 0.24), rgba(0, 0, 36, 0) 28%), var(--ie-navy-950);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 76px;
+    }
+
+    .reveal .ie-slide .profile-photo-frame {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 22px 80px rgba(0, 0, 36, 0.26);
+      border: 10px solid rgba(201, 255, 138, 0.72);
+      background: var(--ie-white);
+    }
+
+    .reveal .ie-slide .profile-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .reveal .ie-slide .profile-content h2 {
+      max-width: 760px;
+    }
+
+    .reveal .ie-slide .profile-name {
+      margin-top: 28px;
+      color: var(--ie-navy-950);
+    }
+
+    .reveal .ie-slide .profile-stack {
+      margin-top: 34px;
+      display: grid;
+      gap: 14px;
+      max-width: 850px;
+    }
+
+    .reveal .ie-slide .profile-line {
+      padding: 16px 20px;
+      border-left: 8px solid var(--ie-scitech-lime);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ie-navy-950);
+      font-size: 20px;
+      line-height: 1.28;
+    }
+
+    .reveal .ie-slide .safe-frame {
+      position: absolute;
+      z-index: 2;
+      left: 96px;
+      right: 96px;
+      top: 86px;
+      bottom: 108px;
+      overflow: hidden;
+    }
+
+    .reveal .ie-slide .safe-frame>.ie-auto-fit {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .reveal .ie-slide .outcomes-frame {
+      left: 48px;
+      top: 128px;
+      bottom: 126px;
+    }
+
+    .reveal .ie-slide .outcomes-frame h2 {
+      font-size: 62px;
+      line-height: 1.05;
+      letter-spacing: 0.095em;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .outcomes-lead {
+      width: 900px;
+      font-size: 31px;
+      line-height: 1.25;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      height: 335px;
+    }
+
+    .reveal .ie-slide .outcome-card {
+      min-width: 0;
+      min-height: 0;
+      padding: 28px 22px 24px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1.5px solid rgba(201, 255, 138, 0.48);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--ie-white);
+      overflow: hidden;
+    }
+
+    .reveal .ie-slide .outcome-number {
+      display: inline-flex;
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--ie-scitech-lime);
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .reveal .ie-slide .outcome-card p {
+      font-size: 24px;
+      line-height: 1.18;
+      color: inherit;
+      margin: 0;
+    }
+
+    .reveal .ie-slide .concept-frame {
+      top: 72px;
+      bottom: 88px;
+    }
+
+    .reveal .ie-slide .concept-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    .reveal .ie-slide .concept-frame h2 {
+      font-size: 62px;
+      line-height: 1.02;
+      letter-spacing: 0.085em;
+      margin: 0 0 16px;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .concept-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      table-layout: fixed;
+      font-family: var(--ie-font);
+      margin: 0 auto;
+    }
+
+    .reveal .ie-slide .concept-table th {
+      padding: 0 14px 10px;
+      color: var(--ie-navy-950);
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .concept-table td {
+      padding: 13px 14px;
+      background: rgba(255, 255, 255, 0.22);
+      color: var(--ie-navy-950);
+      font-size: 26px;
+      line-height: 1.15;
+      vertical-align: middle;
+      border-top: 1px solid rgba(0, 0, 36, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.08);
+      white-space: normal;
+      overflow-wrap: normal;
+    }
+
+    .reveal .ie-slide .concept-table th:nth-child(1),
+    .reveal .ie-slide .concept-table td:nth-child(1) {
+      width: 22%;
+    }
+
+    .reveal .ie-slide .concept-table th:nth-child(2),
+    .reveal .ie-slide .concept-table td:nth-child(2) {
+      width: 27%;
+    }
+
+    .reveal .ie-slide .concept-table th:nth-child(3),
+    .reveal .ie-slide .concept-table td:nth-child(3) {
+      width: 51%;
+    }
+
+    .reveal .ie-slide .concept-table td:first-child {
+      background: rgba(201, 255, 138, 0.22);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .reveal .ie-slide .loop-visual {
+      margin-top: 18px;
+      display: flex;
+      width: 100%;
+      height: 66px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 36, 0.08));
+    }
+
+    .reveal .ie-slide .loop-step {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 66px;
+      margin-left: -24px;
+      padding: 0 24px 0 48px;
+      background: var(--ie-navy-950);
+      color: var(--ie-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 30px 50%);
+    }
+
+    .reveal .ie-slide .loop-step:first-child {
+      margin-left: 0;
+      padding-left: 24px;
+      background: var(--ie-scitech-lime);
+      color: var(--ie-navy-950);
+      clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%);
+    }
+
+    .reveal .ie-slide .loop-step:last-child {
+      padding-right: 22px;
+      background: var(--ie-dark-green);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 30px 50%);
+    }
+
+    .reveal .ie-slide .concept-takeaway {
+      margin: 20px auto 0;
+      max-width: 1180px;
+      color: var(--ie-navy-950);
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .taxonomy-frame {
+      top: 78px;
+      bottom: 126px;
+    }
+
+    .reveal .ie-slide .taxonomy-frame h2 {
+      font-size: 54px;
+      line-height: 1.05;
+      letter-spacing: 0.085em;
+      margin: 0 0 24px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .taxonomy-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      table-layout: fixed;
+      font-family: var(--ie-font);
+      margin: 0 auto;
+    }
+
+    .reveal .ie-slide .taxonomy-table th {
+      padding: 0 16px 8px;
+      color: rgba(0, 0, 36, 0.72);
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .taxonomy-table td {
+      padding: 15px 16px;
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--ie-navy-950);
+      font-size: 20px;
+      line-height: 1.2;
+      vertical-align: middle;
+      border-top: 1px solid rgba(0, 0, 36, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.08);
+    }
+
+    .reveal .ie-slide .taxonomy-table td:first-child {
+      border-left: 1px solid rgba(0, 0, 36, 0.08);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .taxonomy-table td:last-child {
+      border-right: 1px solid rgba(0, 0, 36, 0.08);
+    }
+
+    .reveal .ie-slide .taxonomy-table th:nth-child(1),
+    .reveal .ie-slide .taxonomy-table td:nth-child(1) {
+      width: 5%;
+    }
+
+    .reveal .ie-slide .taxonomy-table th:nth-child(2),
+    .reveal .ie-slide .taxonomy-table td:nth-child(2) {
+      width: 39%;
+    }
+
+    .reveal .ie-slide .taxonomy-table th:nth-child(3),
+    .reveal .ie-slide .taxonomy-table td:nth-child(3) {
+      width: 16%;
+    }
+
+    .reveal .ie-slide .taxonomy-table th:nth-child(4),
+    .reveal .ie-slide .taxonomy-table td:nth-child(4) {
+      width: 40%;
+    }
+
+    .reveal .ie-slide .taxonomy-answer {
+      display: inline-block;
+      padding: 7px 10px;
+      background: rgba(201, 255, 138, 0.25);
+      color: var(--ie-navy-950);
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .taxonomy-takeaway {
+      margin: 22px auto 0;
+      max-width: 1220px;
+      color: var(--ie-navy-950);
+      font-size: 26px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .bridge-frame {
+      top: 72px;
+      bottom: 88px;
+    }
+
+    .reveal .ie-slide .bridge-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    .reveal .ie-slide .bridge-frame h2 {
+      font-size: 66px;
+      line-height: 1.05;
+      letter-spacing: 0.08em;
+      margin: 0 0 14px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .bridge-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      table-layout: fixed;
+      font-family: var(--ie-font);
+      margin: 0 auto;
+    }
+
+    .reveal .ie-slide .bridge-table th {
+      padding: 0 14px 10px;
+      color: rgba(0, 0, 36, 0.72);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .bridge-table td {
+      padding: 18px 14px;
+      background: rgba(255, 255, 255, 0.22);
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1.15;
+      vertical-align: middle;
+      border-top: 1px solid rgba(0, 0, 36, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.08);
+    }
+
+    .reveal .ie-slide .bridge-table td:first-child {
+      background: rgba(201, 255, 138, 0.22);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .reveal .ie-slide .bridge-table td:first-child,
+    .reveal .ie-slide .bridge-table th:first-child {
+      width: 19%;
+    }
+
+    .reveal .ie-slide .bridge-table td:nth-child(2),
+    .reveal .ie-slide .bridge-table th:nth-child(2) {
+      width: 24%;
+    }
+
+    .reveal .ie-slide .bridge-table td:nth-child(3),
+    .reveal .ie-slide .bridge-table th:nth-child(3) {
+      width: 18%;
+    }
+
+    .reveal .ie-slide .bridge-table td:nth-child(4),
+    .reveal .ie-slide .bridge-table th:nth-child(4) {
+      width: 19%;
+    }
+
+    .reveal .ie-slide .bridge-table td:nth-child(5),
+    .reveal .ie-slide .bridge-table th:nth-child(5) {
+      width: 20%;
+    }
+
+    .reveal .ie-slide .bridge-footnote {
+      margin: 14px auto 30px;
+      max-width: 1080px;
+      color: var(--ie-navy-950);
+      font-size: 20px;
+      line-height: 1.22;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .reveal .ie-slide .bridge-takeaway {
+      margin: 0 auto;
+      max-width: 1180px;
+      color: var(--ie-navy-950);
+      font-size: 30px;
+      line-height: 1.18;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .challenge-frame {
+      top: 78px;
+      bottom: 118px;
+    }
+
+    .reveal .ie-slide .challenge-frame>.ie-auto-fit {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .challenge-frame h2 {
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: 0.085em;
+      margin: 0 0 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .challenge-lead {
+      max-width: 1220px;
+      margin: 0 0 18px;
+      color: var(--ie-navy-950);
+      font-size: 25px;
+      line-height: 1.22;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .challenge-subtitles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin: 0 0 10px;
+    }
+
+    .reveal .ie-slide .challenge-subtitles h3 {
+      margin: 0;
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .challenge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .challenge-panel {
+      min-width: 0;
+      padding: 30px 28px;
+      background: rgba(255, 255, 255, 0.24);
+      border-top: 1px solid rgba(0, 0, 36, 0.09);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.09);
+      height: 100%;
+    }
+
+    .reveal .ie-slide .challenge-facts {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reveal .ie-slide .challenge-fact {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      color: var(--ie-navy-950);
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .reveal .ie-slide .challenge-label {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .reveal .ie-slide .challenge-panel ul {
+      margin: 0;
+      padding-left: 26px;
+    }
+
+    .reveal .ie-slide .challenge-panel li {
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    .reveal .ie-slide .challenge-panel li+li {
+      margin-top: 14px;
+    }
+
+    .reveal .ie-slide .challenge-rule {
+      margin: 20px auto 0;
+      padding: 16px 28px;
+      max-width: 980px;
+      background: rgba(201, 255, 138, 0.34);
+      color: var(--ie-navy-950);
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .reveal .ie-slide .challenge-safety {
+      margin: 12px auto 0;
+      max-width: 1040px;
+      color: rgba(0, 0, 36, 0.78);
+      font-size: 18px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .challenge-takeaway {
+      margin: 18px auto 0;
+      max-width: 1120px;
+      color: var(--ie-navy-950);
+      font-size: 28px;
+      line-height: 1.18;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .prompt-frame {
+      top: 86px;
+      bottom: 88px;
+    }
+
+    .reveal .ie-slide .prompt-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .prompt-frame h2 {
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: 0.085em;
+      margin: 0 0 8px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .prompt-lead {
+      max-width: 1200px;
+      margin: 0 0 10px;
+      color: var(--ie-navy-950);
+      font-size: 24px;
+      line-height: 1.18;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .prompt-header {
+      position: relative;
+      min-height: 26px;
+      margin: 0 0 8px;
+    }
+
+    .reveal .ie-slide .prompt-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      min-width: 96px;
+      background: rgba(201, 255, 138, 0.34);
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .prompt-steps {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-family: var(--ie-font);
+    }
+
+    .reveal .ie-slide .prompt-steps thead th {
+      padding: 0 18px 8px;
+      color: rgba(0, 0, 36, 0.72);
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .prompt-steps td {
+      padding: 18px 18px;
+      background: rgba(255, 255, 255, 0.24);
+      color: var(--ie-navy-950);
+      font-size: 23px;
+      line-height: 1.4;
+      vertical-align: middle;
+      border-top: 1px solid rgba(0, 0, 36, 0.09);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.09);
+    }
+
+    .reveal .ie-slide .prompt-steps td:first-child {
+      width: 14%;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(201, 255, 138, 0.34);
+    }
+
+    .reveal .ie-slide .prompt-steps td:last-child {
+      width: 86%;
+    }
+
+    .reveal .ie-slide .prompt-takeaway {
+      margin: 4px auto 0;
+      max-width: 1120px;
+      color: var(--ie-navy-950);
+      font-size: 28px;
+      line-height: 1.18;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .critique-frame {
+      top: 72px;
+      bottom: 78px;
+    }
+
+    .reveal .ie-slide .critique-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .critique-frame h2 {
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: 0.085em;
+      margin: 0 0 4px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .critique-lead {
+      max-width: 1180px;
+      margin: 0 0 8px;
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .critique-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 5px;
+      table-layout: fixed;
+      font-family: var(--ie-font);
+      margin: 10px auto 0;
+    }
+
+    .reveal .ie-slide .critique-table th {
+      padding: 0 16px 4px;
+      color: rgba(0, 0, 36, 0.72);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .critique-table td {
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, 0.24);
+      color: var(--ie-navy-950);
+      font-size: 20px;
+      line-height: 1.22;
+      vertical-align: middle;
+      border-top: 1px solid rgba(0, 0, 36, 0.09);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.09);
+    }
+
+    .reveal .ie-slide .critique-table td:first-child {
+      width: 86%;
+    }
+
+    .reveal .ie-slide .critique-table td:last-child {
+      width: 16%;
+      text-align: center;
+      background: rgba(201, 255, 138, 0.34);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .reveal .ie-slide .critique-takeaway {
+      margin: 38px auto 0;
+      max-width: 1120px;
+      color: var(--ie-navy-950);
+      font-size: 25px;
+      line-height: 1.18;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .spec-frame {
+      top: 86px;
+      bottom: 98px;
+    }
+
+    .reveal .ie-slide .spec-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .spec-header {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .spec-label {
+      margin: 0 0 8px;
+      color: rgba(0, 0, 36, 0.62);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .reveal .ie-slide .spec-header h2 {
+      margin: 0 0 10px;
+      color: var(--ie-navy-950);
+      font-size: 56px;
+      line-height: 1.04;
+      letter-spacing: 0.085em;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .spec-tagline {
+      margin: 0;
+      color: rgba(0, 0, 36, 0.78);
+      font-size: 24px;
+      line-height: 1.22;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .spec-workspace {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 34px;
+      align-items: stretch;
+      height: 430px;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .spec-pipeline {
+      position: relative;
+      min-height: 430px;
+      padding: 4px 0 4px;
+    }
+
+    .reveal .ie-slide .spec-line {
+      position: absolute;
+      left: 19px;
+      top: 23px;
+      height: 364px;
+      width: 2px;
+      background: rgba(0, 0, 36, 0.16);
+      z-index: 0;
+    }
+
+    .reveal .ie-slide #specNodes {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 1;
+    }
+
+    .reveal .ie-slide .spec-node {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 14px;
+      align-items: center;
+      width: 100%;
+      min-height: 38px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: rgba(0, 0, 36, 0.66);
+      font-family: var(--ie-font);
+      font-size: 20px;
+      line-height: 1.1;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .reveal .ie-slide .spec-node.active {
+      color: var(--ie-navy-950);
+      font-weight: 700;
+    }
+
+    .reveal .ie-slide .spec-node-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(0, 0, 36, 0.2);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.86);
+      color: inherit;
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .reveal .ie-slide .spec-node.active .spec-node-number {
+      border-color: rgba(0, 0, 36, 0.64);
+      background: var(--ie-scitech-lime);
+    }
+
+    .reveal .ie-slide .spec-node-label {
+      padding-top: 1px;
+    }
+
+    .reveal .ie-slide .spec-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 430px;
+      padding: 34px 38px 28px;
+      border: 1px solid rgba(0, 0, 36, 0.13);
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 18px 42px rgba(0, 0, 36, 0.08);
+      color: var(--ie-navy-950);
+    }
+
+    .reveal .ie-slide .spec-panel-step {
+      margin-bottom: 8px;
+      color: rgba(0, 0, 36, 0.58);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .reveal .ie-slide .spec-panel-title {
+      margin-bottom: 16px;
+      color: var(--ie-navy-950);
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reveal .ie-slide .spec-panel-question {
+      display: inline;
+      background: linear-gradient(to top, rgba(201, 255, 138, 0.72) 42%, transparent 42%);
+      color: var(--ie-navy-950);
+      font-size: 30px;
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .reveal .ie-slide .spec-panel-explanation {
+      margin-top: 22px;
+      color: rgba(0, 0, 36, 0.76);
+      font-size: 22px;
+      line-height: 1.24;
+    }
+
+    .reveal .ie-slide .spec-example-box {
+      margin-top: 28px;
+      padding: 22px 24px;
+      border: 1px solid rgba(0, 0, 36, 0.12);
+      background: rgba(247, 248, 245, 0.82);
+    }
+
+    .reveal .ie-slide .spec-example-label {
+      margin-bottom: 10px;
+      color: var(--ie-navy-950);
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reveal .ie-slide .spec-example-label::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--ie-scitech-lime);
+      vertical-align: -1px;
+    }
+
+    .reveal .ie-slide .spec-example-text {
+      color: var(--ie-navy-950);
+      font-size: 20px;
+      line-height: 1.28;
+    }
+
+    .reveal .ie-slide .spec-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .reveal .ie-slide .spec-nav button {
+      min-width: 116px;
+      padding: 10px 16px;
+      border: 1px solid rgba(0, 0, 36, 0.18);
+      border-radius: 0;
+      background: var(--ie-white);
+      color: var(--ie-navy-950);
+      font-family: var(--ie-font);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .reveal .ie-slide .spec-nav button:disabled {
+      cursor: default;
+      opacity: 0.38;
+    }
+
+    .reveal .ie-slide .spec-takeaway {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 76px;
+      margin: 0 auto;
+      color: var(--ie-navy-950);
+      font-size: 25px;
+      line-height: 1.18;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .takeaways-frame {
+      top: 72px;
+      bottom: 118px;
+    }
+
+    .reveal .ie-slide .takeaways-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .takeaways-header {
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .takeaways-header h2 {
+      margin: 0 0 12px;
+      color: var(--ie-navy-950);
+      font-size: 58px;
+      line-height: 1.04;
+      letter-spacing: 0.085em;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .takeaways-lead {
+      margin: 0;
+      color: rgba(0, 0, 36, 0.78);
+      font-size: 28px;
+      line-height: 1.18;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .takeaways-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .takeaways-card {
+      grid-column: span 2;
+      min-height: 142px;
+      padding: 24px 24px 22px;
+      border-top: 1px solid rgba(0, 0, 36, 0.09);
+      border-bottom: 1px solid rgba(0, 0, 36, 0.09);
+      background: rgba(255, 255, 255, 0.34);
+      color: var(--ie-navy-950);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .reveal .ie-slide .takeaways-card:nth-child(4) {
+      grid-column: 2 / span 2;
+    }
+
+    .reveal .ie-slide .takeaways-number {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--ie-scitech-lime);
+      color: var(--ie-navy-950);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .reveal .ie-slide .takeaways-text {
+      margin: 0;
+      color: var(--ie-navy-950);
+      font-size: 24px;
+      line-height: 1.22;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .takeaways-bottom {
+      margin: 34px auto 0;
+      max-width: 1120px;
+      color: var(--ie-navy-950);
+      font-size: 34px;
+      line-height: 1.16;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .ie-slide .final-frame {
+      top: 72px;
+      bottom: 96px;
+    }
+
+    .reveal .ie-slide .final-frame>.ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .reveal .ie-slide .final-header {
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .final-header h2 {
+      margin: 0 0 10px;
+      color: var(--ie-navy-950);
+      font-size: 56px;
+      line-height: 1.04;
+      letter-spacing: 0.085em;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .reveal .ie-slide .final-tagline {
+      margin: 0;
+      color: rgba(0, 0, 36, 0.78);
+      font-size: 24px;
+      line-height: 1.22;
+      text-align: left;
+    }
+
+    .reveal .ie-slide .final-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 18px 22px;
+      height: 430px;
+    }
+
+    .reveal .ie-slide .final-column {
+      display: contents;
+      min-width: 0;
+    }
+
+    .reveal .ie-slide .final-category {
+      margin: 0 0 12px;
+      color: var(--ie-navy-950);
+      font-size: 14px;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reveal .ie-slide .final-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding: 20px;
+      border: 1px solid rgba(0, 0, 36, 0.1);
+      background: rgba(255, 255, 255, 0.26);
+      color: var(--ie-navy-950);
+      text-decoration: none;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .reveal .ie-slide .final-card:hover,
+    .reveal .ie-slide .final-card:focus-visible {
+      border-color: rgba(0, 0, 36, 0.28);
+      background: rgba(255, 255, 255, 0.42);
+      outline: none;
+    }
+
+    .reveal .ie-slide .final-card-title {
+      margin: 0 0 12px;
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .reveal .ie-slide .final-card-note {
+      margin: 0 0 14px;
+      color: rgba(0, 0, 36, 0.78);
+      font-size: 17px;
+      line-height: 1.24;
+    }
+
+    .reveal .ie-slide .final-takeaway {
+      margin: 20px auto 0;
+      max-width: 1320px;
+      color: var(--ie-navy-950);
+      font-size: 22px;
+      line-height: 1.18;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .reveal .slides section.ie-slide.screen-demo-slide {
+      width: 1600px;
+      height: 900px;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden;
+      background: #f7f8f5;
+    }
+
+    .reveal .slides section.ie-slide.screen-demo-slide .screen-demo-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1600px;
+      height: 900px;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+      display: block;
+      margin: 0;
+      padding: 0;
+      max-width: none;
+      max-height: none;
+    }
+
+    .reveal .ie-slide.screen-demo-slide .screen-demo-monitor {
+      position: absolute;
+      left: 32px;
+      top: 10px;
+      width: 1300px;
+      height: auto;
+      z-index: 1;
+    }
+
+    .reveal .ie-slide.screen-demo-slide .screen-demo-frame {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: block;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .reveal .ie-slide.screen-demo-slide .screen-demo-content {
+      position: absolute;
+      left: 3.8%;
+      top: 5.5%;
+      width: 88%;
+      height: 79%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      z-index: 1;
+    }
+
+    .reveal .ie-slide.screen-demo-slide .screen-demo-logo {
+      position: absolute;
+      right: 40px;
+      bottom: 48px;
+      width: 270px;
+      z-index: 3;
+    }
+
+    .reveal .ie-slide.screen-demo-slide .screen-demo-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .reveal .slides section.ie-slide.slide-hook-image {
+      padding: 0;
+      background: var(--ie-navy-950);
+      overflow: hidden;
+    }
+
+    .reveal .ie-slide.slide-hook-image .full-canvas-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--ie-navy-950);
+    }
+
+    .reveal .ie-slide.slide-hook-image .full-canvas-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="ie-title-block ie-auto-fit">
+          <h1>From Chatbots to Agentic AI</h1>
+          <p class="subtitle">A Fast & Furious practical workshop on artificial intelligence in action</p>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light ie-split ie-split-left" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-dark-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <figure class="ie-image-panel profile-panel">
+            <div class="profile-photo-frame">
+              <img src="../media/ivan-diaz.jpg" alt="Portrait of Ivan Diaz">
+            </div>
+          </figure>
+          <div class="ie-content profile-content ie-auto-fit">
+            <h2>Meet your facilitator</h2>
+            <h3 class="profile-name">Ivan Diaz</h3>
+            <div class="profile-stack">
+              <p class="profile-line">PhD candidate at Universidad Politécnica de Valencia, studying economics of
+                agentic artificial intelligence</p>
+              <p class="profile-line">16 years in strategy consulting and artificial intelligence delivery</p>
+              <p class="profile-line">BCG, Bain &amp; Company, Kearney, Deloitte</p>
+              <p class="profile-line">Teaches artificial intelligence prototyping, machine learning operations, project
+                management, data visualization</p>
+              <p class="profile-line">Projects across retail, energy, infrastructure, and pharma</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="ie-slide ie-bg-dark-abstract" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-dark-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame outcomes-frame">
+          <div class="ie-auto-fit">
+            <h2>What you will learn</h2>
+            <p class="outcomes-lead">By the end, you know what agents can do, and how to direct them well</p>
+            <div class="outcomes-grid">
+              <div class="outcome-card"><span class="outcome-number">1</span>
+                <p>Explain the difference between a chatbot, a workflow, and an agent</p>
+              </div>
+              <div class="outcome-card"><span class="outcome-number">2</span>
+                <p>Identify goal, tools, feedback loop, and guardrails in an agentic system</p>
+              </div>
+              <div class="outcome-card"><span class="outcome-number">3</span>
+                <p>Explain why a vague prompt produces an unreliable or risky output</p>
+              </div>
+              <div class="outcome-card"><span class="outcome-number">4</span>
+                <p>Write a simple spec with context, goal, criteria, constraints, evidence, output, guardrails, and a
+                  stop condition</p>
+              </div>
+              <div class="outcome-card"><span class="outcome-number">5</span>
+                <p>Improve agent output by improving the brief, not by retrying randomly</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide screen-demo-slide" data-transition="fade">
+        <img class="screen-demo-bg" src="../backgrounds/bg-light-circles.png" alt="">
+        <div class="screen-demo-monitor">
+          <img class="screen-demo-content" src="../media/placeholders/placeholder-screenshot.png" alt="Agentic AI tools shown inside a computer screen">
+          <img class="screen-demo-frame" src="../media/screen.png" alt="">
+        </div>
+        <div class="screen-demo-logo">
+          <img src="../logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology">
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame concept-frame">
+          <div class="ie-auto-fit">
+            <h2>Core agent concepts</h2>
+            <table class="concept-table" aria-label="Core agent concepts">
+              <thead>
+                <tr>
+                  <th>Concept</th>
+                  <th>Student analogy</th>
+                  <th>Practical meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tool use</td>
+                  <td>Brain plus hands</td>
+                  <td>The system can search, calculate, browse, read, or call functions</td>
+                </tr>
+                <tr>
+                  <td>Planning</td>
+                  <td>GPS route</td>
+                  <td>It breaks a goal into steps and may reroute</td>
+                </tr>
+                <tr>
+                  <td>Goal-seeking</td>
+                  <td>Mission, not question</td>
+                  <td>It keeps working until it reaches the target or gets blocked</td>
+                </tr>
+                <tr>
+                  <td>Feedback loop</td>
+                  <td>Try, check, fix</td>
+                  <td>It observes results and adapts</td>
+                </tr>
+                <tr>
+                  <td>Guardrails</td>
+                  <td>Brakes and seatbelt</td>
+                  <td>It knows what it cannot do and when to ask</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="loop-visual" aria-label="Agent loop">
+              <div class="loop-step">Goal</div>
+              <div class="loop-step">Plan</div>
+              <div class="loop-step">Action</div>
+              <div class="loop-step">Observation</div>
+              <div class="loop-step">Correction</div>
+              <div class="loop-step">Stop</div>
+            </div>
+            <p class="concept-takeaway">Goal-seeking. The system is trying to complete a task, not just answer a
+              question</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame bridge-frame">
+          <div class="ie-auto-fit">
+            <h2>AI system patterns</h2>
+            <table class="bridge-table" aria-label="AI system patterns">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Planning</th>
+                  <th>Tools</th>
+                  <th>Goal-seeking</th>
+                  <th>Guardrails</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Chatbot</td>
+                  <td>No</td>
+                  <td>Usually no</td>
+                  <td>No, it answers</td>
+                  <td>Low action risk</td>
+                </tr>
+                <tr>
+                  <td>Workflow</td>
+                  <td>No, steps are fixed</td>
+                  <td>Sometimes</td>
+                  <td>No, it follows rules</td>
+                  <td>Built into the process</td>
+                </tr>
+                <tr>
+                  <td>Agent-like</td>
+                  <td>Sometimes</td>
+                  <td>Yes</td>
+                  <td>Partly, for a narrow task</td>
+                  <td>Depends on the setup</td>
+                </tr>
+                <tr>
+                  <td>Agent</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>Yes, it pursues a task</td>
+                  <td>Should ask or stop</td>
+                </tr>
+                <tr>
+                  <td>Unsafe agent</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>Yes, but too freely</td>
+                  <td>Missing or weak</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="bridge-footnote">Agent-like means it has some agent properties, but not the full loop</p>
+            <p class="bridge-takeaway">The difference between an agent and an unsafe agent is what it is allowed to
+              do</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame taxonomy-frame">
+          <div class="ie-auto-fit">
+            <h2>Chatbot, workflow, or agent?</h2>
+            <table class="taxonomy-table" aria-label="Taxonomy sorting reveal activity">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Example</th>
+                  <th>Answer</th>
+                  <th>Why this one</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>"Write a poem about Mars"</td>
+                  <td><span class="taxonomy-answer fragment fade-in" data-fragment-index="1">Chatbot</span></td>
+                  <td><span class="fragment fade-in" data-fragment-index="1">Clearest possible anchor: no ambiguity,
+                      sets the baseline
+                      fast</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>"Every time a new article is published, extract the title, date, and key finding, always in that
+                    order"</td>
+                  <td><span class="taxonomy-answer fragment fade-in" data-fragment-index="2">Workflow</span></td>
+                  <td><span class="fragment fade-in" data-fragment-index="2">It uses AI, but follows fixed steps with
+                      zero autonomy</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>"Check calendars, propose a meeting time, and ask before booking"</td>
+                  <td><span class="taxonomy-answer fragment fade-in" data-fragment-index="3">Agent</span></td>
+                  <td><span class="fragment fade-in" data-fragment-index="3">It uses tools, plans, and keeps human
+                      approval</span></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>"Search the web, read three sources, compare their credibility, and recommend the most reliable
+                    one"</td>
+                  <td><span class="taxonomy-answer fragment fade-in" data-fragment-index="4">Agent-like</span></td>
+                  <td><span class="fragment fade-in" data-fragment-index="4">This grey zone sparks debate, and the
+                      discussion is the
+                      learning</span></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>"An AI assistant notices your fridge is low on milk and places a grocery order without asking
+                    you"</td>
+                  <td><span class="taxonomy-answer fragment fade-in" data-fragment-index="5">Unsafe agent</span></td>
+                  <td><span class="fragment fade-in" data-fragment-index="5">It shows excessive agency: external action
+                      without
+                      permission</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="taxonomy-takeaway">Agents are not just smarter chatbots; they combine goals, tools, judgement, and
+              limits</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame challenge-frame">
+          <div class="ie-auto-fit">
+            <h2>Your challenge</h2>
+            <p class="challenge-lead">You are the agent designer. A student (like yourself) needs help deciding what to
+              study. Your job
+              is to tell the agent what to do so it can help them.</p>
+            <div class="challenge-subtitles">
+              <h3>Scenario</h3>
+              <h3>Deliverables</h3>
+            </div>
+            <div class="challenge-grid">
+              <div class="challenge-panel">
+                <div class="challenge-facts">
+                  <div class="challenge-fact"><span class="challenge-label">Who</span><span>A ~17-year-old finishing
+                      high school in Spain</span></div>
+                  <div class="challenge-fact"><span class="challenge-label">Interests</span><span>Science, technology,
+                      engineering, mathematics, and business</span></div>
+                  <div class="challenge-fact"><span class="challenge-label">Strengths</span><span>Maths,
+                      problem-solving, communication</span></div>
+                  <div class="challenge-fact"><span class="challenge-label">Location</span><span>Universities in
+                      Spain</span></div>
+                  <div class="challenge-fact"><span class="challenge-label">Language</span><span>English or
+                      Spanish</span></div>
+                </div>
+              </div>
+              <div class="challenge-panel">
+                <ul>
+                  <li>3 best degree options with real universities</li>
+                  <li>A comparison across meaningful criteria</li>
+                  <li>A recommendation backed by evidence</li>
+                  <li>One reflection/ question the student must answer before choosing</li>
+                </ul>
+              </div>
+            </div>
+            <p class="challenge-rule">One prompt. See how far you can get.</p>
+            <p class="challenge-safety">Safety boundary: No applications, emails, payments, forms, or account creation
+            </p>
+            <p class="challenge-takeaway">You already have the agent... What you will tell it to do?</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame prompt-frame">
+          <div class="ie-auto-fit">
+            <h2>Write one prompt</h2>
+            <p class="prompt-lead">Write the best prompt you can from the challenge brief</p>
+            <div class="prompt-header">
+              <div class="prompt-badge">10 MIN</div>
+            </div>
+            <table class="prompt-steps" aria-label="Prompt steps">
+              <thead>
+                <tr>
+                  <th>Step</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Choose any AI platform you can access</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Write and run one prompt</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Save or screenshot the result</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="prompt-takeaway">A vague brief gives the agent room to guess</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="../logos/ie-scitech-horizontal-light-accent.svg"
+            alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame critique-frame">
+          <div class="ie-auto-fit">
+            <h2>What was missing?</h2>
+            <p class="critique-lead">Look at your prompt and result. What did the agent have to guess?</p>
+            <table class="critique-table" aria-label="Self critique checklist">
+              <thead>
+                <tr>
+                  <th>Question</th>
+                  <th>Yes / No</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Did I define the <b>student profile</b>?</td>
+                  <td>Yes / No</td>
+                </tr>
+                <tr>
+                  <td>Did I define what the <b>best</b> means?</td>
+                  <td>Yes / No</td>
+                </tr>
+                <tr>
+                  <td>Did I set <b>constraints</b>: country, language, duration, or prior coding experience?</td>
+                  <td>Yes / No</td>
+                </tr>
+                <tr>
+                  <td>Did I require <b>evidence & sources</b>?</td>
+                  <td>Yes / No</td>
+                </tr>
+                <tr>
+                  <td>Did I specify what the <b>output should look like</b>?</td>
+                  <td>Yes / No</td>
+                </tr>
+                <tr>
+                  <td>Did I say what the AI <b>must not do</b>?</td>
+                  <td>Yes / No</td>
+                </tr>
+                <tr>
+                  <td>Did I keep the <b>final choice</b> with the student?</td>
+                  <td>Yes / No</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="critique-takeaway">If the brief is unclear, the agent fills the gaps</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo">
+          <img src="../logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology">
+        </div>
+        <div class="safe-frame spec-frame">
+          <div class="ie-auto-fit">
+            <div class="spec-header">
+              <p class="spec-label">Spec Driven Development (SDD)</p>
+              <h2>Anatomy of Spec Driven Development</h2>
+              <p class="spec-tagline">Give the agent a source of truth before asking it to act</p>
+            </div>
+
+            <div class="spec-workspace">
+              <div class="spec-pipeline" aria-label="Spec structure">
+                <div class="spec-line"></div>
+                <div id="specNodes"></div>
+              </div>
+
+              <div id="specPanel" class="spec-panel" aria-live="polite"></div>
+            </div>
+
+            <p class="spec-takeaway">A spec turns a vague request into instructions the agent can follow</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo">
+          <img src="../logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology">
+        </div>
+        <div class="safe-frame takeaways-frame">
+          <div class="ie-auto-fit">
+            <div class="takeaways-header">
+              <h2>Key takeaways</h2>
+              <p class="takeaways-lead">You already have the agent. The spec is the skill</p>
+            </div>
+
+            <div class="takeaways-grid" aria-label="Key takeaways">
+              <div class="takeaways-card">
+                <span class="takeaways-number">1</span>
+                <p class="takeaways-text">Agents pursue goals, not just answers</p>
+              </div>
+              <div class="takeaways-card">
+                <span class="takeaways-number">2</span>
+                <p class="takeaways-text">Tools and planning create power, but also risk</p>
+              </div>
+              <div class="takeaways-card">
+                <span class="takeaways-number">3</span>
+                <p class="takeaways-text">Vague prompts force the AI to guess</p>
+              </div>
+              <div class="takeaways-card">
+                <span class="takeaways-number">4</span>
+                <p class="takeaways-text">A good spec defines context, goal, criteria, constraints, evidence, output,
+                  guardrails, and stop</p>
+              </div>
+              <div class="takeaways-card">
+                <span class="takeaways-number">5</span>
+                <p class="takeaways-text">Brief quality beats model size</p>
+              </div>
+            </div>
+
+            <p class="takeaways-bottom">Use the spec to keep the human in charge</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo">
+          <img src="../logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology">
+        </div>
+        <div class="safe-frame final-frame">
+          <div class="ie-auto-fit">
+            <div class="final-header">
+              <h2>Keep learning</h2>
+              <p class="final-tagline">Start here (for free)</p>
+            </div>
+
+            <div class="final-grid">
+              <a class="final-card" href="https://www.3blue1brown.com/topics/neural-networks" target="_blank" rel="noopener">
+                <h3 class="final-category">Visual AI intuition</h3>
+                <h4 class="final-card-title">3Blue1Brown, Neural Networks</h4>
+                <p class="final-card-note">Visual intuition for neural networks, transformers, and how large language models work</p>
+              </a>
+
+              <a class="final-card" href="https://huggingface.co/learn/agents-course/unit0/introduction" target="_blank" rel="noopener">
+                <h3 class="final-category">Agent building</h3>
+                <h4 class="final-card-title">Hugging Face Agents Course</h4>
+                <p class="final-card-note">Hands-on path for tools, agent loops, frameworks, and projects</p>
+              </a>
+
+              <a class="final-card" href="https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents" target="_blank" rel="noopener">
+                <h3 class="final-category">Spec-first workflows</h3>
+                <h4 class="final-card-title">DeepLearning.AI, Spec-Driven Development</h4>
+                <p class="final-card-note">Practical workflow for using specs to guide coding agents</p>
+              </a>
+
+              <a class="final-card" href="https://dayofai.org/" target="_blank" rel="noopener">
+                <h3 class="final-category">Responsible AI</h3>
+                <h4 class="final-card-title">MIT Day of AI</h4>
+                <p class="final-card-note">High-school-friendly responsible AI literacy and hands-on curriculum</p>
+              </a>
+
+              <a class="final-card" href="https://www.datacamp.com/courses/introduction-to-ai-agents" target="_blank" rel="noopener">
+                <h3 class="final-category">Agent concepts</h3>
+                <h4 class="final-card-title">DataCamp, Introduction to AI Agents</h4>
+                <p class="final-card-note">No-coding course on components, tool use, guardrails, and the Thought-Action-Observation loop</p>
+              </a>
+
+              <a class="final-card" href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">
+                <h3 class="final-category">Spec Driven Development (SDD)</h3>
+                <h4 class="final-card-title">Martin Fowler, Spec Driven Development (SDD)</h4>
+                <p class="final-card-note">Deeper article on spec-first thinking and agentic development tools</p>
+              </a>
+            </div>
+
+            <p class="final-takeaway">"There are generally two types of LLM users: those that use it to learn everything, and those that use it so they don't have to learn anything." - Mark Cuban</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+  <script src="../ie-reveal-fit.js"></script>
+  <script>
+    (function () {
+      const steps = [
+        {
+          name: "Context",
+          question: "Who is this for?",
+          explanation: "The agent cannot adapt to someone it knows nothing about",
+          example: "A 17-year-old finishing high school in Spain, interested in artificial intelligence, technology, business, and science"
+        },
+        {
+          name: "Goal",
+          question: "What should the agent achieve?",
+          explanation: "One clear objective, not a topic but a task",
+          example: "Compare degree paths and recommend the strongest fit, while keeping the final decision with the student"
+        },
+        {
+          name: "Criteria",
+          question: "How will we judge a good answer?",
+          explanation: "Define what good looks like before asking",
+          example: "Score each option on technology fit, business fit, career prospects, admission accessibility, and future flexibility"
+        },
+        {
+          name: "Constraints",
+          question: "What limits must it respect?",
+          explanation: "Prevent the agent from going off-brief",
+          example: "Only include universities in Spain, degrees available in English or Spanish, and programmes that do not require prior coding experience"
+        },
+        {
+          name: "Evidence",
+          question: "What must it verify?",
+          explanation: "If it cannot cite it, it should not state it",
+          example: "Cite the official university programme page for each degree. If language of instruction or entry requirements are unclear, say so explicitly rather than guessing"
+        },
+        {
+          name: "Output",
+          question: "What should the answer look like?",
+          explanation: "Without this, structure is random",
+          example: "Return a comparison table, short explanations, a final recommendation, and one reflection question"
+        },
+        {
+          name: "Guardrails",
+          question: "What must it not do?",
+          explanation: "Never assume the agent knows what is off-limits",
+          example: "Do not apply, email universities, create accounts, make payments, or choose for the student"
+        },
+        {
+          name: "Stop",
+          question: "When should it hand back to a human?",
+          explanation: "The agent advises, the human decides",
+          example: "Stop after the comparison, recommendation, and one reflection question"
+        }
+      ];
+
+      let active = 0;
+
+      function renderSpecSlide() {
+        const nodesEl = document.getElementById("specNodes");
+        const panelEl = document.getElementById("specPanel");
+
+        if (!nodesEl || !panelEl) return;
+
+        nodesEl.innerHTML = steps.map(function (step, index) {
+          const isActive = index === active ? " active" : "";
+          return `
+            <button class="spec-node${isActive}" type="button" data-step="${index}">
+              <span class="spec-node-number">${index + 1}</span>
+              <span class="spec-node-label">${step.name}</span>
+            </button>
+          `;
+        }).join("");
+
+        const step = steps[active];
+        panelEl.innerHTML = `
+          <div>
+            <div class="spec-panel-step">${active + 1} / ${steps.length}</div>
+            <div class="spec-panel-title">${step.name}</div>
+            <div class="spec-panel-question">${step.question}</div>
+            <div class="spec-panel-explanation">${step.explanation}</div>
+            <div class="spec-example-box">
+              <div class="spec-example-label">Best-in-class brief example</div>
+              <div class="spec-example-text">${step.example}</div>
+            </div>
+          </div>
+          <div class="spec-nav">
+            <button type="button" data-step="${active - 1}" ${active === 0 ? "disabled" : ""}>Previous</button>
+            <button type="button" data-step="${active + 1}" ${active === steps.length - 1 ? "disabled" : ""}>Next</button>
+          </div>
+        `;
+
+        nodesEl.querySelectorAll("[data-step]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            const next = Number(button.getAttribute("data-step"));
+            if (next >= 0 && next < steps.length) {
+              active = next;
+              renderSpecSlide();
+            }
+          });
+        });
+
+        panelEl.querySelectorAll("[data-step]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            const next = Number(button.getAttribute("data-step"));
+            if (next >= 0 && next < steps.length) {
+              active = next;
+              renderSpecSlide();
+            }
+          });
+        });
+      }
+
+      renderSpecSlide();
+    })();
+
+    Reveal.initialize({
+      hash: true,
+      width: 1600,
+      height: 900,
+      margin: 0,
+      transition: "fade",
+      disableLayout: false,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      pdfMaxPagesPerSlide: 1
+    }).then(function () {
+      if (window.IERevealFit) window.IERevealFit.fitAll();
+    });
+  </script>
+</body>
+
+</html>

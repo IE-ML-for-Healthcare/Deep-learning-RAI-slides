@@ -1,0 +1,55 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/*
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Local caches, QA output, and the optional offline CDN mirror
+.cache/
+tmp/
+temp/
+.tmp/
+
+# Dependencies and Python caches
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Browser QA virtual environment created by scripts/setup_browser_qa.sh
+.venv-reveal-qa/
+
+# Legacy agent worktrees only; new temporary worktrees must use tmp/worktrees/
+.claude/worktrees/
+.codex/worktrees/
+
+# Release build output
+dist/
+build/
+.release-tmp/
+
+# Local backups and agent scratch files; keep scratch work in tmp/
+*.bak
+*.backup
+*~
+*.tmp
+agent-handoff/*
+!agent-handoff/.gitkeep
+!agent-handoff/README.md
+.*_tmp_*
+

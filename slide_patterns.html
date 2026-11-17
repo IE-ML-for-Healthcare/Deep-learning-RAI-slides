@@ -1,0 +1,1240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IE SciTech - Slide Patterns</title>
+  <!-- Load order: Reveal base -> Reveal theme -> IE overrides -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="ie-scitech-reveal.css">
+  <!-- Montserrat also imported inside ie-scitech-reveal.css as @import fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap">
+  <style>
+
+    .reveal .pattern-tooltip-row {
+      margin-top: 100px;
+    }
+
+    .reveal .pattern-media-overlay-grid {
+      --ie-card-overlay-height: 96px;
+    }
+
+    .reveal .pattern-media-overlay-slide {
+      padding: 176px 96px 130px !important;
+    }
+
+    .reveal .pattern-media-overlay-slide > .pattern-media-title {
+      position: absolute;
+      top: 86px;
+      left: 96px;
+      margin: 0;
+    }
+
+      #pattern-27-download .download-surface-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; height: 220px; margin-top: 32px; }
+    #pattern-34-github-link .github-surface-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; height: 220px; margin-top: 32px; }
+</style>
+  <!-- GROUP ROSTER DATA START -->
+  <script type="application/json" id="ie-group-roster">
+{"groupCount":2,"students":[{"group":"1","name":"Alex S."},{"group":"1","name":"Blair S."},{"group":"1","name":"Casey S."},{"group":"2","name":"Drew S."},{"group":"2","name":"Ellis S."},{"group":"2","name":"Frankie S."}]}
+</script>
+  <!-- GROUP ROSTER DATA END -->
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ── 1. Light title slide ─────────────────────────────────── -->
+    <!--
+      Logo: use the SVG <img> directly. The lockup already contains the
+      full school name. Never add a <p> or <span> with that text.
+      Path: logos/ must be in the same folder as this HTML file.
+    -->
+    <section id="pattern-01-light-title-slide" class="ie-slide ie-light ie-title" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-title-block ie-auto-fit">
+        <h1>Course module</h1>
+        <p class="subtitle">Short subtitle for the session</p>
+      </div>
+    </section>
+
+    <!-- ── 2. Title slide with abstract circle background ────────── -->
+    <!--
+      Background images: add one ie-bg-* class to the section.
+      Available classes (all in backgrounds/ folder):
+        ie-bg-light-circles        light - circles right
+        ie-bg-light-circles-alt    light - circles top-right variant
+        ie-bg-light-students       light - students in lab
+        ie-bg-dark-science         dark  - petri dish, white text + gradient overlay
+        ie-bg-dark-abstract        dark  - dark abstract, white text + gradient overlay
+
+      Do NOT combine with ie-light or ie-dark - bg classes are self-contained.
+    -->
+    <section id="pattern-02-title-slide-with-abstract-circle-background" class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-title-block ie-auto-fit">
+        <h1>Module two</h1>
+        <p class="subtitle">Circle background variant - text stays left</p>
+      </div>
+    </section>
+
+    <!-- ── 3. Dark hero slide ────────────────────────────────────── -->
+    <!--
+      ie-hero is a semantic modifier. It targets the inner .ie-content
+      to set max-width:900px and margin-top:180px.
+    -->
+    <section id="pattern-03-dark-hero-slide" class="ie-slide ie-dark ie-hero" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-content ie-auto-fit">
+        <h2>Main concept</h2>
+        <p>One message per slide. Keep it direct.</p>
+      </div>
+    </section>
+
+    <!-- ── 4. Dark science background ───────────────────────────── -->
+    <!--
+      Photo-bg slides: constrain text to the non-photo area using closing-frame.
+      Default width 760px keeps text safely left of the image.
+    -->
+    <section id="pattern-04-dark-science-background" class="ie-slide ie-bg-dark-science" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="closing-frame">
+        <div class="ie-auto-fit">
+          <h2>Applied science</h2>
+          <p>Dark-bg slides auto-apply a gradient overlay so white text is always legible.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. Four-card grid ─────────────────────────────────────── -->
+    <!--
+      ie-cards on the section overrides padding so the grid fills the safe area.
+      Valid card fills: ie-card-lime, ie-card-white, ie-card-offwhite, ie-card-dark.
+    -->
+    <section id="pattern-05-four-card-grid" class="ie-slide ie-dark ie-cards" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-card-grid">
+        <article class="ie-card ie-card-lime">
+          <div class="ie-card-content ie-auto-fit">
+            <h3>Step one</h3>
+            <p>One point per card. Use lime to anchor the first item.</p>
+          </div>
+        </article>
+        <article class="ie-card ie-card-white">
+          <div class="ie-card-content ie-auto-fit">
+            <h3>Step two</h3>
+            <p>White cards contrast well on dark backgrounds.</p>
+          </div>
+        </article>
+        <article class="ie-card ie-card-offwhite">
+          <div class="ie-card-content ie-auto-fit">
+            <h3>Step three</h3>
+            <p>Off-white adds variety without breaking the palette.</p>
+          </div>
+        </article>
+        <article class="ie-card ie-card-dark">
+          <div class="ie-card-content ie-auto-fit">
+            <h3>Step four</h3>
+            <p>Use dark cards sparingly to anchor the composition.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── 6. Four cards with image right ───────────────────────── -->
+    <!--
+      ie-bg-green-cards-right: baked card panels on the left, image on the right.
+      Logo sits lower-right. Text overlays must align with the visible baked panels.
+      Do not add extra card backgrounds on top of the baked image.
+    -->
+    <section id="pattern-06-four-cards-with-image-right" class="ie-slide ie-bg-green-cards-right" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="four-card-layer">
+        <article class="four-card">
+          <h3 class="four-card-title">Frame</h3>
+          <p class="four-card-subtitle">Define the context</p>
+          <p class="four-card-body">Use this area for a concise option, category, or step</p>
+        </article>
+        <article class="four-card">
+          <h3 class="four-card-title">Focus</h3>
+          <p class="four-card-subtitle">Name the priority</p>
+          <p class="four-card-body">Keep the text aligned to the baked visual card panel</p>
+        </article>
+        <article class="four-card">
+          <h3 class="four-card-title">Test</h3>
+          <p class="four-card-subtitle">Check the evidence</p>
+          <p class="four-card-body">Use short active phrasing so students can scan quickly</p>
+        </article>
+        <article class="four-card four-card-dark">
+          <h3 class="four-card-title">Decide</h3>
+          <p class="four-card-subtitle">Choose the next move</p>
+          <p class="four-card-body">Use white text on the dark baked card area only</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── 7. Four cards with image left ────────────────────────── -->
+    <!--
+      ie-bg-green-cards-left: baked card panels on the right, image on the left.
+      Logo sits lower-left.
+    -->
+    <section id="pattern-07-four-cards-with-image-left" class="ie-slide ie-bg-green-cards-left" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="four-card-layer">
+        <article class="four-card">
+          <h3 class="four-card-title">Map</h3>
+          <p class="four-card-subtitle">List the choices</p>
+          <p class="four-card-body">Use this card for the first part of a reusable framework</p>
+        </article>
+        <article class="four-card">
+          <h3 class="four-card-title">Compare</h3>
+          <p class="four-card-subtitle">Show the tradeoff</p>
+          <p class="four-card-body">Keep navy text on white and lime baked card areas</p>
+        </article>
+        <article class="four-card">
+          <h3 class="four-card-title">Apply</h3>
+          <p class="four-card-subtitle">Make it concrete</p>
+          <p class="four-card-body">Connect the category to a practical student action</p>
+        </article>
+        <article class="four-card four-card-dark">
+          <h3 class="four-card-title">Reflect</h3>
+          <p class="four-card-subtitle">Name the insight</p>
+          <p class="four-card-body">Use the dark card for the strongest takeaway</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── 8. Narrowing ladder with side panel ─────────────────── -->
+    <!--
+      ie-ladder-layout: an ordered sequence of steps that narrows scope
+      (horizon, commitment level, decision weight), paired with one
+      supporting panel (safety gate, rule, or summary). Each ie-ladder-step
+      is a fixed structural row: number, text block, optional tag.
+      See instructions/layout_playbook.md, pattern "Narrowing ladder".
+    -->
+    <section id="pattern-08-narrowing-ladder-with-side-panel" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Narrowing ladder pattern</h2>
+          <div class="ie-ladder-layout">
+            <ol class="ie-ladder" aria-label="Example narrowing sequence">
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">01</span>
+                <div class="ie-ladder-text">
+                  <h3>Broadest step</h3>
+                  <p>Use for the widest-scope or longest-horizon decision</p>
+                </div>
+                <span class="ie-ladder-tag">Fixed</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">02</span>
+                <div class="ie-ladder-text">
+                  <h3>Narrower step</h3>
+                  <p>Each row can carry its own tag to mark scope or cadence</p>
+                </div>
+                <span class="ie-ladder-tag">Rotating</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">03</span>
+                <div class="ie-ladder-text">
+                  <h3>Narrowest step</h3>
+                  <p>Progressive lime tint on rows 2 to 5 reinforces the narrowing</p>
+                </div>
+                <span class="ie-ladder-tag">This cycle</span>
+              </li>
+            </ol>
+            <aside class="ie-ladder-panel">
+              <span class="ie-kicker">Panel label</span>
+              <h3>Supporting panel</h3>
+              <p>Use for a safety gate, a rule, or a short summary next to the ladder</p>
+              <p class="ie-ladder-panel-rule">Optional closing rule line</p>
+            </aside>
+          </div>
+          <p class="ie-band">Optional closing band for a one-line takeaway</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 9. Log with separate note ───────────────────────────── -->
+    <!--
+      ie-log-layout: one primary contained list (ie-log-container) beside
+      a second item that must read as deliberately separate rather than
+      a member of the same set. The dashed border on ie-log-note is the
+      teaching device, do not make it a solid card.
+      See instructions/layout_playbook.md, pattern "Log with separate note".
+    -->
+    <section id="pattern-09-log-with-separate-note" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Log with separate note pattern</h2>
+          <div class="ie-log-layout">
+            <div class="ie-log-container">
+              <div class="ie-log-head">
+                <h3>Primary list</h3>
+                <span class="ie-kicker">Label for the set</span>
+              </div>
+              <ul class="ie-log-list">
+                <li><span class="ie-log-index">01</span><span>First item</span></li>
+                <li><span class="ie-log-index">02</span><span>Second item</span></li>
+                <li><span class="ie-log-index">03</span><span>Third item</span></li>
+                <li><span class="ie-log-index">04</span><span>Fourth item</span></li>
+              </ul>
+            </div>
+            <aside class="ie-log-note">
+              <span class="ie-kicker">Separate home</span>
+              <h3>Related but distinct item</h3>
+              <span class="ie-log-note-chip">Short highlighted rule</span>
+              <p class="ie-log-note-warn">State plainly what it is not</p>
+            </aside>
+          </div>
+          <p class="ie-band">Optional closing band for a one-line takeaway</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 10. Numbered relay cards ─────────────────────────────── -->
+    <!--
+      ie-relay-grid: a short ordered checklist meant to be filled in live
+      during class, each card handing off to the next via a chevron
+      connector. ie-relay-answer is a dashed fill-in slot, leave it empty
+      on the slide, do not pre-fill sample answers.
+      See instructions/layout_playbook.md, pattern "Numbered relay cards".
+    -->
+    <section id="pattern-10-numbered-relay-cards" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Numbered relay cards pattern</h2>
+          <div class="ie-relay-grid" aria-label="Example four-step relay">
+            <article class="ie-relay-card">
+              <span class="ie-relay-number">01</span>
+              <span class="ie-kicker">Label</span>
+              <p class="ie-relay-question">First question to answer</p>
+              <div class="ie-relay-answer"><span>Write it here</span></div>
+            </article>
+            <article class="ie-relay-card">
+              <span class="ie-relay-number">02</span>
+              <span class="ie-kicker">Label</span>
+              <p class="ie-relay-question">Second question to answer</p>
+              <div class="ie-relay-answer"><span>Write it here</span></div>
+            </article>
+            <article class="ie-relay-card">
+              <span class="ie-relay-number">03</span>
+              <span class="ie-kicker">Label</span>
+              <p class="ie-relay-question">Third question to answer</p>
+              <div class="ie-relay-answer"><span>Write it here</span></div>
+            </article>
+            <article class="ie-relay-card">
+              <span class="ie-relay-number">04</span>
+              <span class="ie-kicker">Label</span>
+              <p class="ie-relay-question">Fourth question to answer</p>
+              <div class="ie-relay-answer"><span>Write it here</span></div>
+            </article>
+          </div>
+          <p class="ie-band">Optional closing band, one approved look only</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 11. Stacked agenda ───────────────────────────────────── -->
+    <!--
+      ie-agenda-stack turns the 5-column agenda-grid into full-width rows.
+      Use for a 3 to 6 section session agenda repeated between blocks, with
+      one card marked is-active and the others is-complete or is-upcoming.
+    -->
+    <section id="pattern-11-stacked-agenda" class="ie-slide ie-dark" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <div class="template-header"><h2>Session agenda</h2></div>
+          <div class="agenda-grid ie-agenda-stack" aria-label="Session agenda, second block active">
+            <div class="agenda-card is-complete"><span class="agenda-number">1</span><h3>First block, already covered</h3></div>
+            <div class="agenda-card is-active"><span class="agenda-number">2</span><h3>Active block, highlighted in lime</h3></div>
+            <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>Upcoming block, dimmed</h3></div>
+            <div class="agenda-card is-upcoming"><span class="agenda-number">4</span><h3>Final block, dimmed</h3></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 12. Thumbnail gallery ────────────────────────────────── -->
+    <!--
+      ie-gallery shows one image at a time with a selectable thumbnail rail.
+      Requires ie-components.js, which initialises it automatically, and the
+      data-gallery, data-gallery-hero, data-current-count, data-src and
+      data-alt hooks. Left and right arrow keys also change the image.
+    -->
+    <section id="pattern-12-thumbnail-gallery" class="ie-slide ie-light ie-gallery" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-gallery-frame">
+        <div class="ie-gallery-layout" data-gallery>
+          <div class="ie-gallery-stage">
+            <img class="ie-gallery-hero" data-gallery-hero
+                 src="media/placeholders/placeholder-1.jpg"
+                 alt="First gallery image">
+          </div>
+          <div class="ie-gallery-sidebar">
+            <header class="ie-gallery-header">
+              <h1 class="ie-gallery-title">Gallery title</h1>
+              <div class="ie-gallery-meta" aria-live="polite">
+                <span class="ie-gallery-count"><span data-current-count>01</span> / 03</span>
+              </div>
+            </header>
+            <nav class="ie-gallery-rail" aria-label="Example image gallery">
+              <button class="ie-gallery-thumb" type="button" aria-pressed="true"
+                      data-src="media/placeholders/placeholder-1.jpg"
+                      data-alt="First gallery image">
+                <img src="media/placeholders/placeholder-1.jpg" alt="">
+                <span class="ie-gallery-thumb-copy">
+                  <span class="ie-gallery-index">01</span>
+                  <span class="ie-gallery-thumb-title">First image caption</span>
+                </span>
+              </button>
+              <button class="ie-gallery-thumb" type="button" aria-pressed="false"
+                      data-src="media/placeholders/placeholder-2.jpg"
+                      data-alt="Second gallery image">
+                <img src="media/placeholders/placeholder-2.jpg" alt="">
+                <span class="ie-gallery-thumb-copy">
+                  <span class="ie-gallery-index">02</span>
+                  <span class="ie-gallery-thumb-title">Second image caption</span>
+                </span>
+              </button>
+              <button class="ie-gallery-thumb" type="button" aria-pressed="false"
+                      data-src="media/placeholders/placeholder-3.jpg"
+                      data-alt="Third gallery image">
+                <img src="media/placeholders/placeholder-3.jpg" alt="">
+                <span class="ie-gallery-thumb-copy">
+                  <span class="ie-gallery-index">03</span>
+                  <span class="ie-gallery-thumb-title">Third image caption</span>
+                </span>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 13. Numbered objectives grid ─────────────────────────── -->
+    <!--
+      ie-objectives-grid presents 4 to 6 learning objectives as equal
+      numbered cards over a dark background, with an optional lead line.
+      Add ie-objectives-frame to safe-frame for the extra height.
+      Highlight only key phrases with ie-objective-key, never whole lines.
+    -->
+    <section id="pattern-13-numbered-objectives-grid" class="ie-slide ie-bg-dark-abstract" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame ie-objectives-frame">
+        <div class="ie-auto-fit">
+          <h2>What you will learn</h2>
+          <p class="ie-objectives-lead">One line framing the overall arc of the objectives below</p>
+          <div class="ie-objectives-grid">
+            <div class="ie-objective-card">
+              <span class="ie-objective-number">1</span>
+              <p>First objective, with a <span class="ie-objective-key">key phrase</span> highlighted</p>
+            </div>
+            <div class="ie-objective-card">
+              <span class="ie-objective-number">2</span>
+              <p>Second objective, stated as an action the student performs</p>
+            </div>
+            <div class="ie-objective-card">
+              <span class="ie-objective-number">3</span>
+              <p>Third objective, kept to one clear sentence</p>
+            </div>
+            <div class="ie-objective-card">
+              <span class="ie-objective-number">4</span>
+              <p>Fourth objective, with a second <span class="ie-objective-key">key phrase</span></p>
+            </div>
+            <div class="ie-objective-card">
+              <span class="ie-objective-number">5</span>
+              <p>Fifth objective, parallel in grammar to the others</p>
+            </div>
+            <div class="ie-objective-card">
+              <span class="ie-objective-number">6</span>
+              <p>Sixth objective, closing on the decision the student can make</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 14. Quote with cutout portrait ───────────────────────── -->
+    <!--
+      ie-quote-slide floats a cutout portrait into one corner and wraps the
+      quotation around it. In a real slide, set shape-outside to the same
+      cutout PNG on ie-quote-wrap-shape with an inline style, and match its
+      width and height to the portrait, otherwise the wrap will not follow
+      the silhouette. This example uses a plain rectangular float. Quote text
+      is always 50 px, emphasis is bold lime, and the attribution starts with a dash.
+    -->
+    <section id="pattern-14-quote-with-cutout-portrait" class="ie-slide ie-bg-dark-abstract ie-quote-slide" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame safe-frame--full-bleed">
+        <div class="ie-quote-stage">
+          <div class="ie-quote-copy">
+            <span class="ie-quote-wrap-shape" aria-hidden="true"></span>
+            <p class="ie-quote-text">"A short attributed quotation flows around the portrait. Emphasise only <span class="ie-quote-emphasis">the phrase that carries the argument</span>."</p>
+            <p class="ie-quote-attribution">- Attributed speaker</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 15. Statement bar with image ─────────────────────────── -->
+    <!--
+      ie-statement-split puts one short claim in a solid navy bar on the
+      left third and a full-height image or chart in the right two thirds.
+      Use for a definition, a research finding, or a sourced claim that a
+      single visual supports. Combine with ie-split and ie-split-left.
+    -->
+    <section id="pattern-15-statement-bar-with-image" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-split-grid">
+        <div class="ie-statement-bar">
+          <p>"One short claim, definition, or sourced finding stated in full"</p>
+          <span class="ie-statement-source">Source: https://example.org/</span>
+        </div>
+        <figure class="ie-statement-image">
+          <img src="media/placeholders/placeholder-chart.png"
+               alt="Chart supporting the statement on the left">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 16. Data table ───────────────────────────────────────── -->
+    <!--
+      ie-table is the reference table style, with a navy header row and
+      alternating lime body rows. Always set column widths with a colgroup
+      so the layout is predictable, and use ie-table-numeric on numeric
+      columns. Use ie-table-compact only for six or more rows that need less
+      vertical padding. ie-table-conditions holds highlighted threshold lines.
+    -->
+    <section id="pattern-16-data-table" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Reference table</h2>
+          <table class="ie-table">
+            <colgroup>
+              <col style="width: 26%">
+              <col style="width: 12%">
+              <col style="width: 38%">
+              <col style="width: 24%">
+            </colgroup>
+            <thead>
+              <tr><th>Item</th><th>Weight</th><th>Description</th><th>Timing</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>First item</td><td class="ie-table-numeric">15%</td><td>Short description of what this covers</td><td>Ongoing</td></tr>
+              <tr><td>Second item</td><td class="ie-table-numeric">20%</td><td>Short description of what this covers</td><td>Week 7</td></tr>
+              <tr><td>Third item</td><td class="ie-table-numeric">30%</td><td>Short description of what this covers</td><td>Week 14</td></tr>
+            </tbody>
+          </table>
+          <div class="ie-table-conditions" aria-label="Highlighted conditions">
+            <p class="ie-table-condition">First condition: <span class="ie-table-value">8.0</span></p>
+            <p class="ie-table-condition">Second condition: <span class="ie-table-value">&lt;= 3.5</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 17. Device explainer ─────────────────────────────────── -->
+    <!--
+      ie-device-slide introduces one tool, with labelled copy on the left
+      and a screenshot seated inside media/laptop.png on the right. The
+      screen aperture percentages are measured against that frame, do not
+      change them when swapping the screenshot. Wrap the screenshot in an
+      anchor when the tool has a public URL.
+    -->
+    <section id="pattern-17-device-explainer" class="ie-slide ie-light ie-device-slide" data-transition="fade"
+             data-grid-exception="Device explainer centres its copy on the laptop frame">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-device-layout">
+          <div class="ie-device-copy">
+            <h2>Tool name</h2>
+            <p><span class="ie-device-label">What it is</span>One line saying what the tool actually is</p>
+            <p><span class="ie-device-label">Why we use it</span>One line saying what students use it for in this course</p>
+          </div>
+          <div class="ie-device-laptop">
+            <a class="ie-device-screen-link" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open the tool">
+              <img class="ie-device-screen-image" src="media/placeholders/placeholder-screenshot.png" alt="">
+            </a>
+            <img class="ie-device-frame" src="media/laptop.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 18. Link card grid ───────────────────────────────────── -->
+    <!--
+      ie-link-grid presents external resources as clickable cards over a
+      dark background, with an optional ie-link-note eyebrow stating the
+      selection rule. Every card is an anchor with target and rel set, and
+      an aria-label naming the destination.
+    -->
+    <section id="pattern-18-link-card-grid" class="ie-slide ie-dark ie-link-slide" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Resources grid</h2>
+          <div class="ie-link-note">One line stating when these are worth adding</div>
+          <div class="ie-link-grid" aria-label="External resources">
+            <a class="ie-link-card" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open first resource">
+              <h3>First resource</h3><p>What it is for</p>
+            </a>
+            <a class="ie-link-card" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open second resource">
+              <h3>Second resource</h3><p>What it is for</p>
+            </a>
+            <a class="ie-link-card" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open third resource">
+              <h3>Third resource</h3><p>What it is for</p>
+            </a>
+            <a class="ie-link-card" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open fourth resource">
+              <h3>Fourth resource</h3><p>What it is for</p>
+            </a>
+            <a class="ie-link-card" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open fifth resource">
+              <h3>Fifth resource</h3><p>What it is for</p>
+            </a>
+            <a class="ie-link-card" href="https://example.org/" target="_blank" rel="noopener noreferrer" aria-label="Open sixth resource">
+              <h3>Sixth resource</h3><p>What it is for</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 19. Process icon flow ────────────────────────────────── -->
+    <!--
+      ie-process-flow shows a linear 4 to 6 step process as numbered icons
+      joined by arrows, closing with one line. Icons are local Tabler SVGs
+      in media/icons/tabler/thin/, recoloured to lime by CSS filter, so the
+      source files stay untouched. Designed for dark backgrounds.
+    -->
+    <section id="pattern-19-process-icon-flow" class="ie-slide ie-dark ie-process-slide" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Linear process</h2>
+          <ol class="ie-process-flow" aria-label="Five step sequence">
+            <li><span class="ie-process-number">1</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/rocket.svg" alt=""></span><span class="ie-process-label">Start</span></li>
+            <li><span class="ie-process-number">2</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/message-question.svg" alt=""></span><span class="ie-process-label">Question</span></li>
+            <li><span class="ie-process-number">3</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/search.svg" alt=""></span><span class="ie-process-label">Test</span></li>
+            <li><span class="ie-process-number">4</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/chart-bar.svg" alt=""></span><span class="ie-process-label">Measure</span></li>
+            <li><span class="ie-process-number">5</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/target-arrow.svg" alt=""></span><span class="ie-process-label">Decide</span></li>
+          </ol>
+          <p class="ie-process-takeaway">One closing line, with the pivotal words in <span class="ie-process-emphasis">lime</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 20. Media split with steps ───────────────────────────── -->
+    <!--
+      ie-media-split pairs a full-height image on one side with an ordered
+      stack of short steps on the other, closing with one takeaway. The
+      logo moves to the text side automatically. Combine with ie-split and
+      ie-split-left or ie-split-right.
+    -->
+    <section id="pattern-20-media-split-with-steps" class="ie-slide ie-light ie-split ie-split-left ie-media-split" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-split-grid">
+        <figure class="ie-image-panel ie-media-panel">
+          <img src="media/placeholders/placeholder-2.jpg"
+               alt="Image supporting the steps on the right">
+        </figure>
+        <div class="ie-content ie-media-content ie-auto-fit">
+          <h2>Sequence with an image</h2>
+          <div class="ie-step-stack">
+            <p class="ie-step-line">First step, with the verb in <span class="ie-step-emphasis">green</span></p>
+            <p class="ie-step-line">Second step, kept to one line</p>
+            <p class="ie-step-line">Third step, parallel in grammar</p>
+            <p class="ie-step-line">Fourth step, still one line</p>
+            <p class="ie-step-line">Fifth step, closing the sequence</p>
+          </div>
+          <p class="ie-step-takeaway">One short closing statement</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 21. True 50/50 with activity panels ──────────────────── -->
+    <!--
+      ie-lr owns the full canvas and the two halves meet at x = 800px.
+      ie-activity-panel adds a translucent navy card inside each half so
+      text stays legible over an image background: is-steps for numbered
+      instructions, is-prompts for a challenge list. The shared takeaway
+      sits centred in ie-lr-footer. Keep the title in the left top band
+      and the logo in the opposite corner.
+    -->
+    <section id="pattern-21-true-50-50-with-activity-panels" class="ie-slide ie-bg-green-dark-left ie-lr ie-activity-lr" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <header class="ie-lr-title-left">
+        <h2>In-class activity title</h2>
+      </header>
+      <div class="ie-lr-grid">
+        <div class="ie-lr-left">
+          <div class="ie-lr-panel">
+            <div class="ie-auto-fit ie-activity-panel is-steps" aria-label="Activity instructions">
+              <div class="ie-activity-step">
+                <span class="ie-activity-step-number">01</span>
+                <div>
+                  <h3>First instruction</h3>
+                  <p>One line saying exactly what the students do</p>
+                  <div class="ie-activity-context">
+                    <h4>Useful question</h4>
+                    <p>An optional prompt that unblocks the step</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ie-activity-step">
+                <span class="ie-activity-step-number">02</span>
+                <div>
+                  <h3>Second instruction</h3>
+                  <p>One line, with any constraint stated plainly</p>
+                  <div class="ie-activity-context">
+                    <h4>Useful question</h4>
+                    <p>A second optional prompt</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ie-lr-right">
+          <div class="ie-lr-panel">
+            <div class="ie-auto-fit ie-activity-panel is-prompts">
+              <h3>Challenge heading</h3>
+              <p class="ie-activity-pattern">The pattern being broken, shown as a short chain</p>
+              <h4>Challenge it</h4>
+              <ul>
+                <li>First challenge question</li>
+                <li>Second challenge question</li>
+                <li>Third challenge question</li>
+                <li>Fourth challenge question</li>
+                <li>Fifth challenge question</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="ie-lr-footer">
+        <p class="ie-lr-takeaway-shared">One shared takeaway centred beneath both halves</p>
+      </footer>
+    </section>
+
+    <!-- ── 22. Screen mockup ────────────────────────────────────── -->
+    <!--
+      ie-screen-slide shows a long artefact, such as a prompt or config
+      file, inside media/screen.png, with a short title block on the left.
+      Set the ie-screen-text font size per slide so the whole artefact fits
+      the aperture without scrolling, and wrap the frame in a download or
+      copy anchor when students need the raw text.
+    -->
+    <section id="pattern-22-screen-mockup" class="ie-slide ie-bg-dark-abstract ie-screen-slide" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="ie-screen-copy">
+        <h2>Artefact title</h2>
+        <p class="ie-screen-lead">One line saying what the artefact is for</p>
+      </div>
+      <figure class="ie-screen-figure">
+        <img class="ie-screen-image" src="media/screen.png" alt="Monitor frame containing the artefact text">
+        <div class="ie-screen-opening">
+          <div class="ie-screen-text" role="textbox" aria-label="Artefact text">
+            <span class="ie-screen-heading"># SECTION ONE</span><br>Body text of the artefact goes here, in monospace, sized so the whole thing fits inside the aperture.<br><br><span class="ie-screen-heading"># SECTION TWO</span><br>Headings use ie-screen-heading so they pick up the lime accent and stay scannable from the back of the room.<br><br>Keep the artefact exact. If it is too long to remain legible, split it across two slides rather than shrinking the type below readability.
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <!-- ── 23. Context tooltip ────────────────────────────────────── -->
+    <!--
+      Add ie-tooltip, tabindex="0", data-tooltip, and an aria-label that
+      combines the visible term with its short definition. The pop-up works
+      on hover, tap, and keyboard focus without JavaScript.
+      See instructions/layout_playbook.md, pattern "Context tooltip".
+    -->
+    <section id="pattern-23-context-tooltip" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <h2>Context tooltip pattern</h2>
+          <p>Use short pop-ups to explain optional context without crowding the slide</p>
+          <div class="ie-two-col pattern-tooltip-row">
+            <p class="ie-band ie-tooltip" tabindex="0"
+               aria-label="Suitability. Does it solve the right problem?"
+               data-tooltip="Does it solve the right problem?">Suitability</p>
+            <p class="ie-band ie-tooltip" tabindex="0"
+               aria-label="Feasibility. Can we build and operate it?"
+               data-tooltip="Can we build and operate it?">Feasibility</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 24. Comparison, left versus right, with source line ──── -->
+    <!--
+      ie-compare ie-compare-dark is the default for any two-sided comparison.
+      is-a is the weaker or current-state side, is-b the preferred or
+      evidence-backed side. Five rows per side is the tuned default.
+      The takeaway spans both halves and the source line sits bottom left,
+      so the logo moves to the top right automatically.
+    -->
+    <section id="pattern-24-comparison" class="ie-slide ie-compare ie-compare-dark" data-transition="fade"
+             aria-label="Option A compared with option B">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <header class="ie-compare-title">
+        <h2>Compare two options</h2>
+      </header>
+      <div class="ie-compare-grid">
+        <div class="ie-compare-col is-a">
+          <div class="ie-compare-head">
+            <h3>Option A</h3>
+            <span class="ie-compare-tag">Current state</span>
+          </div>
+          <ul class="ie-compare-list">
+            <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">First dimension</h4>
+                <p class="ie-compare-desc">How option A behaves on this dimension</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Second dimension</h4>
+                <p class="ie-compare-desc">One short line, no full stop</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Third dimension</h4>
+                <p class="ie-compare-desc">Keep rows parallel across both sides</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Fourth dimension</h4>
+                <p class="ie-compare-desc">Same order as the matching row on the right</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Fifth dimension</h4>
+                <p class="ie-compare-desc">Five rows is the tuned maximum</p></div></li>
+          </ul>
+        </div>
+        <div class="ie-compare-col is-b">
+          <div class="ie-compare-head">
+            <h3>Option B</h3>
+            <span class="ie-compare-tag">Preferred</span>
+          </div>
+          <ul class="ie-compare-list">
+            <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">First dimension</h4>
+                <p class="ie-compare-desc">How option B behaves on this dimension</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Second dimension</h4>
+                <p class="ie-compare-desc">One short line, no full stop</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Third dimension</h4>
+                <p class="ie-compare-desc">Evidence-backed side takes the lime rail</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Fourth dimension</h4>
+                <p class="ie-compare-desc">Same order as the matching row on the left</p></div></li>
+            <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+              <div class="ie-compare-txt"><h4 class="ie-compare-label">Fifth dimension</h4>
+                <p class="ie-compare-desc">Five rows is the tuned maximum</p></div></li>
+          </ul>
+        </div>
+      </div>
+      <footer class="ie-compare-takeaway">
+        <p>State one shared takeaway and <span class="ie-compare-accent">mark the decisive words</span></p>
+      </footer>
+      <p class="ie-source-line">Sources: <a href="https://revealjs.com/" target="_blank" rel="noopener noreferrer">Reveal.js documentation</a>; Author (year), short title</p>
+    </section>
+
+    <!-- ── 25. Progressive-focus roadmap ─────────────────────────── -->
+    <!--
+      ie-roadmap renders a one-page roadmap from the JSON block below.
+      ie-components.js builds the rail, focus panel, timeline, artifacts,
+      print summary, and one Reveal fragment per stage plus a closing state.
+      Hover or focus previews a stage; click or presenter arrows commit it.
+      Phase tones: green, navy, grey. Icons resolve against iconBase.
+    -->
+    <section id="pattern-25-roadmap" class="ie-slide ie-light ie-roadmap" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <script type="application/json" class="ie-roadmap-data">
+      {
+        "title": "The course on one page",
+        "subtitle": "From a first question to an evidence-based decision",
+        "unit": "Session",
+        "total": 20,
+        "iconBase": "media/icons/tabler/",
+        "phases": [
+          { "id": "p1", "short": "Phase 1", "label": "Phase 1, Sessions 1 to 10", "tone": "green" },
+          { "id": "p2", "short": "Phase 2", "label": "Phase 2, Sessions 11 to 18", "tone": "navy" },
+          { "id": "pc", "short": "Closing", "label": "Closing, Sessions 19 to 20", "tone": "grey" }
+        ],
+        "stages": [
+          { "name": "Discover", "from": 1, "to": 4, "phase": "p1", "output": "Framed problem and evidence plan", "icon": "search.svg" },
+          { "name": "Design", "from": 5, "to": 10, "phase": "p1", "output": "Tested concept and build scope", "icon": "target-arrow.svg" },
+          { "name": "Build", "from": 11, "to": 15, "phase": "p2", "output": "Working prototype and evaluation", "icon": "tools.svg" },
+          { "name": "Validate", "from": 16, "to": 18, "phase": "p2", "output": "User evidence and decision", "icon": "users.svg" },
+          { "name": "Defend", "from": 19, "to": 20, "phase": "pc", "output": "Final recommendation", "icon": "shield.svg" }
+        ],
+        "milestones": [
+          { "at": 10, "stage": 2, "label": "Session 10", "short": "S10", "text": "Phase 1 gate", "icon": "building-arch.svg", "gate": true },
+          { "at": 15, "stage": 3, "label": "Session 15", "short": "S15", "text": "First user test", "icon": "users.svg" },
+          { "at": 18, "stage": 4, "label": "Session 18", "short": "S18", "text": "Phase 2 gate", "icon": "building-arch.svg", "gate": true },
+          { "at": 20, "stage": 5, "label": "Session 20", "short": "S20", "text": "Final presentation", "icon": "users-group.svg" }
+        ],
+        "overview": { "eyebrow": "Course roadmap", "title": "Five stages across 20 sessions", "text": "Each stage adds evidence to one decision", "icon": "target-arrow.svg" },
+        "closing": { "text": "Strengthen one decision through repeated evidence", "icon": "target-arrow.svg" },
+        "artifacts": { "label": "Living artifacts", "items": [
+          { "text": "Evidence Log", "icon": "notebook.svg" },
+          { "text": "Decisions", "icon": "folder.svg" },
+          { "text": "Repository", "icon": "code.svg" }
+        ] }
+      }
+      </script>
+    </section>
+
+    <!-- ── 26. Single-source slide alias ─────────────────────────── -->
+    <!--
+      data-slide-ref repeats a canonical slide without copying its HTML.
+      slide-aliases.js clones the target before Reveal.initialize, keeps the
+      alias id, and namespaces descendant ids. Edit the canonical slide only.
+    -->
+    <section id="pattern-26-slide-alias" data-slide-ref="pattern-24-comparison"></section>
+
+    <!-- ── 27. File download control ─────────────────────────────── -->
+    <!--
+      Downloads must save the file over file:// and HTTP. The href is a base64
+      data: URI generated from the source file by scripts/sync_downloads.py,
+      never hand-typed. data-download-source names the repository file so QA
+      can prove the payload matches it byte for byte.
+    -->
+    <section id="pattern-27-download" class="ie-slide ie-dark" data-transition="fade">
+      <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+      <div class="safe-frame"><div class="ie-auto-fit">
+        <h2 class="ie-title-with-download">Download the prompt<a class="ie-download-btn ie-download-btn--dark" download="example-prompt.md" data-download-source="examples/downloads/example-prompt.md" href="data:text/markdown;charset=utf-8;base64,IyBFeGFtcGxlIHByb21wdAoKUmVwbGFjZSB0aGlzIGZpbGUgd2l0aCB0aGUgY291cnNlIHByb21wdCBzdHVkZW50cyBzaG91bGQgZG93bmxvYWQKCi0gS2VlcCB0aGUgc291cmNlIGZpbGUgaW4gdGhlIHJlcG9zaXRvcnkKLSBSZWdlbmVyYXRlIHRoZSBzbGlkZSBwYXlsb2FkIHdpdGggYHB5dGhvbiBzY3JpcHRzL3N5bmNfZG93bmxvYWRzLnB5YAotIFZhbGlkYXRlIHdpdGggYHB5dGhvbiBzY3JpcHRzL2NoZWNrX2Jyb3dzZXJfcWEucHlgCg==" aria-label="Download example-prompt.md" title="Download example-prompt.md"><img class="ie-download-icon" src="media/icons/tabler/download.svg" alt=""></a></h2>
+        <p class="subtitle">Use the official title-side icon to save a file directly</p>
+        <div class="download-surface-grid">
+          <article class="ie-card ie-card-light">
+            <div class="ie-card-content">
+            <h3 class="ie-title-with-download">Light surface<a class="ie-download-btn" download="example-prompt.md" data-download-source="examples/downloads/example-prompt.md" href="data:text/markdown;charset=utf-8;base64,IyBFeGFtcGxlIHByb21wdAoKUmVwbGFjZSB0aGlzIGZpbGUgd2l0aCB0aGUgY291cnNlIHByb21wdCBzdHVkZW50cyBzaG91bGQgZG93bmxvYWQKCi0gS2VlcCB0aGUgc291cmNlIGZpbGUgaW4gdGhlIHJlcG9zaXRvcnkKLSBSZWdlbmVyYXRlIHRoZSBzbGlkZSBwYXlsb2FkIHdpdGggYHB5dGhvbiBzY3JpcHRzL3N5bmNfZG93bmxvYWRzLnB5YAotIFZhbGlkYXRlIHdpdGggYHB5dGhvbiBzY3JpcHRzL2NoZWNrX2Jyb3dzZXJfcWEucHlgCg==" aria-label="Download example-prompt.md" title="Download example-prompt.md"><img class="ie-download-icon" src="media/icons/tabler/download.svg" alt=""></a></h3>
+            <p>Use the dark icon on a light surface</p>
+            </div>
+          </article>
+          <article class="ie-card ie-card-dark">
+            <div class="ie-card-content">
+            <h3 class="ie-title-with-download">Dark surface<a class="ie-download-btn ie-download-btn--dark" download="example-prompt.md" data-download-source="examples/downloads/example-prompt.md" href="data:text/markdown;charset=utf-8;base64,IyBFeGFtcGxlIHByb21wdAoKUmVwbGFjZSB0aGlzIGZpbGUgd2l0aCB0aGUgY291cnNlIHByb21wdCBzdHVkZW50cyBzaG91bGQgZG93bmxvYWQKCi0gS2VlcCB0aGUgc291cmNlIGZpbGUgaW4gdGhlIHJlcG9zaXRvcnkKLSBSZWdlbmVyYXRlIHRoZSBzbGlkZSBwYXlsb2FkIHdpdGggYHB5dGhvbiBzY3JpcHRzL3N5bmNfZG93bmxvYWRzLnB5YAotIFZhbGlkYXRlIHdpdGggYHB5dGhvbiBzY3JpcHRzL2NoZWNrX2Jyb3dzZXJfcWEucHlgCg==" aria-label="Download example-prompt.md" title="Download example-prompt.md"><img class="ie-download-icon" src="media/icons/tabler/download.svg" alt=""></a></h3>
+            <p>Use the white icon on a dark surface</p>
+            </div>
+          </article>
+        </div>
+        <div class="ie-band">Save the named file without opening a new tab or leaving the slide</div>
+      </div></div>
+    </section>
+
+    <section id="pattern-28-group-picker" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <button type="button" class="s-picker" aria-label="Pick a random group or student">
+        <span class="s-picker-die" aria-hidden="true">&#127922;</span>
+        <span class="s-picker-label">Pick a group</span>
+      </button>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <div class="template-header"><h2>Group and student picker</h2></div>
+          <p>Click the pill top right. It spins for about two seconds, then shows a
+          random group and student from groups.csv. The result stays until it is
+          clicked again, or the slide changes. See instructions/group_picker.md.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 29. Full-bleed media cards ────────────────────────────── -->
+    <!--
+      Put ie-card--media-bleed on each card, ie-card-media--full-bleed on
+      the image wrapper, and ie-card-overlay--full-width on the quote or
+      short text panel. The image and overlay run from the card's inner
+      left border to its inner right border. Add
+      ie-card-grid--equal-overlays and set --ie-card-overlay-height when
+      repeated overlays must share one height.
+      This pattern is CSS and HTML only, it needs no JavaScript.
+    -->
+    <section id="pattern-29-full-bleed-media-cards" class="ie-slide ie-light ie-cards ie-logo-tr pattern-media-overlay-slide" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <h2 class="pattern-media-title">Full-bleed media cards</h2>
+      <div class="ie-card-grid ie-card-grid--equal-overlays pattern-media-overlay-grid">
+        <article class="ie-card ie-card-light ie-card--media-bleed">
+          <div class="ie-card-media--full-bleed"><img src="media/placeholders/placeholder-1.jpg" alt="Placeholder visual for a card image"></div>
+          <blockquote class="ie-card-overlay--full-width">“Short sourced insight sits side to side with the card.”</blockquote>
+        </article>
+        <article class="ie-card ie-card-light ie-card--media-bleed">
+          <div class="ie-card-media--full-bleed"><img src="media/placeholders/placeholder-2.jpg" alt="Placeholder visual for a card image"></div>
+          <blockquote class="ie-card-overlay--full-width">“Keep the overlay readable and the image full size.”</blockquote>
+        </article>
+        <article class="ie-card ie-card-light ie-card--media-bleed">
+          <div class="ie-card-media--full-bleed"><img src="media/placeholders/placeholder-3.jpg" alt="Placeholder visual for a card image"></div>
+          <blockquote class="ie-card-overlay--full-width">“Equal heights keep repeated quote cards aligned.”</blockquote>
+        </article>
+        <article class="ie-card ie-card-light ie-card--media-bleed">
+          <div class="ie-card-media--full-bleed"><img src="media/placeholders/placeholder-1.jpg" alt="Placeholder visual for a card image"></div>
+          <blockquote class="ie-card-overlay--full-width">“Use CSS and HTML for the geometry.”</blockquote>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── 30. Key-takeaway image modal ──────────────────────────── -->
+    <!--
+      The takeaway strip is the only trigger. ie-image-modal-trigger adds the
+      "CLICK FOR IMAGE" pill on the strip's right edge so the presenter knows an
+      image is available; the optional eye icon strengthens the cue.
+      aria-controls names the dialog, which sits inside the same section.
+      ie-components.js wires click, Enter, Space, Escape, outside click, and
+      slidechanged. No slide-local script is needed. The modal is hidden in
+      print. Wrap the image in .ie-image-modal-link to open its source page.
+    -->
+    <section id="pattern-30-takeaway-image-modal" class="ie-slide ie-light" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame">
+        <div class="ie-auto-fit">
+          <div class="template-header"><h2>Open optional evidence from the takeaway</h2></div>
+          <p class="subtitle">The slide stands on its own; the image adds context on demand</p>
+          <ul>
+            <li>Trigger: one key takeaway strip, never the whole slide</li>
+            <li>Signal: the pill on the strip tells the presenter an image is there</li>
+            <li>Close: Escape, a click anywhere, or the next slide</li>
+          </ul>
+          <p class="ie-band ie-image-modal-trigger" role="button" tabindex="0"
+             aria-controls="pattern-30-takeaway-image-modal-dialog"
+             aria-label="Open the source image"><img class="ie-image-modal-trigger-icon"
+             src="media/icons/tabler/thin/eye.svg" alt="" aria-hidden="true">State the takeaway so it works without the image</p>
+        </div>
+      </div>
+      <div id="pattern-30-takeaway-image-modal-dialog" class="ie-image-modal" role="dialog"
+           aria-modal="true" aria-label="Source image" aria-hidden="true">
+        <div class="ie-image-modal-content">
+          <a class="ie-image-modal-link" href="https://revealjs.com/" target="_blank"
+             rel="noopener noreferrer" aria-label="Open the image source page">
+            <img class="ie-image-modal-img" src="media/placeholders/placeholder-screenshot.png"
+                 alt="Placeholder screenshot standing in for a source image">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 31. Table with brand marks ────────────────────────────── -->
+    <!--
+      First column shows the official mark above a short name; the mark links
+      to the official page. Replace the Tabler stand-in icons with official
+      marks stored under media/brands/ and record each source and retrieval
+      date in an HTML comment. A generic or "no tool" row uses a Tabler icon
+      without a link. One ie-table-key-row at most. Set
+      --ie-table-brand-size on the table to change the mark size (default 62 px).
+    -->
+    <section id="pattern-31-brand-table" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-light-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame safe-frame--dense">
+        <div class="ie-auto-fit">
+          <h2>Compare tools at a glance</h2>
+          <p class="subtitle">Each row checked on the tool's own page; the last row is the course default</p>
+          <table class="ie-table" aria-label="Comparison of example tools with brand marks">
+            <colgroup>
+              <col style="width: 18%"><col style="width: 26%"><col style="width: 26%"><col style="width: 30%">
+            </colgroup>
+            <thead>
+              <tr><th>Tool</th><th>What it is</th><th>Licence or cost</th><th>Best fit</th></tr>
+            </thead>
+            <tbody>
+              <!-- Stand-in marks: Tabler Icons (MIT). Replace with official marks in media/brands/ -->
+              <tr><td class="ie-table-brand-cell"><span class="ie-table-brand"><a class="ie-table-brand-link" href="https://revealjs.com/" target="_blank" rel="noopener noreferrer" aria-label="Open the Reveal.js homepage"><img src="media/icons/tabler/layout-dashboard.svg" alt=""></a><span class="ie-table-brand-name">Reveal.js</span></span></td><td>HTML presentation framework</td><td>MIT</td><td>Web-native slide decks</td></tr>
+              <tr><td class="ie-table-brand-cell"><span class="ie-table-brand"><a class="ie-table-brand-link" href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer" aria-label="Open the Tabler Icons homepage"><img src="media/icons/tabler/tools.svg" alt=""></a><span class="ie-table-brand-name">Tabler Icons</span></span></td><td>Open-source icon set</td><td>MIT</td><td>Consistent slide icons</td></tr>
+              <tr><td class="ie-table-brand-cell"><span class="ie-table-brand"><a class="ie-table-brand-link" href="https://www.python.org/" target="_blank" rel="noopener noreferrer" aria-label="Open the Python homepage"><img src="media/icons/tabler/code.svg" alt=""></a><span class="ie-table-brand-name">Python</span></span></td><td>Programming language</td><td>Python Software Foundation licence</td><td>QA and release scripts</td></tr>
+              <tr class="ie-table-key-row"><td class="ie-table-brand-cell"><span class="ie-table-brand"><img src="media/icons/tabler/markdown.svg" alt=""><span class="ie-table-brand-name">Plain Markdown</span><span class="ie-table-brand-note">+ any agent</span></span></td><td>Course default workflow</td><td>No toolkit</td><td>Tool-agnostic work</td></tr>
+            </tbody>
+          </table>
+          <p class="ie-band">Pick the tool after the workflow</p>
+        </div>
+      </div>
+      <p class="ie-source-line is-wrap">Sources: <a href="https://revealjs.com/" target="_blank" rel="noopener noreferrer">Reveal.js</a>; <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer">Tabler Icons</a>; <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">Python</a></p>
+    </section>
+
+    <!-- ── 33. Live demo slide ─────────────────────────────────── -->
+    <!--
+      The default for code, configuration and terminal output. Left: Before
+      (dashed, faded) above After (lime top bar). Right: Run it, the real
+      commands and output. One takeaway strip. Build each figure with
+      scripts/code_figure.py. Rules: instructions/slide_rules.md, section
+      Code And Live Demo Slides.
+    -->
+    <section id="pattern-33-live-demo" class="ie-slide ie-dark ie-logo-tr" data-transition="fade">
+      <div class="ie-logo">
+        <img src="logos/ie-scitech-horizontal-dark-accent.svg"
+             alt="IE University School of Science and Technology">
+      </div>
+      <div class="safe-frame safe-frame--dense">
+        <div class="ie-auto-fit">
+          <h2>Demo: split, guard, run with -m</h2>
+          <p class="ie-demo-lead">Show the change on the left and prove it with a real run on the right</p>
+          <div class="ie-demo-grid ie-demo-grid--wide-left">
+            <div class="ie-demo-col">
+              <figure class="ie-code is-before" aria-label="Before: module_1.py"><figcaption><span class="ie-code-tag">Before</span><span class="ie-code-file">module_1.py</span></figcaption><pre class="ie-code-lines"><span class="k">def</span> greeting(name):
+    <span class="k">return</span> f<span class="s">&quot;Hello, {name}!&quot;</span>
+
+print(greeting(<span class="s">&quot;alice&quot;</span>))<span class="c">  # runs on every import</span></pre></figure>
+              <figure class="ie-code is-after is-grow" aria-label="After: src/module_1.py"><figcaption><span class="ie-code-tag">After</span><span class="ie-code-file">src/module_1.py</span></figcaption><pre class="ie-code-lines"><span class="k">def</span> greeting(name):
+    <span class="s">&quot;&quot;</span><span class="s">&quot;Return a greeting; empty names become &quot;</span>stranger<span class="s">&quot;.&quot;</span><span class="s">&quot;&quot;</span>
+    name = name.strip() <span class="k">or</span> <span class="s">&quot;stranger&quot;</span>
+    <span class="k">return</span> f<span class="s">&quot;Hello, {name}!&quot;</span>
+
+
+<span class="k">if</span> __name__ == <span class="s">&quot;__main__&quot;</span>:<span class="c">  # only when run directly</span>
+    print(greeting(<span class="s">&quot;alice&quot;</span>))</pre></figure>
+            </div>
+            <div class="ie-demo-col">
+              <figure class="ie-code is-run is-grow" aria-label="Run it: terminal"><figcaption><span class="ie-code-tag">Run it</span><span class="ie-code-file">terminal</span></figcaption><pre class="ie-code-lines"><span class="c"># Before: importing runs top-level code</span>
+<span class="p">$</span> <span class="cmd">python main.py</span>
+<span class="o">Hello, alice!</span>
+<span class="o">Hello, bob!</span>
+<span class="c"># After: guard, then run from the root</span>
+<span class="p">$</span> <span class="cmd">python -m src.main</span>
+<span class="o">HELLO, BOB!</span>
+<span class="p">$</span> <span class="cmd">pytest -q</span>
+<span class="o">6 passed</span></pre></figure>
+            </div>
+          </div>
+          <p class="ie-band ie-demo-band">One closing line that the run on the right proves</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 34. Standard GitHub hyperlink button -->
+    <section id="pattern-34-github-link" class="ie-slide ie-dark" data-transition="fade">
+      <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+      <div class="safe-frame"><div class="ie-auto-fit">
+        <h2 class="ie-title-with-link">Open the project repository<a class="ie-github-btn ie-github-btn--dark" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub" title="Open GitHub"><img class="ie-github-icon" src="media/brands/github-official.svg" alt=""></a></h2>
+        <p class="subtitle">Use the GitHub mark when no text label is requested</p>
+        <div class="github-surface-grid">
+          <article class="ie-card ie-card-light"><div class="ie-card-content">
+            <h3 class="ie-title-with-link">Light surface<a class="ie-github-btn" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub from the light example" title="Open GitHub"><img class="ie-github-icon" src="media/brands/github-official.svg" alt=""></a></h3>
+            <p>Use the dark mark on a light surface</p>
+          </div></article>
+          <article class="ie-card ie-card-dark"><div class="ie-card-content">
+            <h3 class="ie-title-with-link">Dark surface<a class="ie-github-btn ie-github-btn--dark" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub from the dark example" title="Open GitHub"><img class="ie-github-icon" src="media/brands/github-official.svg" alt=""></a></h3>
+            <p>Use the white mark on a dark surface</p>
+          </div></article>
+        </div>
+        <div class="ie-band">Use downloads to save files and GitHub links to open their destination</div>
+      </div></div>
+    </section>
+
+
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/math/math.js"></script>
+<script src="ie-reveal-fit.js"></script>
+<script src="slide-aliases.js"></script>
+<script src="ie-components.js"></script>
+<script>
+  IESlideAliases.resolve();
+  IEComponents.prepare();
+
+  Reveal.initialize({
+    width: 1600,
+    height: 900,
+    margin: 0,
+    transition: "fade",
+    hash: true,
+    slideNumber: "c/t",
+    showSlideNumber: "all",
+    pdfMaxPagesPerSlide: 1,
+    plugins: [RevealNotes, RevealHighlight, RevealMath.KaTeX]
+  }).then(function () {
+    IEComponents.init();
+    if (window.IERevealFit) window.IERevealFit.fitAll();
+  });
+</script>
+
+</body>
+</html>

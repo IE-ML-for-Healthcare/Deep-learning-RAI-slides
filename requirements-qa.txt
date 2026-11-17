@@ -1,0 +1,4 @@
+# Browser QA and release tooling. Keep in sync with .github/workflows/*.yml
+playwright==1.62.0
+pypdf==6.16.2
+pillow

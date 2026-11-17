@@ -1,0 +1,17 @@
+#!/bin/sh
+# Commit scope guard: a commit that changes a slide in index.html must name that slide.
+# Catches stale whole-file copies that silently revert other agents' work.
+# See AGENTS.md "Multi-Agent Git" and instructions/git_multi_agent.md
+root=$(git rev-parse --show-toplevel) || exit 0
+# The professor commits by hand on the main checkout: never block that. Agents work in
+# their own worktrees on <agent>/<topic> branches, so the guard still covers them.
+[ "$(git rev-parse --abbrev-ref HEAD 2>/dev/null)" = "main" ] && exit 0
+script="$root/scripts/check_commit_scope.py"
+[ -f "$script" ] || exit 0
+for py in python3 python py; do
+  if "$py" -c "import sys" >/dev/null 2>&1; then
+    exec "$py" "$script" --commit-msg "$1"
+  fi
+done
+echo "commit-msg: no working Python found, commit scope check skipped (pull-request CI still checks)" >&2
+exit 0

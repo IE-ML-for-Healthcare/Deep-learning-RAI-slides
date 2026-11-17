@@ -1,0 +1,13 @@
+#!/bin/sh
+# Block direct commits on main, except for the VS Code main lane.
+# Every other agent commits on its own <agent>/<topic> branch in its own worktree.
+# See AGENTS.md "Multi-Agent Coordination" and instructions/git_multi_agent.md
+branch=$(git symbolic-ref --short -q HEAD)
+[ "$branch" = "main" ] || exit 0
+[ "$ALLOW_MAIN_COMMIT" = "1" ] && exit 0                      # professor override
+[ "$TERM_PROGRAM" = "vscode" ] || [ -n "$VSCODE_PID" ] && exit 0  # VS Code main lane
+echo "pre-commit: direct commits on main are reserved for the VS Code main lane." >&2
+echo "Other agents: create your own worktree and branch, e.g." >&2
+echo "  git worktree add ../<repo>-<agent>-<topic> -b <agent>/<topic> main" >&2
+echo "Professor override: ALLOW_MAIN_COMMIT=1 git commit ..." >&2
+exit 1

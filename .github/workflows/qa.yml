@@ -1,0 +1,75 @@
+name: qa
+
+# Static, unit, and browser QA on every pull request and on pushes to main.
+# Never deploys. Action pins match release-slides.yml; update both together.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  commit_scope:
+    # Coordination policy applies before integrating an agent branch, not to
+    # ordinary professor/VS Code/Copilot commits made directly on main.
+    # Keep this separate so message-policy failures cannot skip product QA.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        # actions/checkout v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python
+        # actions/setup-python v7.0.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+
+      - name: Commit scope matches message
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: python scripts/check_commit_scope.py --range "$BASE..$HEAD"
+
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        # actions/checkout v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python
+        # actions/setup-python v7.0.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+
+      - name: Static QA
+        run: python scripts/check_deck.py
+
+      - name: Download payloads match their sources
+        run: python scripts/sync_downloads.py --check
+
+      - name: Install QA dependencies
+        run: |
+          python -m pip install -r requirements-qa.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Browser QA, course deck
+        run: python scripts/check_browser_qa.py --deck index.html --screenshots none
+
+      - name: Browser QA, pattern gallery
+        run: python scripts/check_browser_qa.py --deck slide_patterns.html --screenshots none

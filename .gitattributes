@@ -1,0 +1,24 @@
+# Normalize line endings so git diffs never show CRLF-only phantom changes
+* text=auto
+
+# Text files that must keep LF in the repo
+*.md text eol=lf
+*.html text
+*.css text
+*.js text
+*.py text
+*.sh text eol=lf
+.githooks/* text eol=lf
+*.yml text
+*.txt text
+*.json text
+*.svg text
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.webp binary
+*.woff2 binary

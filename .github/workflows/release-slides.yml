@@ -1,0 +1,195 @@
+name: release-slides
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_through_slide:
+        description: Publish through Reveal.js slide N or N/T, e.g. 88/118, not a session-slide id
+        required: true
+        type: string
+      pdf_through_slide:
+        description: Optional PDF cutoff or range using Reveal.js slide numbers, e.g. 88/118 or 55 - 72/118; blank skips PDF
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-slides-pages
+  cancel-in-progress: false
+
+jobs:
+  build_and_validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - name: Check out the approved commit
+        # actions/checkout v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Validate and normalise slide inputs
+        id: inputs
+        shell: bash
+        env:
+          PUBLISH_INPUT: ${{ inputs.publish_through_slide }}
+          PDF_INPUT: ${{ inputs.pdf_through_slide }}
+        run: |
+          set -euo pipefail
+          rm -rf dist .release-tmp
+          mkdir -p .release-tmp
+          validation_args=(--validate-inputs --source index.html --through-slide "${PUBLISH_INPUT}" --machine)
+          if [ -n "${PDF_INPUT}" ]; then
+            validation_args+=(--pdf-through-slide "${PDF_INPUT}")
+          fi
+          python3 scripts/release_slice.py "${validation_args[@]}" > .release-tmp/inputs.env
+          cat .release-tmp/inputs.env
+          while IFS= read -r line; do
+            echo "${line}" >> "${GITHUB_OUTPUT}"
+          done < .release-tmp/inputs.env
+          echo "commit=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+          pdf_prefix=$(python3 -c "import json; print(json.load(open('deck.config.json')).get('pdfPrefix', 'Deck_Slides'))")
+          case "${pdf_prefix}" in (*[!A-Za-z0-9_-]*|'') echo "pdfPrefix must use letters, digits, _ or -" >&2; exit 1;; esac
+          echo "pdf_prefix=${pdf_prefix}" >> "${GITHUB_OUTPUT}"
+
+      - name: Set up Python
+        # actions/setup-python v7.0.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+
+      - name: Install release dependencies
+        run: python -m pip install "playwright==1.62.0" "pypdf==6.16.2"
+
+      - name: Install Chromium with Linux dependencies
+        run: python -m playwright install --with-deps chromium
+
+      - name: Validate source deck runtime count
+        run: >-
+          python scripts/release_pdf.py --html index.html --validate-only
+          --expected-slides "${{ steps.inputs.outputs.source_total }}"
+
+      - name: Build cumulative public HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          python3 scripts/release_slice.py --source index.html --through-slide "${{ steps.inputs.outputs.publish_request }}" --out dist/index.html
+
+      - name: Build requested PDF HTML
+        if: steps.inputs.outputs.pdf_wanted == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .release-tmp/pdf
+          python3 scripts/release_slice.py --source index.html --through-slide "${{ steps.inputs.outputs.pdf_request }}" --pdf-config --out .release-tmp/pdf/index.html
+
+      - name: Copy version 1 runtime assets into the public deck
+        shell: bash
+        run: |
+          set -euo pipefail
+          for directory in media logos backgrounds; do
+            cp -a "${directory}" dist/
+          done
+          for file in ie-reveal-fit.js slide-aliases.js ie-components.js ie-scitech-reveal.css; do
+            cp "${file}" dist/
+          done
+
+      - name: Copy version 1 runtime assets into the PDF build
+        if: steps.inputs.outputs.pdf_wanted == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          pdf_root=".release-tmp/pdf"
+          for directory in media logos backgrounds; do
+            cp -a "${directory}" "${pdf_root}/"
+          done
+          for file in ie-reveal-fit.js slide-aliases.js ie-components.js ie-scitech-reveal.css; do
+            cp "${file}" "${pdf_root}/"
+          done
+
+      - name: Validate cumulative public deck through local HTTP
+        run: >-
+          python scripts/release_pdf.py --html dist/index.html --validate-only
+          --expected-slides "${{ steps.inputs.outputs.publish_numerator }}"
+
+      - name: Generate and validate requested PDF
+        if: steps.inputs.outputs.pdf_wanted == 'true'
+        run: >-
+          python scripts/release_pdf.py --html .release-tmp/pdf/index.html
+          --pdf .release-tmp/${{ steps.inputs.outputs.pdf_prefix }}_${{ steps.inputs.outputs.pdf_padded_start }}-${{ steps.inputs.outputs.pdf_padded_end }}.pdf
+          --expected-slides "${{ steps.inputs.outputs.pdf_count }}"
+
+      - name: Confirm generated outputs did not modify source
+        run: git diff --exit-code -- index.html
+
+      - name: Record validated release evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.inputs.outputs.pdf_wanted }}" = "true" ]; then
+            pdf_line="- PDF: slides ${{ steps.inputs.outputs.pdf_start }}-${{ steps.inputs.outputs.pdf_end }} | ${{ steps.inputs.outputs.pdf_prefix }}_${{ steps.inputs.outputs.pdf_padded_start }}-${{ steps.inputs.outputs.pdf_padded_end }}.pdf"
+          else
+            pdf_line="- PDF: skipped"
+          fi
+          {
+            echo "## Validated release evidence"
+            echo
+            echo "- Checked-out commit: ${{ steps.inputs.outputs.commit }}"
+            echo "- Source deck: ${{ steps.inputs.outputs.source_total }} slides"
+            echo "- Static source slide count: ${{ steps.inputs.outputs.source_total }}"
+            echo "- Runtime source slide count: ${{ steps.inputs.outputs.source_total }}"
+            echo "- Publish request: ${{ steps.inputs.outputs.publish_request }}"
+            echo "- Published: slides 1-${{ steps.inputs.outputs.publish_numerator }}"
+            echo "- Last included: ${{ steps.inputs.outputs.last_included }}"
+            echo "- First excluded: ${{ steps.inputs.outputs.first_excluded }}"
+            echo "- PDF request: ${{ steps.inputs.outputs.pdf_request }}"
+            echo "${pdf_line}"
+            echo "- Validation result: PASS"
+            echo "- Validation completed before either Pages action"
+            echo "- Media risk: The full media directory is deployed in version 1. Future-session images may be reachable through guessed URLs and may reveal work-in-progress visual content, although unreleased HTML sections are removed"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Upload validated PDF
+        if: steps.inputs.outputs.pdf_wanted == 'true'
+        # actions/upload-artifact v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ${{ steps.inputs.outputs.pdf_prefix }}_${{ steps.inputs.outputs.pdf_padded_start }}-${{ steps.inputs.outputs.pdf_padded_end }}
+          path: .release-tmp/${{ steps.inputs.outputs.pdf_prefix }}_${{ steps.inputs.outputs.pdf_padded_start }}-${{ steps.inputs.outputs.pdf_padded_end }}.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Configure GitHub Pages
+        # actions/configure-pages v6.0.0
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
+
+      # Version 1 deploys the full media directory after all validation passes
+      # Future-session images may be reachable through guessed URLs
+      - name: Upload validated Pages artifact
+        # actions/upload-pages-artifact v5.0.0
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          path: dist
+
+  deploy:
+    needs: build_and_validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy validated Pages artifact
+        id: deployment
+        # actions/deploy-pages v5.0.0
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
