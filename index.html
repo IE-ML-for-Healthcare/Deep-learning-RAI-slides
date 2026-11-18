@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Course title</title>
+  <title>AI for Healthcare: deep learning and Responsible AI</title>
   <!-- Load order: Reveal base, Reveal theme, IE overrides. Keep the exact pinned versions -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/white.css">
@@ -15,6 +15,21 @@
   <!-- Deck-specific CSS: one-off fixes only, scoped by slide id, for example
        .reveal .slides section#session-01-core-idea .my-fix { ... }
        Reusable patterns belong in ie-scitech-reveal.css after approval -->
+  <style>
+    /* Vertical composition: body spread between heading and footer, takeaway near the lower edge (slide-scoped) */
+    .reveal .slides section#session-02-benchmark .ie-auto-fit,
+    .reveal .slides section#session-04-three-maps .ie-auto-fit,
+    .reveal .slides section#session-03-how-cnn-sees .ie-auto-fit,
+    .reveal .slides section#session-02-tfm-training .ie-auto-fit,
+    .reveal .slides section#session-02-tfm-limits .ie-auto-fit,
+    .reveal .slides section#session-02-verdict .ie-auto-fit { display: flex; flex-direction: column; min-height: 100%; }
+    .reveal .slides section#session-02-tfm-training .ie-process-flow,
+    .reveal .slides section#session-02-tfm-limits .ie-objectives-grid,
+    .reveal .slides section#session-02-verdict .ie-objectives-grid { margin-top: auto; margin-bottom: auto; }
+    .reveal .slides section#session-02-benchmark .ie-table,
+    .reveal .slides section#session-04-three-maps .ie-table { margin-top: auto; margin-bottom: auto; }
+    .reveal .slides section#session-03-how-cnn-sees .ie-process-flow { margin-top: auto; margin-bottom: auto; }
+  </style>
 </head>
 
 <body>
@@ -26,104 +41,922 @@
       <!-- SESSION 01 START -->
 
       <section id="session-01-title" class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
-        <div class="ie-logo">
-          <img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology">
-        </div>
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
         <div class="ie-title-block ie-auto-fit">
-          <h1>Session 1: Session title</h1>
-          <p class="subtitle">One line on what students will be able to do</p>
+          <h1>Session 1: From one neuron to a black box</h1>
+          <p class="subtitle">See what changes for patients when a readable model becomes a neural network</p>
         </div>
       </section>
 
       <section id="session-01-agenda" class="ie-slide ie-dark" data-transition="fade">
-        <div class="ie-logo">
-          <img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology">
-        </div>
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
         <div class="safe-frame">
           <div class="ie-auto-fit">
-            <div class="template-header">
-              <h2>Session 1</h2>
-            </div>
+            <div class="template-header"><h2>Session 1 agenda</h2></div>
             <div class="agenda-grid ie-agenda-stack" aria-label="Session 1 agenda, first block active">
-              <div class="agenda-card is-active"><span class="agenda-number">1</span><h3>Core concept</h3></div>
-              <div class="agenda-card is-upcoming"><span class="agenda-number">2</span><h3>Applied activity</h3></div>
-              <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>Debrief and takeaway</h3></div>
+              <div class="agenda-card is-active"><span class="agenda-number">1</span><h3>Agree a shared vocabulary for transparency</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">2</span><h3>Show that one neuron is logistic regression</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>Add hidden layers and watch the rule bend</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">4</span><h3>Same score, different patients flagged</h3></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="session-01-core-idea" class="ie-slide ie-light" data-transition="fade">
-        <div class="ie-logo">
-          <img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology">
-        </div>
+      <section id="session-01-depth-ladder" class="ie-slide ie-light" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
         <div class="safe-frame">
           <div class="ie-auto-fit">
-            <h2>One clear message</h2>
-            <div class="ie-two-col">
-              <div>
-                <h3>What it is</h3>
-                <p>Define the idea in plain language, in one or two short lines</p>
-              </div>
-              <div>
-                <h3>Why it matters</h3>
-                <p>Connect the idea to a decision students will make today</p>
-              </div>
+            <h2>Depth stacks familiar parts</h2>
+            <div class="ie-ladder-layout">
+            <ol class="ie-ladder" aria-label="Depth stacks familiar parts">
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">01</span>
+                <div class="ie-ladder-text"><h3>One neuron</h3><p>Weighted sum and sigmoid, the same 117 numbers as logistic regression</p></div>
+                <span class="ie-ladder-tag">Readable</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">02</span>
+                <div class="ie-ladder-text"><h3>Eight hidden neurons</h3><p>Each draws a line; together they bend the risk boundary</p></div>
+                <span class="ie-ladder-tag">Drawable</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">03</span>
+                <div class="ie-ladder-text"><h3>Two hidden layers</h3><p>4,289 numbers, meaning spread across every neuron</p></div>
+                <span class="ie-ladder-tag">Black box</span>
+              </li>
+            </ol>
+            <aside class="ie-ladder-panel">
+              <span class="ie-kicker">Working definition</span>
+              <h3>Black box</h3>
+              <p>We can see inputs and outputs, but cannot give an understandable and faithful account of how one leads to the other</p>
+              <p class="ie-ladder-panel-rule">Open code is not understanding</p>
+            </aside>
             </div>
-            <p class="ie-band">State the takeaway of this slide in one sentence</p>
+            <p class="ie-band">Each step is simple; the stack is what no one can follow</p>
           </div>
         </div>
       </section>
 
-      <section id="session-01-framework" class="ie-slide ie-bg-green-cards-right" data-transition="fade">
-        <div class="ie-logo">
-          <img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology">
+      <section id="session-01-rashomon" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>Five networks, same data, same recipe: 105 of 183 alerted patients were flagged by some runs only</p>
+            <span class="ie-statement-source">Source: notebook 01, section 6, PhysioNet 2012 ICU test set, 788 patients</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s1-rashomon.png" alt="Bar chart: 78 patients alerted by all five networks and 105 by only some of them">
+          </figure>
         </div>
-        <div class="four-card-layer">
-          <article class="four-card">
-            <h3 class="four-card-title">Define</h3>
-            <p class="four-card-subtitle">Name the concept</p>
-            <p class="four-card-body">State what the idea means in practical terms</p>
-          </article>
-          <article class="four-card">
-            <h3 class="four-card-title">Compare</h3>
-            <p class="four-card-subtitle">Show the contrast</p>
-            <p class="four-card-body">Connect the idea to a choice or trade-off</p>
-          </article>
-          <article class="four-card">
-            <h3 class="four-card-title">Practice</h3>
-            <p class="four-card-subtitle">Try one move</p>
-            <p class="four-card-body">Use a short task to make the concept visible</p>
-          </article>
-          <article class="four-card four-card-dark">
-            <h3 class="four-card-title">Reflect</h3>
-            <p class="four-card-subtitle">Extract the lesson</p>
-            <p class="four-card-body">Capture what changed and what comes next</p>
-          </article>
+      </section>
+
+      <section id="session-01-readable-vs-network" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Logistic regression compared with Neural network">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>Readable model or black box</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Logistic regression</h3><span class="ie-compare-tag">Readable</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Account of one prediction</h4>
+                  <p class="ie-compare-desc">Exact: weight times value, summed</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Numbers to learn</h4>
+                  <p class="ie-compare-desc">117 for 116 inputs</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Test AUROC, 7-day death</h4>
+                  <p class="ie-compare-desc">0.864</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Stability across runs</h4>
+                  <p class="ie-compare-desc">One solution for these settings</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Question to ask</h4>
+                  <p class="ie-compare-desc">Is each weight plausible?</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Neural network</h3><span class="ie-compare-tag">Black box</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Account of one prediction</h4>
+                  <p class="ie-compare-desc">Approximate only: occlusion parts do not add up</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Numbers to learn</h4>
+                  <p class="ie-compare-desc">4,289, about 37 times more</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Test AUROC, 7-day death</h4>
+                  <p class="ie-compare-desc">0.842</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Stability across runs</h4>
+                  <p class="ie-compare-desc">Seed changes who is flagged</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Question to ask</h4>
+                  <p class="ie-compare-desc">Is the gain worth the opacity?</p></div></li>
+            </ul>
+          </div>
         </div>
+        <footer class="ie-compare-takeaway"><p>Full access to every weight is <span class="ie-compare-accent">not understanding</span></p></footer>
+        <p class="ie-source-line">Sources: notebook 01, sections 3 to 6; AUROC, area under the receiver operating characteristic curve</p>
       </section>
 
       <section id="session-01-close" class="ie-slide ie-bg-dark-science" data-transition="fade">
-        <div class="ie-logo">
-          <img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology">
-        </div>
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
         <div class="closing-frame">
           <div class="ie-auto-fit">
             <div class="takeaway-block">
               <h2>Key takeaway</h2>
-              <p>Replace this with the one idea students should remember</p>
-              <div class="bottom-line">Make the next step clear</div>
+              <p>Full access to every weight is not the same as understanding one prediction</p>
+              <div class="bottom-line">Next: does the network beat Cox and the random forest?</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="session-01-appendix" class="ie-slide ie-bg-dark-science ie-logo-tr" data-transition="fade">
-        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
-        <div class="safe-frame"><div class="ie-auto-fit"><h2 id="end">Appendix</h2></div></div>
+      <!-- SESSION 01 END -->
+
+      <!-- SESSION 02 START -->
+
+      <section id="session-02-title" class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-title-block ie-auto-fit">
+          <h1>Session 2: Does the network earn its place?</h1>
+          <p class="subtitle">Compare four models on the same patients and decide if complexity pays off</p>
+        </div>
       </section>
 
-      <!-- SESSION 01 END -->
+      <section id="session-02-agenda" class="ie-slide ie-dark" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <div class="template-header"><h2>Session 2 agenda</h2></div>
+            <div class="agenda-grid ie-agenda-stack" aria-label="Session 2 agenda, first block active">
+              <div class="agenda-card is-active"><span class="agenda-number">1</span><h3>Set the rules of a fair comparison</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">2</span><h3>Rank, add uncertainty, check calibration</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>Spot the weighted-loss trap</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">4</span><h3>Compare at equal threshold and equal capacity</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">5</span><h3>Test a tabular foundation model</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">6</span><h3>Reach a verdict</h3></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-02-benchmark" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>Five models, same 788 patients</h2>
+            <table class="ie-table">
+              <colgroup><col style="width: 30%"><col style="width: 15%"><col style="width: 33%"><col style="width: 22%"></colgroup>
+              <thead><tr><th>Model</th><th>AUROC</th><th>Gap vs Cox (95% CI)</th><th>Deaths in top 79</th></tr></thead>
+              <tbody>
+              <tr><td>Cox, competing risks</td><td class="ie-table-numeric">0.864</td><td class="ie-table-numeric">Reference</td><td class="ie-table-numeric">18 of 42</td></tr>
+              <tr><td>Logistic regression</td><td class="ie-table-numeric">0.880</td><td class="ie-table-numeric">+0.016 (-0.012 to +0.047)</td><td class="ie-table-numeric">21 of 42</td></tr>
+              <tr><td>Random forest</td><td class="ie-table-numeric">0.863</td><td class="ie-table-numeric">-0.001 (-0.049 to +0.051)</td><td class="ie-table-numeric">23 of 42</td></tr>
+              <tr><td>Neural network, 5 seeds</td><td class="ie-table-numeric">0.852</td><td class="ie-table-numeric">-0.011 (-0.048 to +0.026)</td><td class="ie-table-numeric">17 of 42</td></tr>
+              <tr class="ie-table-key-row"><td>TabPFN-2, pretrained</td><td class="ie-table-numeric">0.892</td><td class="ie-table-numeric">+0.029 (-0.014 to +0.074)</td><td class="ie-table-numeric">24 of 42</td></tr>
+              </tbody>
+            </table>
+            <p class="ie-band">TabPFN ranks best, yet no interval excludes zero</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: notebook 02, sections 3, 5 and 6; AUROC, area under the receiver operating characteristic curve; CI, confidence interval</p>
+      </section>
+
+      <section id="session-02-uncertainty" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>With 42 deaths, no model beat Cox: every 95% interval includes zero</p>
+            <span class="ie-statement-source">Source: notebook 02, section 3, paired bootstrap of 2,000 resamples</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s2-auroc-gap.png" alt="Forest plot of AUROC differences from Cox with 95% confidence intervals crossing zero">
+          </figure>
+        </div>
+      </section>
+
+      <section id="session-02-tfm-two-ways" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Classic model compared with Tabular foundation model">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>Two ways to learn from 2,364 patients</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Classic model</h3><span class="ie-compare-tag">Starts from zero</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Before it meets our data</h4>
+                  <p class="ie-compare-desc">Knows nothing</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">What it does with our patients</h4>
+                  <p class="ie-compare-desc">Adjusts its weights to fit them</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Time to a first model</h4>
+                  <p class="ie-compare-desc">Minutes to hours of training and tuning</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Data cleaning needed</h4>
+                  <p class="ie-compare-desc">Fill gaps, scale, encode</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Everyday analogy</h4>
+                  <p class="ie-compare-desc">A student revising for one exam</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Tabular foundation model</h3><span class="ie-compare-tag">Arrives pre-trained</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Before it meets our data</h4>
+                  <p class="ie-compare-desc">Has practised on about 130 million synthetic tables</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">What it does with our patients</h4>
+                  <p class="ie-compare-desc">Reads them as worked examples, weights stay fixed</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Time to a first model</h4>
+                  <p class="ie-compare-desc">One pass: seconds on a graphics card</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Data cleaning needed</h4>
+                  <p class="ie-compare-desc">Handles gaps and scales itself</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Everyday analogy</h4>
+                  <p class="ie-compare-desc">An experienced locum reading the ward's notes</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>Same question, but the foundation model brings <span class="ie-compare-accent">experience</span> from elsewhere</p></footer>
+        <p class="ie-source-line">Sources: Hollmann et al. (2025), Nature, TabPFN; notebook 02, section 6</p>
+      </section>
+
+      <section id="session-02-tfm-training" class="ie-slide ie-dark ie-process-slide" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>How TabPFN is trained, once, by its makers</h2>
+            <ol class="ie-process-flow" aria-label="How TabPFN is trained, once, by its makers">
+            <li><span class="ie-process-number">1</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/route.svg" alt=""></span><span class="ie-process-label">Invent a world</span></li>
+            <li><span class="ie-process-number">2</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/file-spreadsheet.svg" alt=""></span><span class="ie-process-label">Generate a table</span></li>
+            <li><span class="ie-process-number">3</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/lock.svg" alt=""></span><span class="ie-process-label">Hide some answers</span></li>
+            <li><span class="ie-process-number">4</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/robot.svg" alt=""></span><span class="ie-process-label">Predict them</span></li>
+            <li><span class="ie-process-number">5</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/refresh.svg" alt=""></span><span class="ie-process-label">Correct and repeat</span></li>
+            </ol>
+            <p class="ie-process-takeaway">About 130 million synthetic tables teach it <span class="ie-process-emphasis">how to learn from a table</span>, not facts about patients</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-02-tfm-synthetic-world" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>Each practice table comes from a synthetic world of causes and effects, then gets noise, gaps and categories added</p>
+            <span class="ie-statement-source">Illustration based on the method in Hollmann et al. (2025), Nature; values are synthetic</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s2-synthetic-world.png" alt="A random cause-and-effect graph with five variables and the small table of values it generates, including missing values">
+          </figure>
+        </div>
+      </section>
+
+      <section id="session-02-tfm-inference" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>How it predicts for our ICU patients</h2>
+            <div class="ie-ladder-layout">
+            <ol class="ie-ladder" aria-label="How it predicts for our ICU patients">
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">01</span>
+                <div class="ie-ladder-text"><h3>Show it our 2,364 patients</h3><p>Inputs and outcomes, gaps left in</p></div>
+                <span class="ie-ladder-tag">Context</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">02</span>
+                <div class="ie-ladder-text"><h3>Add the 788 new patients</h3><p>Inputs only, outcome unknown</p></div>
+                <span class="ie-ladder-tag">Query</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">03</span>
+                <div class="ie-ladder-text"><h3>Look across and down</h3><p>Each value checked against its row and its column</p></div>
+                <span class="ie-ladder-tag">Attention</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">04</span>
+                <div class="ie-ladder-text"><h3>One pass, one risk each</h3><p>No training loop, no tuning</p></div>
+                <span class="ie-ladder-tag">Forward pass</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">05</span>
+                <div class="ie-ladder-text"><h3>Nothing is stored</h3><p>Weights unchanged; new context, new predictions</p></div>
+                <span class="ie-ladder-tag">Stateless</span>
+              </li>
+            </ol>
+            <aside class="ie-ladder-panel">
+              <span class="ie-kicker">Key idea</span>
+              <h3>In-context learning</h3>
+              <p>Like giving a chatbot worked examples in the prompt: the examples steer the answer, the model itself does not change</p>
+              <p class="ie-ladder-panel-rule">The context rows are part of the model</p>
+            </aside>
+            </div>
+            <p class="ie-band">It recognises which kinds of synthetic worlds could have produced our table, then predicts as they would</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: Hollmann et al. (2025), Nature; Prior Labs documentation</p>
+      </section>
+
+      <section id="session-02-tfm-workflow" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Classic machine learning compared with Tabular foundation model">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>What changes in the workflow</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Classic machine learning</h3><span class="ie-compare-tag">Train, then predict</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Prepare the data</h4>
+                  <p class="ie-compare-desc">Fill gaps, scale, encode categories</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Choose and tune</h4>
+                  <p class="ie-compare-desc">Pick a model, search settings with cross-validation</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Fit</h4>
+                  <p class="ie-compare-desc">Learns weights from our patients: the heavy step</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Predict</h4>
+                  <p class="ie-compare-desc">Fast: applies the learned weights</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">New patients arrive</h4>
+                  <p class="ie-compare-desc">Retrain the model, then re-validate</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Tabular foundation model</h3><span class="ie-compare-tag">Predict from context</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Prepare the data</h4>
+                  <p class="ie-compare-desc">Raw table in: gaps and categories handled</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Choose and tune</h4>
+                  <p class="ie-compare-desc">No tuning: default settings</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Fit</h4>
+                  <p class="ie-compare-desc">Stores our patients as context: almost instant</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Predict</h4>
+                  <p class="ie-compare-desc">The heavy step: reads context and new patients together</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">New patients arrive</h4>
+                  <p class="ie-compare-desc">Add them to the context, then re-validate</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>Split, evaluate, calibrate and monitor <span class="ie-compare-accent">exactly as before</span></p></footer>
+        <p class="ie-source-line">Sources: notebook 02, sections 2 and 6; Prior Labs documentation</p>
+      </section>
+
+      <section id="session-02-tfm-result" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>On our 788 patients TabPFN found the most deaths for the same workload, but 24 against 23 is too close to call</p>
+            <span class="ie-statement-source">Source: notebook 02, sections 5 and 6; TabPFN-2, 79 reviews out of 788 test patients</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s2-tabpfn-deaths.png" alt="Bar chart of deaths found among 79 reviewed patients: neural network 17, Cox 18, logistic regression 21, random forest 23, TabPFN 24">
+          </figure>
+        </div>
+      </section>
+
+      <section id="session-02-tfm-transfer" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Transfers compared with Does not transfer">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>What transfers to our patients</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Transfers</h3><span class="ie-compare-tag">General skill</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Signal and noise</h4>
+                  <p class="ie-compare-desc">Spot useful columns, ignore useless ones</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shapes of relationships</h4>
+                  <p class="ie-compare-desc">Curves, thresholds and interactions</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Messy data</h4>
+                  <p class="ie-compare-desc">Missing values, mixed units, categories</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Small samples</h4>
+                  <p class="ie-compare-desc">Stay cautious when examples are few</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Fit with the data</h4>
+                  <p class="ie-compare-desc">Works when our table looks like its practice</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Does not transfer</h3><span class="ie-compare-tag">Our job</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Signal and noise</h4>
+                  <p class="ie-compare-desc">Knowing what lactate or GCS means</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shapes of relationships</h4>
+                  <p class="ie-compare-desc">Whether a relationship is causal</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Messy data</h4>
+                  <p class="ie-compare-desc">Why values are missing in our hospital</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Small samples</h4>
+                  <p class="ie-compare-desc">Calibration to our death rate</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Fit with the data</h4>
+                  <p class="ie-compare-desc">Larger data, other hospitals or time series</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>It brings <span class="ie-compare-accent">statistical habits</span>, not medical knowledge</p></footer>
+        <p class="ie-source-line">Sources: Hollmann et al. (2025), Nature; Grinsztajn et al. (2022)</p>
+      </section>
+
+      <section id="session-02-tfm-healthcare-fit" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>Where it fits in healthcare</h2>
+            <table class="ie-table">
+              <colgroup><col style="width: 14%"><col style="width: 43%"><col style="width: 43%"></colgroup>
+              <thead><tr><th>Fit</th><th>Good uses</th><th>Why</th></tr></thead>
+              <tbody>
+              <tr><td>Strong</td><td>Small clinical datasets: single-hospital cohorts, registries, trials</td><td>Built for up to 10,000 rows; often wins where data are scarce</td></tr>
+              <tr class="ie-table-key-row"><td>Strong</td><td>Fast, honest baseline before building anything bespoke</td><td>One line of code, no tuning, raises the bar for every other model</td></tr>
+              <tr><td>Careful</td><td>Decision support in care</td><td>Needs local validation, licence check and monitoring like any device</td></tr>
+              <tr><td>Careful</td><td>Data from several hospitals or over time</td><td>Assumes one stable table; drift is not part of its practice</td></tr>
+              <tr><td>Poor</td><td>Images, free text, signals, very large datasets</td><td>Wrong data type or beyond its size limits</td></tr>
+              </tbody>
+            </table>
+            <p class="ie-band">A strong first model for small tables, not a shortcut past validation</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: Hollmann et al. (2025), Nature; Ye et al. (2025), A closer look at TabPFN v2; Liu et al. (2026), JAMIA Open</p>
+      </section>
+
+      <section id="session-02-tfm-limits" class="ie-slide ie-bg-dark-abstract" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame ie-objectives-frame">
+          <div class="ie-auto-fit">
+            <h2>Limits a healthcare team must know</h2>
+            <p class="ie-objectives-lead">Responsible AI checks before any clinical use</p>
+            <div class="ie-objectives-grid">
+            <div class="ie-objective-card"><span class="ie-objective-number">1</span><p>Opaque practice: nobody can inspect the synthetic worlds behind its habits</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">2</span><p>Model is weights plus context: version both, or predictions cannot be reproduced</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">3</span><p>Size limits: TabPFN-2 tested up to 10,000 rows and 500 columns</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">4</span><p>Speed: seconds on a graphics card, much slower on a laptop processor</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">5</span><p>Licences: TabPFN-2 open with attribution; newer versions non-commercial</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">6</span><p>Data protection: the hosted service sends rows to the maker's servers</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-02-tabpfn-version" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="TabPFN-2 compared with TabPFN-3.5">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>Which TabPFN for class and clinic</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>TabPFN-2</h3><span class="ie-compare-tag">Used in class</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Licence of the weights</h4>
+                  <p class="ie-compare-desc">Apache 2.0 plus attribution</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Download</h4>
+                  <p class="ie-compare-desc">No account needed</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Use in hospital care</h4>
+                  <p class="ie-compare-desc">Allowed, with attribution</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Laptop processor limit</h4>
+                  <p class="ie-compare-desc">1,000 rows by default; lifted for our 2,364</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Benchmark strength</h4>
+                  <p class="ie-compare-desc">Lower</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>TabPFN-3.5</h3><span class="ie-compare-tag">Current default</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Licence of the weights</h4>
+                  <p class="ie-compare-desc">Non-commercial only</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Download</h4>
+                  <p class="ie-compare-desc">Account and accepted terms</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Use in hospital care</h4>
+                  <p class="ie-compare-desc">Needs an enterprise licence</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Laptop processor limit</h4>
+                  <p class="ie-compare-desc">5,000 rows</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Benchmark strength</h4>
+                  <p class="ie-compare-desc">Higher, as reported by its makers</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>Check <span class="ie-compare-accent">licence and data flow</span> before the score</p></footer>
+        <p class="ie-source-line">Sources: TabPFN README and Prior Labs documentation; Hollmann et al. (2025), Nature; notebook 02, section 6</p>
+      </section>
+
+      <section id="session-02-verdict" class="ie-slide ie-bg-dark-abstract" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame ie-objectives-frame">
+          <div class="ie-auto-fit">
+            <h2>Six tests for the black box</h2>
+            <p class="ie-objectives-lead">Evidence from notebook 02 on 7-day in-hospital death</p>
+            <div class="ie-objectives-grid">
+            <div class="ie-objective-card"><span class="ie-objective-number">1</span><p>Ranking: no model separated from Cox</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">2</span><p>Calibration: forest and network closer for the sickest group</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">3</span><p>Equal capacity: forest finds 23 deaths, network 17</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">4</span><p>Weighted loss: 97 alerts per 100 patients at 10% risk</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">5</span><p>TabPFN: best AUROC, 0.892, but its interval includes zero</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">6</span><p>Interpretability: Cox and logistic regression stay readable</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-02-close" class="ie-slide ie-bg-dark-science" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="closing-frame">
+          <div class="ie-auto-fit">
+            <div class="takeaway-block">
+              <h2>Key takeaway</h2>
+              <p>When a readable model performs as well, the black box carries the burden of proof</p>
+              <div class="bottom-line">Next: images, where deep learning usually earns its place</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SESSION 02 END -->
+
+      <!-- SESSION 03 START -->
+
+      <section id="session-03-title" class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-title-block ie-auto-fit">
+          <h1>Session 3: Images and the test-set trap</h1>
+          <p class="subtitle">See where deep learning wins, and check that the test is honest</p>
+        </div>
+      </section>
+
+      <section id="session-03-agenda" class="ie-slide ie-dark" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <div class="template-header"><h2>Session 3 agenda</h2></div>
+            <div class="agenda-grid ie-agenda-stack" aria-label="Session 3 agenda, first block active">
+              <div class="agenda-card is-active"><span class="agenda-number">1</span><h3>Audit who is in the data</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">2</span><h3>Fit a readable baseline on pixels</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>See how convolution works</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">4</span><h3>Check whether the test is independent</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">5</span><h3>Audit data augmentation</h3></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-03-how-cnn-sees" class="ie-slide ie-dark ie-process-slide" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>How a convolutional network sees</h2>
+            <ol class="ie-process-flow" aria-label="How a convolutional network sees">
+            <li><span class="ie-process-number">1</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/eye.svg" alt=""></span><span class="ie-process-label">Pixels</span></li>
+            <li><span class="ie-process-number">2</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/adjustments.svg" alt=""></span><span class="ie-process-label">Edges</span></li>
+            <li><span class="ie-process-number">3</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/brush.svg" alt=""></span><span class="ie-process-label">Textures</span></li>
+            <li><span class="ie-process-number">4</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/search.svg" alt=""></span><span class="ie-process-label">Shapes</span></li>
+            <li><span class="ie-process-number">5</span><span class="ie-process-icon"><img src="media/icons/tabler/thin/target-arrow.svg" alt=""></span><span class="ie-process-label">Risk score</span></li>
+            </ol>
+            <p class="ie-process-takeaway">Filters are <span class="ie-process-emphasis">learned, not designed</span>, which is where the black box starts</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-03-cnn-wins" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>On skin lesion images the network clearly earns its place: AUROC 0.944 against 0.875</p>
+            <span class="ie-statement-source">Source: notebook 03, section 3, DermaMNIST corrected test set, 1,227 images</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s3-pixels-vs-cnn.png" alt="Bar chart: test AUROC 0.875 for pixel logistic regression and 0.944 for the small CNN">
+          </figure>
+        </div>
+      </section>
+
+      <section id="session-03-split-audit" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Original split compared with Corrected split">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>Split by image or by lesion</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Original split</h3><span class="ie-compare-tag">Images at random</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Test images sharing a training lesion</h4>
+                  <p class="ie-compare-desc">693 of 2,005, or 35%</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Score change, controlled test</h4>
+                  <p class="ie-compare-desc">None measurable in two runs at 28 pixels</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Lesions with several photos</h4>
+                  <p class="ie-compare-desc">31% possibly cancerous, 88% biopsied</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Possibly cancerous in test</h4>
+                  <p class="ie-compare-desc">19.6%</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">What the score supports</h4>
+                  <p class="ie-compare-desc">Not independent: same lesion on both sides</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Corrected split</h3><span class="ie-compare-tag">Lesions</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Test images sharing a training lesion</h4>
+                  <p class="ie-compare-desc">None</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Score change, controlled test</h4>
+                  <p class="ie-compare-desc">Reference</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Lesions with several photos</h4>
+                  <p class="ie-compare-desc">Kept together on one side</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Possibly cancerous in test</h4>
+                  <p class="ie-compare-desc">12.1%, mostly common moles</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">What the score supports</h4>
+                  <p class="ie-compare-desc">Clinics with a similar case mix</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>Count <span class="ie-compare-accent">lesions or patients</span>, never images</p></footer>
+        <p class="ie-source-line">Sources: notebook 03, section 4; Abhishek et al. (2025), Scientific Data; Tschandl et al. (2018), Scientific Data</p>
+      </section>
+
+      <section id="session-03-close" class="ie-slide ie-bg-dark-science" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="closing-frame">
+          <div class="ie-auto-fit">
+            <div class="takeaway-block">
+              <h2>Key takeaway</h2>
+              <p>A test score belongs to a model and its test set: change the patients and the number moves</p>
+              <div class="bottom-line">Next: can explanation maps show what the model uses?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SESSION 03 END -->
+
+      <!-- SESSION 04 START -->
+
+      <section id="session-04-title" class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-title-block ie-auto-fit">
+          <h1>Session 4: Explanations and shortcuts</h1>
+          <p class="subtitle">Test whether heatmaps describe the model, and catch a planted shortcut</p>
+        </div>
+      </section>
+
+      <section id="session-04-agenda" class="ie-slide ie-dark" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <div class="template-header"><h2>Session 4 agenda</h2></div>
+            <div class="agenda-grid ie-agenda-stack" aria-label="Session 4 agenda, first block active">
+              <div class="agenda-card is-active"><span class="agenda-number">1</span><h3>Draw three explanation maps</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">2</span><h3>Measure whether they agree</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>Run a sanity check</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">4</span><h3>Run a deletion test</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">5</span><h3>Plant a shortcut and audit it</h3></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-04-three-maps" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>Three maps, three stories</h2>
+            <table class="ie-table">
+              <colgroup><col style="width: 22%"><col style="width: 40%"><col style="width: 19%"><col style="width: 19%"></colgroup>
+              <thead><tr><th>Method</th><th>What it measures</th><th>Agrees with occlusion</th><th>Deletion score</th></tr></thead>
+              <tbody>
+              <tr class="ie-table-key-row"><td>Saliency</td><td>Sensitivity of the output to each pixel</td><td class="ie-table-numeric">-0.19</td><td class="ie-table-numeric">0.641</td></tr>
+              <tr><td>Grad-CAM</td><td>Last-layer regions that raise the score</td><td class="ie-table-numeric">0.19</td><td class="ie-table-numeric">0.414</td></tr>
+              <tr><td>Occlusion</td><td>Score drop when a patch is covered</td><td class="ie-table-numeric">1.00</td><td class="ie-table-numeric">0.396</td></tr>
+              <tr><td>Random pixels</td><td>Baseline for the deletion test</td><td class="ie-table-numeric">-</td><td class="ie-table-numeric">0.648</td></tr>
+              </tbody>
+            </table>
+            <p class="ie-band">Saliency passed the sanity check yet failed the deletion test</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: notebook 04, sections 2 to 4; deletion score: mean model score while covering pixels, lower is more faithful</p>
+      </section>
+
+      <section id="session-04-shortcut" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>A planted ink mark lifted validation AUROC to 0.98 and flagged 27% of marked benign lesions</p>
+            <span class="ie-statement-source">Source: notebook 04, section 5; real-world case: Winkler et al. (2019), JAMA Dermatology</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s4-shortcut.png" alt="Bar chart: clean and shortcut model AUROC on validation, clean test and marked benign images">
+          </figure>
+        </div>
+      </section>
+
+      <section id="session-04-can-cannot" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Can support compared with Cannot establish">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>What explanation maps can and cannot do</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Can support</h3><span class="ie-compare-tag">Audit</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shortcuts</h4>
+                  <p class="ie-compare-desc">Reveal a planted ink mark</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Faithfulness</h4>
+                  <p class="ie-compare-desc">Rank pixels the model needs</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Agreement</h4>
+                  <p class="ie-compare-desc">Compare methods side by side</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Correctness</h4>
+                  <p class="ie-compare-desc">Prompt a clinician's questions</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Causes</h4>
+                  <p class="ie-compare-desc">Point to image regions</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Cannot establish</h3><span class="ie-compare-tag">Proof</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shortcuts</h4>
+                  <p class="ie-compare-desc">Find clues nobody thought to test</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Faithfulness</h4>
+                  <p class="ie-compare-desc">Show the model's reasoning</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Agreement</h4>
+                  <p class="ie-compare-desc">Pick the true method by eye</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Correctness</h4>
+                  <p class="ie-compare-desc">Prove a prediction is right</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Causes</h4>
+                  <p class="ie-compare-desc">Explain the disease</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>Use maps to <span class="ie-compare-accent">audit a model</span>, never to prove it right</p></footer>
+        <p class="ie-source-line">Sources: notebook 04; Adebayo et al. (2018), Sanity checks for saliency maps</p>
+      </section>
+
+      <section id="session-04-close" class="ie-slide ie-bg-dark-science" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="closing-frame">
+          <div class="ie-auto-fit">
+            <div class="takeaway-block">
+              <h2>Key takeaway</h2>
+              <p>Use explanation maps to audit a model, never to prove it is right</p>
+              <div class="bottom-line">Next: risk, referral, robustness and the go or no-go decision</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SESSION 04 END -->
+
+      <!-- SESSION 05 START -->
+
+      <section id="session-05-title" class="ie-slide ie-bg-light-circles ie-title" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-title-block ie-auto-fit">
+          <h1>Session 5: Trust, referral and the decision</h1>
+          <p class="subtitle">Turn a model score into a safe, accountable clinical decision</p>
+        </div>
+      </section>
+
+      <section id="session-05-agenda" class="ie-slide ie-dark" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <div class="template-header"><h2>Session 5 agenda</h2></div>
+            <div class="agenda-grid ie-agenda-stack" aria-label="Session 5 agenda, first block active">
+              <div class="agenda-card is-active"><span class="agenda-number">1</span><h3>Check calibration on new data</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">2</span><h3>Set a referral threshold with an interval</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">3</span><h3>Hand over uncertain lesions</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">4</span><h3>Stress test image quality</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">5</span><h3>Ask who it misses</h3></div>
+              <div class="agenda-card is-upcoming"><span class="agenda-number">6</span><h3>Hold the review panel</h3></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-05-score-to-use" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-auto-fit">
+            <h2>From score to safe use</h2>
+            <div class="ie-ladder-layout">
+            <ol class="ie-ladder" aria-label="From score to safe use">
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">01</span>
+                <div class="ie-ladder-text"><h3>Calibrate on target data</h3><p>Platt scaling on 63 positive images moved the error</p></div>
+                <span class="ie-ladder-tag">Risk</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">02</span>
+                <div class="ie-ladder-text"><h3>Set the threshold with an interval</h3><p>90% on validation became 81% on test</p></div>
+                <span class="ie-ladder-tag">Promise</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">03</span>
+                <div class="ie-ladder-text"><h3>Hand over borderline cases</h3><p>Handing over 20% cut misses from 28 to 8 or 12</p></div>
+                <span class="ie-ladder-tag">Oversight</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">04</span>
+                <div class="ie-ladder-text"><h3>Gate image quality</h3><p>Mild blur dropped sensitivity to 7%</p></div>
+                <span class="ie-ladder-tag">Robustness</span>
+              </li>
+              <li class="ie-ladder-step">
+                <span class="ie-ladder-number">05</span>
+                <div class="ie-ladder-text"><h3>Report subgroups honestly</h3><p>4 to 96 positive lesions per group; no skin tone</p></div>
+                <span class="ie-ladder-tag">Fairness</span>
+              </li>
+            </ol>
+            <aside class="ie-ladder-panel">
+              <span class="ie-kicker">Regulation</span>
+              <h3>EU AI Act, high risk</h3>
+              <p>Data governance, transparency, human oversight, accuracy and robustness, post-market monitoring</p>
+              <p class="ie-ladder-panel-rule">Articles 10, 13, 14, 15 and 72</p>
+            </aside>
+            </div>
+            <p class="ie-band">Each step answers a question a regulator will ask</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: notebook 05; Regulation (EU) 2024/1689; Regulation (EU) 2017/745</p>
+      </section>
+
+      <section id="session-05-robustness" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="ie-split-grid">
+          <div class="ie-statement-bar">
+            <p>Blurred photos made the model miss almost every positive lesion while its uncertainty fell</p>
+            <span class="ie-statement-source">Source: notebook 05, section 4, simulated image changes on 1,227 test images</span>
+          </div>
+          <figure class="ie-statement-image">
+            <img src="media/dl-rai/s5-robustness.png" alt="Line chart of sensitivity against strength of blur, darker room, warm light and sensor noise">
+          </figure>
+        </div>
+      </section>
+
+      <section id="session-05-panel" class="ie-slide ie-bg-dark-abstract" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame ie-objectives-frame">
+          <div class="ie-auto-fit">
+            <h2>The review panel</h2>
+            <p class="ie-objectives-lead">Groups of four: one role each, one decision together</p>
+            <div class="ie-objectives-grid">
+            <div class="ie-objective-card"><span class="ie-objective-number">1</span><p>Dermatologist: missed positive lesions and unnecessary referrals</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">2</span><p>Patient representative: fairness and the right to challenge</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">3</span><p>Health service manager: workload, cost and waiting lists</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">4</span><p>Regulator: evidence, documentation and monitoring</p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">5</span><p>Decide: <span class="ie-objective-key">deploy, restrict, study or stop</span></p></div>
+            <div class="ie-objective-card"><span class="ie-objective-number">6</span><p>Name <span class="ie-objective-key">two numbers</span> and one missing piece of evidence</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="session-05-close" class="ie-slide ie-bg-dark-science" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="closing-frame">
+          <div class="ie-auto-fit">
+            <div class="takeaway-block">
+              <h2>Key takeaway</h2>
+              <p>Decide who acts on the output and who answers for it before the model meets patients</p>
+              <div class="bottom-line">Course close: five questions for every clinical model</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SESSION 05 END -->
 
       <!-- COURSE SESSION CONTENT END -->
 
