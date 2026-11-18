@@ -424,53 +424,53 @@
         </div>
       </section>
 
-      <section id="session-02-tfm-transfer" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Transfers compared with Does not transfer">
+      <section id="session-02-tfm-transfer" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="What TabPFN brings from synthetic tables compared with what it cannot know about our patients">
         <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
-        <header class="ie-compare-title"><h2>What transfers to our patients</h2></header>
+        <header class="ie-compare-title"><h2>Synthetic training, real patients</h2></header>
         <div class="ie-compare-grid">
           <div class="ie-compare-col is-a">
-            <div class="ie-compare-head"><h3>Transfers</h3><span class="ie-compare-tag">General skill</span></div>
+            <div class="ie-compare-head"><h3>What TabPFN brings</h3><span class="ie-compare-tag">Skills from synthetic practice</span></div>
             <ul class="ie-compare-list">
               <li class="ie-compare-row"><span class="ie-compare-num">1</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Signal and noise</h4>
-                  <p class="ie-compare-desc">Spot useful columns, ignore useless ones</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Which inputs matter</h4>
+                  <p class="ie-compare-desc">Spots that lowest GCS tracks death and a record number does not, from the numbers alone</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">2</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shapes of relationships</h4>
-                  <p class="ie-compare-desc">Curves, thresholds and interactions</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shape of a relationship</h4>
+                  <p class="ie-compare-desc">Can find risk rising sharply past a cut-off, not only in straight lines</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">3</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Messy data</h4>
-                  <p class="ie-compare-desc">Missing values, mixed units, categories</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Missing values</h4>
+                  <p class="ie-compare-desc">Keeps predicting when a blood test is missing</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">4</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Small samples</h4>
-                  <p class="ie-compare-desc">Stay cautious when examples are few</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Our death rate</h4>
+                  <p class="ie-compare-desc">Reads the outcome rate from the context patients</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">5</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Fit with the data</h4>
-                  <p class="ie-compare-desc">Works when our table looks like its practice</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Unusual data</h4>
+                  <p class="ie-compare-desc">Works best on tables like its practice: one row per patient, up to 10,000 rows</p></div></li>
             </ul>
           </div>
           <div class="ie-compare-col is-b">
-            <div class="ie-compare-head"><h3>Does not transfer</h3><span class="ie-compare-tag">Our job</span></div>
+            <div class="ie-compare-head"><h3>What it cannot know</h3><span class="ie-compare-tag">Needs clinicians</span></div>
             <ul class="ie-compare-list">
               <li class="ie-compare-row"><span class="ie-compare-num">1</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Signal and noise</h4>
-                  <p class="ie-compare-desc">Knowing what lactate or GCS means</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Which inputs matter</h4>
+                  <p class="ie-compare-desc">That GCS measures how awake a patient is, or why that matters</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">2</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shapes of relationships</h4>
-                  <p class="ie-compare-desc">Whether a relationship is causal</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Shape of a relationship</h4>
+                  <p class="ie-compare-desc">Whether the input causes death or only marks sicker patients</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">3</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Messy data</h4>
-                  <p class="ie-compare-desc">Why values are missing in our hospital</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Missing values</h4>
+                  <p class="ie-compare-desc">That a test may be missing because a doctor saw no need for it</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">4</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Small samples</h4>
-                  <p class="ie-compare-desc">Calibration to our death rate</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Our death rate</h4>
+                  <p class="ie-compare-desc">Whether its risks match our hospital: calibration must be checked</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">5</span>
-                <div class="ie-compare-txt"><h4 class="ie-compare-label">Fit with the data</h4>
-                  <p class="ie-compare-desc">Larger data, other hospitals or time series</p></div></li>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Unusual data</h4>
+                  <p class="ie-compare-desc">Data from many hospitals, changing practice, or hour-by-hour readings</p></div></li>
             </ul>
           </div>
         </div>
-        <footer class="ie-compare-takeaway"><p>It brings <span class="ie-compare-accent">statistical habits</span>, not medical knowledge</p></footer>
-        <p class="ie-source-line">Sources: Hollmann et al. (2025), Nature; Grinsztajn et al. (2022)</p>
+        <footer class="ie-compare-takeaway"><p>Statistical habits come from <span class="ie-compare-accent">synthetic tables</span>; clinical meaning comes from us</p></footer>
+        <p class="ie-source-line">Sources: Hollmann et al. (2025), Nature; notebook 01, section 2 (GCS); notebook 02, section 6</p>
       </section>
 
       <section id="session-02-tfm-healthcare-fit" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
