@@ -29,6 +29,118 @@
     .reveal .slides section#session-02-benchmark .ie-table,
     .reveal .slides section#session-04-three-maps .ie-table { margin-top: auto; margin-bottom: auto; }
     .reveal .slides section#session-03-how-cnn-sees .ie-process-flow { margin-top: auto; margin-bottom: auto; }
+
+    /* Session 4 Teachable Machine healthcare slide (slide-scoped) */
+    .reveal .slides section#session-04-teachable-machine-healthcare .ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-lead {
+      margin-top: 16px;
+      font-size: var(--ie-lead-size);
+      line-height: 1.25;
+      color: rgb(var(--ie-white-rgb) / 0.86);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 360px;
+      padding: 32px 28px 28px;
+      border: 1.5px solid rgb(var(--ie-white-rgb) / 0.24);
+      border-top: 6px solid rgb(var(--ie-white-rgb) / 0.42);
+      background: rgb(var(--ie-white-rgb) / 0.08);
+      color: var(--ie-white);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-card.is-focus {
+      border-color: rgb(var(--ie-lime-rgb) / 0.56);
+      border-top: 6px solid var(--ie-scitech-lime);
+      background: rgb(var(--ie-lime-rgb) / 0.11);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-icon {
+      display: inline-flex;
+      width: 60px;
+      height: 60px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ie-scitech-lime);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-icon img {
+      width: 34px;
+      height: 34px;
+      filter: brightness(0) saturate(100%) invert(90%) sepia(25%) saturate(680%) hue-rotate(38deg) brightness(104%) contrast(104%);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-tag {
+      padding: 6px 12px;
+      border: 1px solid rgb(var(--ie-white-rgb) / 0.28);
+      color: rgb(var(--ie-white-rgb) / 0.82);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-card.is-focus .s4tm-tag {
+      border-color: rgb(var(--ie-lime-rgb) / 0.55);
+      color: var(--ie-scitech-lime);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-card h3 {
+      margin: 0 0 14px;
+      color: var(--ie-white);
+      font-size: 30px;
+      line-height: 1.08;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-card.is-focus h3 {
+      color: var(--ie-scitech-lime);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-use {
+      margin: 0 0 24px;
+      font-size: 23px;
+      line-height: 1.32;
+      color: var(--ie-white);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-risk {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1.5px dashed rgb(var(--ie-lime-rgb) / 0.55);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-risk-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ie-scitech-lime);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .s4tm-risk p {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.28;
+      color: rgb(var(--ie-white-rgb) / 0.84);
+    }
+    .reveal .slides section#session-04-teachable-machine-healthcare .ie-band {
+      margin-top: 0;
+    }
   </style>
 </head>
 
@@ -822,6 +934,78 @@
         </div>
         <footer class="ie-compare-takeaway"><p>Use maps to <span class="ie-compare-accent">audit a model</span>, never to prove it right</p></footer>
         <p class="ie-source-line">Sources: notebook 04; Adebayo et al. (2018), Sanity checks for saliency maps</p>
+      </section>
+
+      <section id="session-04-teachable-machine" class="ie-slide ie-light ie-logo-tr ie-device-slide" data-transition="fade"
+               data-grid-exception="Device explainer centres its copy on the laptop frame">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame">
+          <div class="ie-device-layout">
+            <div class="ie-device-copy">
+              <h2>Google Teachable Machine</h2>
+              <p><span class="ie-device-label">How it began</span>Google Creative Lab launched a 2017 browser demo to demystify neural networks, then version 2.0 in 2019</p>
+              <p><span class="ie-device-label">Purpose</span>No-code transfer learning in the browser via TensorFlow.js, keeping samples local and exporting models</p>
+              <p><span class="ie-device-label">In class</span>Click the laptop screen to build a model fast, then audit the same shortcuts</p>
+            </div>
+            <div class="ie-device-laptop">
+              <a class="ie-device-screen-link" href="https://teachablemachine.withgoogle.com/train" target="_blank" rel="noopener noreferrer" aria-label="Open Google Teachable Machine training page">
+                <img class="ie-device-screen-image" src="media/dl-rai/s4-teachable-machine-train.png" alt="">
+              </a>
+              <img class="ie-device-frame" src="media/laptop.png" alt="">
+            </div>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: Google Creative Lab, <a href="https://teachablemachine.withgoogle.com/train" target="_blank" rel="noopener noreferrer">Teachable Machine</a> (2017; v2.0, 2019); screenshot captured 2026-11-23</p>
+      </section>
+
+      <section id="session-04-teachable-machine-healthcare" class="ie-slide ie-dark ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame safe-frame--open">
+          <div class="ie-auto-fit">
+            <h2>Three models in healthcare</h2>
+            <p class="s4tm-lead">Three browser models for clinical prototyping, before clinical validation</p>
+            <div class="s4tm-grid" aria-label="Three Teachable Machine models in healthcare">
+              <article class="s4tm-card is-focus">
+                <div class="s4tm-head">
+                  <span class="s4tm-icon"><img src="media/icons/tabler/thin/eye.svg" alt=""></span>
+                  <span class="s4tm-tag">MobileNet</span>
+                </div>
+                <h3>Image</h3>
+                <p class="s4tm-use">Wound photos, skin lesions or pill checks</p>
+                <div class="s4tm-risk">
+                  <span class="s4tm-risk-label">Shortcut risk</span>
+                  <p>Rulers, ink marks or lighting</p>
+                </div>
+              </article>
+              <article class="s4tm-card">
+                <div class="s4tm-head">
+                  <span class="s4tm-icon"><img src="media/icons/tabler/thin/microphone.svg" alt=""></span>
+                  <span class="s4tm-tag">Spectrogram</span>
+                </div>
+                <h3>Audio</h3>
+                <p class="s4tm-use">Cough screening, wheeze cues or voice alerts</p>
+                <div class="s4tm-risk">
+                  <span class="s4tm-risk-label">Shortcut risk</span>
+                  <p>Ward noise or microphone type</p>
+                </div>
+              </article>
+              <article class="s4tm-card">
+                <div class="s4tm-head">
+                  <span class="s4tm-icon"><img src="media/icons/tabler/thin/walk.svg" alt=""></span>
+                  <span class="s4tm-tag">PoseNet</span>
+                </div>
+                <h3>Pose</h3>
+                <p class="s4tm-use">Physiotherapy form, joint range or fall risk</p>
+                <div class="s4tm-risk">
+                  <span class="s4tm-risk-label">Shortcut risk</span>
+                  <p>Camera angle or mobility aids</p>
+                </div>
+              </article>
+            </div>
+            <p class="ie-band">Fast browser models test clinical workflows, never replace external validation</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: Google Creative Lab, <a href="https://teachablemachine.withgoogle.com/train" target="_blank" rel="noopener noreferrer">Teachable Machine</a> (MobileNet, Speech Commands, PoseNet); TensorFlow.js</p>
       </section>
 
       <section id="session-04-close" class="ie-slide ie-bg-dark-science" data-transition="fade">
