@@ -1032,10 +1032,10 @@
         <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
         <div class="safe-frame safe-frame--open">
           <div class="ie-auto-fit">
-            <h2>Four specialist layers inside a CNN</h2>
+            <h2>Four common layer types in a CNN</h2>
             <p class="s3cl-lead">A convolutional neural network (CNN) works like an assembly line of specialists turning pixels into a decision</p>
             <div class="s3cl-stage-wrap">
-              <div class="s3cl-flow" aria-label="Four specialist layers of a convolutional neural network">
+              <div class="s3cl-flow" aria-label="Four common layer types in a convolutional neural network">
                 <article class="ie-card-light s3cl-card">
                   <div class="s3cl-meta">
                     <span class="s3cl-num">1</span>
@@ -1108,7 +1108,7 @@
                 <article class="ie-card-light s3cl-card">
                   <div class="s3cl-meta">
                     <span class="s3cl-num">2</span>
-                    <span class="s3cl-role">Significance filter</span>
+                    <span class="s3cl-role">Zero threshold</span>
                   </div>
                   <h3>Activation (ReLU<sup class="ie-note-marker">1</sup>)</h3>
                   <div class="s3cl-viz" aria-hidden="true">
@@ -1134,7 +1134,7 @@
                         <polyline points="8,32 27,32 45,10" fill="none" stroke="#6fb52e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                       </g>
                       <text x="130" y="106" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#6fb52e" text-anchor="middle">max(0, x)</text>
-                      <text x="208" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">CLEAN MAP</text>
+                      <text x="208" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">OUTPUT MAP</text>
                       <g transform="translate(172, 30)" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
                         <rect x="0" y="0" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="12" y="16" fill="#6c6c78">0</text>
                         <rect x="24" y="0" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="16" fill="#000024">6</text>
@@ -1148,10 +1148,10 @@
                         <rect x="24" y="48" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="64" fill="#000024">4</text>
                         <rect x="48" y="48" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="60" y="64" fill="#6c6c78">0</text>
                       </g>
-                      <text x="130" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Negatives become 0; signals stay</text>
+                      <text x="130" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Negatives become 0; positives stay</text>
                     </svg>
                   </div>
-                  <p class="s3cl-desc">Keeps strong signals and drops weak ones so noise does not clutter later steps</p>
+                  <p class="s3cl-desc">Replaces negative values with zero and keeps positive values unchanged</p>
                 </article>
 
                 <div class="s3cl-arrow" aria-hidden="true">
@@ -1205,7 +1205,7 @@
                       <text x="130" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Peak per 2x2 patch survives</text>
                     </svg>
                   </div>
-                  <p class="s3cl-desc">Reports the strongest signal per patch to shrink data and handle position shifts</p>
+                  <p class="s3cl-desc">Keeps the largest value per patch to shrink maps and help tolerate small shifts</p>
                 </article>
 
                 <div class="s3cl-arrow" aria-hidden="true">
@@ -1221,7 +1221,7 @@
                   <div class="s3cl-viz" aria-hidden="true">
                     <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
                       <text x="40" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">CLUES</text>
-                      <text x="182" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">PROBABILITIES</text>
+                      <text x="182" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">EXAMPLE OUTPUT</text>
                       <g stroke="#6c6c78" stroke-width="1.2" opacity="0.55">
                         <line x1="40" y1="36" x2="108" y2="54"/>
                         <line x1="40" y1="36" x2="108" y2="96"/>
@@ -1242,20 +1242,20 @@
 
                       <rect x="130" y="42" width="114" height="24" rx="4" fill="#e8e8e8"/>
                       <rect x="130" y="42" width="98" height="24" rx="4" fill="#6fb52e"/>
-                      <text x="138" y="58" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff">REFER  86%</text>
+                      <text x="138" y="58" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff">CANCER  86%</text>
 
                       <rect x="130" y="84" width="114" height="24" rx="4" fill="#e8e8e8"/>
                       <rect x="130" y="84" width="22" height="24" rx="4" fill="#6c6c78"/>
                       <text x="158" y="100" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024">BENIGN  14%</text>
 
-                      <text x="130" y="140" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Weighs all clues via softmax</text>
+                      <text x="130" y="140" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Softmax turns scores into probabilities</text>
                     </svg>
                   </div>
                   <p class="s3cl-desc">Combines all summarised features to score every possible class</p>
                 </article>
               </div>
               <div class="s3cl-loop-row" aria-hidden="true">
-                <div class="s3cl-loop-bracket">Steps 1 to 3 repeat several rounds: edges become textures, then shapes</div>
+                <div class="s3cl-loop-bracket">Steps 1 to 3 can repeat: later layers combine edges into textures and shapes</div>
                 <div class="s3cl-output-cue">Final classification</div>
               </div>
             </div>
@@ -1270,7 +1270,7 @@
         <div class="safe-frame safe-frame--open">
           <div class="ie-auto-fit">
             <h2>Scan, filter and pool in action</h2>
-            <p class="s3sp-lead">Follow one 3x3 vertical-edge filter sliding across a tiny 6x6 pixel patch</p>
+            <p class="s3sp-lead">Illustrative 3x3 edge filter: moves one pixel at a time, with no border padding</p>
             <div class="s3sp-body">
               <div class="s3sp-diagram-box">
                 <svg viewBox="0 0 1360 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Worked visual example: a 6 by 6 pixel grid scanned by a 3 by 3 edge filter produces a 4 by 4 feature map, ReLU clears negative values to zero, and 2 by 2 max pooling summarises the map into a 2 by 2 grid">
@@ -1428,11 +1428,11 @@
               <div class="s3sp-callouts">
                 <div class="s3sp-note">
                   <span class="s3sp-note-kicker">Parameter sharing</span>
-                  <p>The same 9 filter weights scan all 16 positions instead of learning separate weights per pixel</p>
+                  <p>The same 9 weights scan all 16 positions, rather than 9 separate weights at each position</p>
                 </div>
                 <div class="s3sp-note is-secondary">
-                  <span class="s3sp-note-kicker">Translational invariance</span>
-                  <p>Max pooling keeps the strongest signal even if the lesion shifts slightly inside the frame</p>
+                  <span class="s3sp-note-kicker">Small position shifts</span>
+                  <p>Max pooling can reduce sensitivity to small shifts; its output may still change</p>
                 </div>
               </div>
             </div>
@@ -1482,7 +1482,7 @@
                 <div class="s3cu-copy">
                   <span class="s3cu-tag">Computer vision</span>
                   <h3>Object detection</h3>
-                  <p>Identifies objects and pinpoints their exact location inside a frame or clinical scan</p>
+                  <p>Identifies objects and estimates their location inside a frame or clinical scan</p>
                 </div>
               </article>
 
@@ -1535,7 +1535,7 @@
                 <div class="s3cu-copy">
                   <span class="s3cu-tag">Beyond photos</span>
                   <h3>Molecules and 1D signals</h3>
-                  <p>Screens drug structures and scans 1D grids such as audio spectrograms, text and time series</p>
+                  <p>Analyses molecular grids, 2D audio spectrograms and 1D signals such as time series</p>
                 </div>
               </article>
             </div>
@@ -1557,7 +1557,7 @@
                   <p class="ie-compare-desc">Tabular rows or flattened vectors</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">2</span>
                 <div class="ie-compare-txt"><h4 class="ie-compare-label">Spatial relationships</h4>
-                  <p class="ie-compare-desc">Treats each pixel alone; loses neighbours</p></div></li>
+                  <p class="ie-compare-desc">Connects all pixels without built-in neighbourhoods</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">3</span>
                 <div class="ie-compare-txt"><h4 class="ie-compare-label">Parameter sharing</h4>
                   <p class="ie-compare-desc">Every connection needs its own weight</p></div></li>
@@ -1583,10 +1583,10 @@
                   <p class="ie-compare-desc">Reuses each filter across the whole image</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">4</span>
                 <div class="ie-compare-txt"><h4 class="ie-compare-label">Efficiency on images</h4>
-                  <p class="ie-compare-desc">Fewer weights via shared filters and pooling</p></div></li>
+                  <p class="ie-compare-desc">Shared filters reduce weights; pooling shrinks maps</p></div></li>
               <li class="ie-compare-row"><span class="ie-compare-num">5</span>
                 <div class="ie-compare-txt"><h4 class="ie-compare-label">Position shifts</h4>
-                  <p class="ie-compare-desc">Recognises features almost anywhere in frame</p></div></li>
+                  <p class="ie-compare-desc">Reuses filters at different image positions</p></div></li>
             </ul>
           </div>
         </div>
