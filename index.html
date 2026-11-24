@@ -141,6 +141,284 @@
     .reveal .slides section#session-04-teachable-machine-healthcare .ie-band {
       margin-top: 0;
     }
+
+    /* Session 3 CNN visual explainer slides (slide-scoped) */
+    .reveal .slides section#session-03-cnn-layers .ie-auto-fit,
+    .reveal .slides section#session-03-cnn-scan-pool .ie-auto-fit,
+    .reveal .slides section#session-03-cnn-uses .ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-lead,
+    .reveal .slides section#session-03-cnn-uses .s3cu-lead {
+      margin-top: 14px;
+      font-size: var(--ie-lead-size-compact);
+      line-height: 1.28;
+      color: rgb(var(--ie-navy-950-rgb) / 0.78);
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-lead {
+      margin-top: 14px;
+      font-size: var(--ie-lead-size-compact);
+      line-height: 1.28;
+      color: rgb(var(--ie-white-rgb) / 0.86);
+    }
+
+    /* Slide 1: Four specialist layers inside a CNN */
+    .reveal .slides section#session-03-cnn-layers .s3cl-stage-wrap {
+      margin-top: auto;
+      margin-bottom: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr) 26px minmax(0, 1fr) 26px minmax(0, 1fr);
+      align-items: stretch;
+      gap: 0;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-card {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 20px 22px;
+      border-top: 7px solid var(--ie-navy-950);
+      min-width: 0;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-card.is-focus {
+      border-color: rgb(var(--ie-navy-950-rgb) / 0.16);
+      border-top: 7px solid var(--ie-scitech-lime);
+      background:
+        linear-gradient(180deg, rgb(var(--ie-lime-rgb) / 0.22) 0%, var(--ie-white) 38%);
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-num {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--ie-navy-950);
+      color: var(--ie-white);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-card.is-focus .s3cl-num {
+      background: var(--ie-scitech-lime);
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-role {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: var(--ie-roadmap-green);
+      text-align: right;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-card h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.12;
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-viz {
+      width: 100%;
+      height: 176px;
+      margin-bottom: 16px;
+      border: 1px solid rgb(var(--ie-navy-950-rgb) / 0.10);
+      border-radius: 6px;
+      background: var(--ie-off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-viz svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-desc {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.32;
+      color: rgb(var(--ie-navy-950-rgb) / 0.88);
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-arrow svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-loop-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr) 26px minmax(0, 1fr) 26px minmax(0, 1fr);
+      align-items: center;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-loop-bracket {
+      grid-column: 1 / 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 8px 18px;
+      border: 1.5px dashed rgb(var(--ie-navy-950-rgb) / 0.34);
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      color: rgb(var(--ie-navy-950-rgb) / 0.78);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .reveal .slides section#session-03-cnn-layers .s3cl-output-cue {
+      grid-column: 7;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ie-roadmap-green);
+    }
+    .reveal .slides section#session-03-cnn-layers .ie-band {
+      margin-top: 0;
+    }
+
+    /* Slide 2: Scanning, filtering and pooling in action */
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-body {
+      margin-top: auto;
+      margin-bottom: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-diagram-box {
+      padding: 20px 22px 16px;
+      border: 1.5px solid rgb(var(--ie-white-rgb) / 0.22);
+      border-top: 6px solid var(--ie-scitech-lime);
+      background: rgb(var(--ie-white-rgb) / 0.06);
+      border-radius: 6px;
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-diagram-box svg {
+      display: block;
+      width: 100%;
+      height: 318px;
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-callouts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-note {
+      padding: 16px 22px;
+      border: 1px solid rgb(var(--ie-white-rgb) / 0.22);
+      border-left: 6px solid var(--ie-scitech-lime);
+      background: rgb(var(--ie-white-rgb) / 0.07);
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-note.is-secondary {
+      border-left-color: var(--ie-scitech-mint);
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-note-kicker {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ie-scitech-lime);
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-note.is-secondary .s3sp-note-kicker {
+      color: var(--ie-scitech-mint);
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .s3sp-note p {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.3;
+      color: var(--ie-white);
+    }
+    .reveal .slides section#session-03-cnn-scan-pool .ie-band {
+      margin-top: 0;
+    }
+
+    /* Slide 3: CNNs read any grid-like pattern */
+    .reveal .slides section#session-03-cnn-uses .s3cu-grid {
+      margin-top: auto;
+      margin-bottom: auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-card {
+      display: grid;
+      grid-template-columns: 186px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 22px 24px;
+      border-top: 7px solid var(--ie-navy-950);
+      min-height: 214px;
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-card.is-focus {
+      border-top: 7px solid var(--ie-scitech-lime);
+      background:
+        linear-gradient(135deg, rgb(var(--ie-lime-rgb) / 0.24) 0%, var(--ie-white) 52%);
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-viz {
+      width: 186px;
+      height: 158px;
+      border: 1px solid rgb(var(--ie-navy-950-rgb) / 0.12);
+      border-radius: 6px;
+      background: var(--ie-off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-viz svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-copy {
+      min-width: 0;
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ie-roadmap-green);
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-copy h3 {
+      margin: 0 0 10px;
+      font-size: 25px;
+      line-height: 1.12;
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-uses .s3cu-copy p {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.34;
+      color: rgb(var(--ie-navy-950-rgb) / 0.86);
+    }
+    .reveal .slides section#session-03-cnn-uses .ie-band {
+      margin-top: 0;
+    }
   </style>
 </head>
 
@@ -748,6 +1026,572 @@
             <p class="ie-process-takeaway">Filters are <span class="ie-process-emphasis">learned, not designed</span>, which is where the black box starts</p>
           </div>
         </div>
+      </section>
+
+      <section id="session-03-cnn-layers" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame safe-frame--open">
+          <div class="ie-auto-fit">
+            <h2>Four specialist layers inside a CNN</h2>
+            <p class="s3cl-lead">A convolutional neural network (CNN) works like an assembly line of specialists turning pixels into a decision</p>
+            <div class="s3cl-stage-wrap">
+              <div class="s3cl-flow" aria-label="Four specialist layers of a convolutional neural network">
+                <article class="ie-card-light s3cl-card">
+                  <div class="s3cl-meta">
+                    <span class="s3cl-num">1</span>
+                    <span class="s3cl-role">Feature scanners</span>
+                  </div>
+                  <h3>Convolutional</h3>
+                  <div class="s3cl-viz" aria-hidden="true">
+                    <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+                      <text x="58" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">PIXELS</text>
+                      <g transform="translate(13, 28)">
+                        <rect x="0" y="0" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="18" y="0" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="36" y="0" width="18" height="18" fill="#6c6c78" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="54" y="0" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="72" y="0" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="0" y="18" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="18" y="18" width="18" height="18" fill="#6c6c78" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="36" y="18" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="54" y="18" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="72" y="18" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="0" y="36" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="18" y="36" width="18" height="18" fill="#6c6c78" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="36" y="36" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="54" y="36" width="18" height="18" fill="#000024" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="72" y="36" width="18" height="18" fill="#6c6c78" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="0" y="54" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="18" y="54" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="36" y="54" width="18" height="18" fill="#6c6c78" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="54" y="54" width="18" height="18" fill="#6c6c78" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="72" y="54" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="0" y="72" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="18" y="72" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="36" y="72" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="54" y="72" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="72" y="72" width="18" height="18" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="18" y="0" width="54" height="54" fill="rgba(201,255,138,0.22)" stroke="#6fb52e" stroke-width="3" rx="2"/>
+                      </g>
+                      <text x="58" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#6fb52e" text-anchor="middle">3x3 FILTER SLIDES</text>
+                      <line x1="85" y1="28" x2="189" y2="38" stroke="#6fb52e" stroke-width="1.8" stroke-dasharray="4 3"/>
+                      <line x1="85" y1="82" x2="189" y2="62" stroke="#6fb52e" stroke-width="1.8" stroke-dasharray="4 3"/>
+                      <text x="200" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">FEATURE MAP</text>
+                      <g transform="translate(164, 38)">
+                        <rect x="0" y="0" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="24" y="0" width="24" height="24" fill="#6fb52e" stroke="#000024" stroke-width="2"/>
+                        <rect x="48" y="0" width="24" height="24" fill="#b7e4c7" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="0" y="24" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="24" y="24" width="24" height="24" fill="#9be15d" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="48" y="24" width="24" height="24" fill="#9be15d" stroke="#ffffff" stroke-width="1.5"/>
+
+                        <rect x="0" y="48" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="24" y="48" width="24" height="24" fill="#b7e4c7" stroke="#ffffff" stroke-width="1.5"/>
+                        <rect x="48" y="48" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/>
+                      </g>
+                      <text x="200" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Maps where edges sit</text>
+                    </svg>
+                  </div>
+                  <p class="s3cl-desc">Slides a magnifying-glass filter across pixels to map edges, curves and colours</p>
+                </article>
+
+                <div class="s3cl-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#6fb52e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+
+                <article class="ie-card-light s3cl-card">
+                  <div class="s3cl-meta">
+                    <span class="s3cl-num">2</span>
+                    <span class="s3cl-role">Significance filter</span>
+                  </div>
+                  <h3>Activation (ReLU<sup class="ie-note-marker">1</sup>)</h3>
+                  <div class="s3cl-viz" aria-hidden="true">
+                    <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+                      <text x="52" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">RAW MAP</text>
+                      <g transform="translate(16, 30)" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+                        <rect x="0" y="0" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/><text x="12" y="16" fill="#6c6c78">-3</text>
+                        <rect x="24" y="0" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="16" fill="#000024">6</text>
+                        <rect x="48" y="0" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/><text x="60" y="16" fill="#6c6c78">-1</text>
+
+                        <rect x="0" y="24" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/><text x="12" y="40" fill="#6c6c78">-2</text>
+                        <rect x="24" y="24" width="24" height="24" fill="#9be15d" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="40" fill="#000024">8</text>
+                        <rect x="48" y="24" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="60" y="40" fill="#000024">5</text>
+
+                        <rect x="0" y="48" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/><text x="12" y="64" fill="#6c6c78">-4</text>
+                        <rect x="24" y="48" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="64" fill="#000024">4</text>
+                        <rect x="48" y="48" width="24" height="24" fill="#e8e8e8" stroke="#ffffff" stroke-width="1.5"/><text x="60" y="64" fill="#6c6c78">-2</text>
+                      </g>
+                      <g transform="translate(103, 46)">
+                        <rect x="0" y="0" width="54" height="44" rx="5" fill="#ffffff" stroke="#000024" stroke-width="1.4"/>
+                        <line x1="8" y1="32" x2="46" y2="32" stroke="#e8e8e8" stroke-width="1.5"/>
+                        <line x1="27" y1="8" x2="27" y2="38" stroke="#e8e8e8" stroke-width="1.5"/>
+                        <polyline points="8,32 27,32 45,10" fill="none" stroke="#6fb52e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <text x="130" y="106" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#6fb52e" text-anchor="middle">max(0, x)</text>
+                      <text x="208" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">CLEAN MAP</text>
+                      <g transform="translate(172, 30)" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+                        <rect x="0" y="0" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="12" y="16" fill="#6c6c78">0</text>
+                        <rect x="24" y="0" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="16" fill="#000024">6</text>
+                        <rect x="48" y="0" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="60" y="16" fill="#6c6c78">0</text>
+
+                        <rect x="0" y="24" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="12" y="40" fill="#6c6c78">0</text>
+                        <rect x="24" y="24" width="24" height="24" fill="#9be15d" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="40" fill="#000024">8</text>
+                        <rect x="48" y="24" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="60" y="40" fill="#000024">5</text>
+
+                        <rect x="0" y="48" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="12" y="64" fill="#6c6c78">0</text>
+                        <rect x="24" y="48" width="24" height="24" fill="#c9ff8a" stroke="#ffffff" stroke-width="1.5"/><text x="36" y="64" fill="#000024">4</text>
+                        <rect x="48" y="48" width="24" height="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="1.5"/><text x="60" y="64" fill="#6c6c78">0</text>
+                      </g>
+                      <text x="130" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Negatives become 0; signals stay</text>
+                    </svg>
+                  </div>
+                  <p class="s3cl-desc">Keeps strong signals and drops weak ones so noise does not clutter later steps</p>
+                </article>
+
+                <div class="s3cl-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#6fb52e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+
+                <article class="ie-card-light s3cl-card">
+                  <div class="s3cl-meta">
+                    <span class="s3cl-num">3</span>
+                    <span class="s3cl-role">Summarisers</span>
+                  </div>
+                  <h3>Pooling</h3>
+                  <div class="s3cl-viz" aria-hidden="true">
+                    <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+                      <text x="60" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">4x4 PATCHES</text>
+                      <g transform="translate(16, 28)" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" text-anchor="middle">
+                        <rect x="0" y="0" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="11" y="15" fill="#6c6c78">1</text>
+                        <rect x="22" y="0" width="22" height="22" fill="#c9ff8a" stroke="#e8e8e8"/><text x="33" y="15" fill="#000024">6</text>
+                        <rect x="44" y="0" width="22" height="22" fill="#9be15d" stroke="#e8e8e8"/><text x="55" y="15" fill="#000024">8</text>
+                        <rect x="66" y="0" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="77" y="15" fill="#6c6c78">2</text>
+
+                        <rect x="0" y="22" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="11" y="37" fill="#6c6c78">0</text>
+                        <rect x="22" y="22" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="33" y="37" fill="#6c6c78">3</text>
+                        <rect x="44" y="22" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="55" y="37" fill="#6c6c78">1</text>
+                        <rect x="66" y="22" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="77" y="37" fill="#6c6c78">0</text>
+
+                        <rect x="0" y="44" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="11" y="59" fill="#6c6c78">2</text>
+                        <rect x="22" y="44" width="22" height="22" fill="#b7e4c7" stroke="#e8e8e8"/><text x="33" y="59" fill="#000024">5</text>
+                        <rect x="44" y="44" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="55" y="59" fill="#6c6c78">1</text>
+                        <rect x="66" y="44" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="77" y="59" fill="#6c6c78">0</text>
+
+                        <rect x="0" y="66" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="11" y="81" fill="#6c6c78">0</text>
+                        <rect x="22" y="66" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="33" y="81" fill="#6c6c78">1</text>
+                        <rect x="44" y="66" width="22" height="22" fill="#c9ff8a" stroke="#e8e8e8"/><text x="55" y="81" fill="#000024">4</text>
+                        <rect x="66" y="66" width="22" height="22" fill="#ffffff" stroke="#e8e8e8"/><text x="77" y="81" fill="#6c6c78">2</text>
+
+                        <rect x="0" y="0" width="44" height="44" fill="none" stroke="#000024" stroke-width="1.6"/>
+                        <rect x="44" y="0" width="44" height="44" fill="none" stroke="#6fb52e" stroke-width="2"/>
+                        <rect x="0" y="44" width="44" height="44" fill="none" stroke="#6fb52e" stroke-width="2"/>
+                        <rect x="44" y="44" width="44" height="44" fill="none" stroke="#000024" stroke-width="1.6"/>
+                      </g>
+                      <path d="M118 72 H152 M152 72 L144 65 M152 72 L144 79" stroke="#6fb52e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <text x="135" y="60" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#6fb52e" text-anchor="middle">MAX</text>
+                      <text x="204" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">2x2 SUMMARY</text>
+                      <g transform="translate(168, 38)" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+                        <rect x="0" y="0" width="34" height="34" fill="#c9ff8a" stroke="#000024" stroke-width="1.5"/><text x="17" y="23" fill="#000024">6</text>
+                        <rect x="34" y="0" width="34" height="34" fill="#9be15d" stroke="#000024" stroke-width="1.5"/><text x="51" y="23" fill="#000024">8</text>
+                        <rect x="0" y="34" width="34" height="34" fill="#b7e4c7" stroke="#000024" stroke-width="1.5"/><text x="17" y="57" fill="#000024">5</text>
+                        <rect x="34" y="34" width="34" height="34" fill="#c9ff8a" stroke="#000024" stroke-width="1.5"/><text x="51" y="57" fill="#000024">4</text>
+                      </g>
+                      <text x="130" y="138" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Peak per 2x2 patch survives</text>
+                    </svg>
+                  </div>
+                  <p class="s3cl-desc">Reports the strongest signal per patch to shrink data and handle position shifts</p>
+                </article>
+
+                <div class="s3cl-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#6fb52e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+
+                <article class="ie-card-light s3cl-card is-focus">
+                  <div class="s3cl-meta">
+                    <span class="s3cl-num">4</span>
+                    <span class="s3cl-role">Head detective</span>
+                  </div>
+                  <h3>Fully connected</h3>
+                  <div class="s3cl-viz" aria-hidden="true">
+                    <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+                      <text x="40" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">CLUES</text>
+                      <text x="182" y="18" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">PROBABILITIES</text>
+                      <g stroke="#6c6c78" stroke-width="1.2" opacity="0.55">
+                        <line x1="40" y1="36" x2="108" y2="54"/>
+                        <line x1="40" y1="36" x2="108" y2="96"/>
+                        <line x1="40" y1="62" x2="108" y2="54"/>
+                        <line x1="40" y1="62" x2="108" y2="96"/>
+                        <line x1="40" y1="88" x2="108" y2="54"/>
+                        <line x1="40" y1="88" x2="108" y2="96"/>
+                        <line x1="40" y1="114" x2="108" y2="54"/>
+                        <line x1="40" y1="114" x2="108" y2="96"/>
+                      </g>
+                      <circle cx="40" cy="36" r="8" fill="#000024"/>
+                      <circle cx="40" cy="62" r="8" fill="#6fb52e"/>
+                      <circle cx="40" cy="88" r="8" fill="#000024"/>
+                      <circle cx="40" cy="114" r="8" fill="#9be15d"/>
+
+                      <circle cx="108" cy="54" r="9" fill="#6fb52e" stroke="#000024" stroke-width="1.5"/>
+                      <circle cx="108" cy="96" r="9" fill="#e8e8e8" stroke="#000024" stroke-width="1.5"/>
+
+                      <rect x="130" y="42" width="114" height="24" rx="4" fill="#e8e8e8"/>
+                      <rect x="130" y="42" width="98" height="24" rx="4" fill="#6fb52e"/>
+                      <text x="138" y="58" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff">REFER  86%</text>
+
+                      <rect x="130" y="84" width="114" height="24" rx="4" fill="#e8e8e8"/>
+                      <rect x="130" y="84" width="22" height="24" rx="4" fill="#6c6c78"/>
+                      <text x="158" y="100" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024">BENIGN  14%</text>
+
+                      <text x="130" y="140" font-family="Montserrat, sans-serif" font-size="11" font-weight="400" fill="#6c6c78" text-anchor="middle">Weighs all clues via softmax</text>
+                    </svg>
+                  </div>
+                  <p class="s3cl-desc">Combines all summarised features to score every possible class</p>
+                </article>
+              </div>
+              <div class="s3cl-loop-row" aria-hidden="true">
+                <div class="s3cl-loop-bracket">Steps 1 to 3 repeat several rounds: edges become textures, then shapes</div>
+                <div class="s3cl-output-cue">Final classification</div>
+              </div>
+            </div>
+            <p class="ie-band">Each layer has one job: scan, filter, summarise and then decide</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: Google Cloud, <a href="https://cloud.google.com/discover/what-are-convolutional-neural-networks" target="_blank" rel="noopener noreferrer">What is a convolutional neural network?</a> Notes: <sup class="ie-note-marker">1</sup>ReLU, rectified linear unit</p>
+      </section>
+
+      <section id="session-03-cnn-scan-pool" class="ie-slide ie-dark ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame safe-frame--open">
+          <div class="ie-auto-fit">
+            <h2>Scan, filter and pool in action</h2>
+            <p class="s3sp-lead">Follow one 3x3 vertical-edge filter sliding across a tiny 6x6 pixel patch</p>
+            <div class="s3sp-body">
+              <div class="s3sp-diagram-box">
+                <svg viewBox="0 0 1360 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Worked visual example: a 6 by 6 pixel grid scanned by a 3 by 3 edge filter produces a 4 by 4 feature map, ReLU clears negative values to zero, and 2 by 2 max pooling summarises the map into a 2 by 2 grid">
+                  <!-- Stage 1: 6x6 Input pixel grid -->
+                  <text x="128" y="24" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">1. INPUT PIXELS (6x6)</text>
+                  <g transform="translate(20, 44)" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+                    <!-- Row 0: 1 0 0 2 2 2 -->
+                    <rect x="0" y="0" width="36" height="36" fill="#242424" stroke="#6c6c78" stroke-width="1"/><text x="18" y="24" fill="#b7e4c7">1</text>
+                    <rect x="36" y="0" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="54" y="24" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="72" y="0" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="90" y="24" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="108" y="0" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="126" y="24" fill="#000024">2</text>
+                    <rect x="144" y="0" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="162" y="24" fill="#000024">2</text>
+                    <rect x="180" y="0" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="198" y="24" fill="#000024">2</text>
+                    <!-- Row 1: 1 0 0 2 2 2 -->
+                    <rect x="0" y="36" width="36" height="36" fill="#242424" stroke="#6c6c78" stroke-width="1"/><text x="18" y="60" fill="#b7e4c7">1</text>
+                    <rect x="36" y="36" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="54" y="60" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="72" y="36" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="90" y="60" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="108" y="36" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="126" y="60" fill="#000024">2</text>
+                    <rect x="144" y="36" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="162" y="60" fill="#000024">2</text>
+                    <rect x="180" y="36" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="198" y="60" fill="#000024">2</text>
+                    <!-- Row 2: 1 0 0 2 2 2 -->
+                    <rect x="0" y="72" width="36" height="36" fill="#242424" stroke="#6c6c78" stroke-width="1"/><text x="18" y="96" fill="#b7e4c7">1</text>
+                    <rect x="36" y="72" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="54" y="96" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="72" y="72" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="90" y="96" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="108" y="72" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="126" y="96" fill="#000024">2</text>
+                    <rect x="144" y="72" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="162" y="96" fill="#000024">2</text>
+                    <rect x="180" y="72" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="198" y="96" fill="#000024">2</text>
+                    <!-- Row 3: 1 0 0 2 2 0 -->
+                    <rect x="0" y="108" width="36" height="36" fill="#242424" stroke="#6c6c78" stroke-width="1"/><text x="18" y="132" fill="#b7e4c7">1</text>
+                    <rect x="36" y="108" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="54" y="132" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="72" y="108" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="90" y="132" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="108" y="108" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="126" y="132" fill="#000024">2</text>
+                    <rect x="144" y="108" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="162" y="132" fill="#000024">2</text>
+                    <rect x="180" y="108" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="198" y="132" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- Row 4: 0 0 0 2 0 0 -->
+                    <rect x="0" y="144" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="18" y="168" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="36" y="144" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="54" y="168" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="72" y="144" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="90" y="168" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="108" y="144" width="36" height="36" fill="#ffffff" stroke="#6c6c78" stroke-width="1"/><text x="126" y="168" fill="#000024">2</text>
+                    <rect x="144" y="144" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="162" y="168" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="180" y="144" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="198" y="168" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- Row 5: 0 0 0 0 0 0 -->
+                    <rect x="0" y="180" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="18" y="204" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="36" y="180" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="54" y="204" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="72" y="180" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="90" y="204" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="108" y="180" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="126" y="204" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="144" y="180" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="162" y="204" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="180" y="180" width="36" height="36" fill="#1c1c1c" stroke="#6c6c78" stroke-width="1"/><text x="198" y="204" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- Highlighted active 3x3 window at (r=0..2, c=1..3) -->
+                    <rect x="36" y="0" width="108" height="108" fill="rgba(201,255,138,0.16)" stroke="#c9ff8a" stroke-width="3.5" rx="2"/>
+                  </g>
+                  <text x="128" y="286" font-family="Montserrat, sans-serif" font-size="14" font-weight="400" fill="#c9ff8a" text-anchor="middle">Dark skin (0) meets bright edge (2)</text>
+
+                  <!-- Multiply symbol -->
+                  <text x="266" y="158" font-family="Montserrat, sans-serif" font-size="28" font-weight="700" fill="#c9ff8a" text-anchor="middle">x</text>
+
+                  <!-- 3x3 Filter -->
+                  <text x="358" y="66" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#c9ff8a" text-anchor="middle" letter-spacing="1">3x3 FILTER</text>
+                  <g transform="translate(298, 86)" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+                    <rect x="0" y="0" width="40" height="40" fill="#242424" stroke="#c9ff8a" stroke-width="1.5"/><text x="20" y="26" fill="#ffffff">-1</text>
+                    <rect x="40" y="0" width="40" height="40" fill="#242424" stroke="#c9ff8a" stroke-width="1.5"/><text x="60" y="26" fill="#b7e4c7">0</text>
+                    <rect x="80" y="0" width="40" height="40" fill="#15260f" stroke="#c9ff8a" stroke-width="1.5"/><text x="100" y="26" fill="#c9ff8a">+1</text>
+
+                    <rect x="0" y="40" width="40" height="40" fill="#242424" stroke="#c9ff8a" stroke-width="1.5"/><text x="20" y="66" fill="#ffffff">-1</text>
+                    <rect x="40" y="40" width="40" height="40" fill="#242424" stroke="#c9ff8a" stroke-width="1.5"/><text x="60" y="66" fill="#b7e4c7">0</text>
+                    <rect x="80" y="40" width="40" height="40" fill="#15260f" stroke="#c9ff8a" stroke-width="1.5"/><text x="100" y="66" fill="#c9ff8a">+1</text>
+
+                    <rect x="0" y="80" width="40" height="40" fill="#242424" stroke="#c9ff8a" stroke-width="1.5"/><text x="20" y="106" fill="#ffffff">-1</text>
+                    <rect x="40" y="80" width="40" height="40" fill="#242424" stroke="#c9ff8a" stroke-width="1.5"/><text x="60" y="106" fill="#b7e4c7">0</text>
+                    <rect x="80" y="80" width="40" height="40" fill="#15260f" stroke="#c9ff8a" stroke-width="1.5"/><text x="100" y="106" fill="#c9ff8a">+1</text>
+                  </g>
+                  <text x="358" y="238" font-family="Montserrat, sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">9 shared weights</text>
+                  <text x="358" y="258" font-family="Montserrat, sans-serif" font-size="13" font-weight="400" fill="#b7e4c7" text-anchor="middle">Multiply &amp; sum = +6</text>
+
+                  <!-- Arrow 1 -->
+                  <path d="M438 150 H482 M482 150 L471 140 M482 150 L471 160" stroke="#c9ff8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  <text x="460" y="132" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" fill="#c9ff8a" text-anchor="middle">SCAN</text>
+
+                  <!-- Stage 2: 4x4 Feature Map -->
+                  <text x="594" y="24" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">2. FEATURE MAP (4x4)</text>
+                  <g transform="translate(502, 58)" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+                    <!-- Row 0: -3 +6 +6 0 -->
+                    <rect x="0" y="0" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="23" y="29" fill="#e8e8e8">-3</text>
+                    <rect x="46" y="0" width="46" height="46" fill="#c9ff8a" stroke="#ffffff" stroke-width="2.5"/><text x="69" y="29" fill="#000024">+6</text>
+                    <rect x="92" y="0" width="46" height="46" fill="#9be15d" stroke="#6c6c78"/><text x="115" y="29" fill="#000024">+6</text>
+                    <rect x="138" y="0" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="161" y="29" fill="#6c6c78">0</text>
+                    <!-- Row 1: -3 +6 +6 -2 -->
+                    <rect x="0" y="46" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="23" y="75" fill="#e8e8e8">-3</text>
+                    <rect x="46" y="46" width="46" height="46" fill="#9be15d" stroke="#6c6c78"/><text x="69" y="75" fill="#000024">+6</text>
+                    <rect x="92" y="46" width="46" height="46" fill="#9be15d" stroke="#6c6c78"/><text x="115" y="75" fill="#000024">+6</text>
+                    <rect x="138" y="46" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="161" y="75" fill="#e8e8e8">-2</text>
+                    <!-- Row 2: -2 +6 +4 -4 -->
+                    <rect x="0" y="92" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="23" y="121" fill="#e8e8e8">-2</text>
+                    <rect x="46" y="92" width="46" height="46" fill="#9be15d" stroke="#6c6c78"/><text x="69" y="121" fill="#000024">+6</text>
+                    <rect x="92" y="92" width="46" height="46" fill="#b7e4c7" stroke="#6c6c78"/><text x="115" y="121" fill="#000024">+4</text>
+                    <rect x="138" y="92" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="161" y="121" fill="#e8e8e8">-4</text>
+                    <!-- Row 3: -1 +4 +2 -4 -->
+                    <rect x="0" y="138" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="23" y="167" fill="#e8e8e8">-1</text>
+                    <rect x="46" y="138" width="46" height="46" fill="#b7e4c7" stroke="#6c6c78"/><text x="69" y="167" fill="#000024">+4</text>
+                    <rect x="92" y="138" width="46" height="46" fill="#b7e4c7" stroke="#6c6c78"/><text x="115" y="167" fill="#000024">+2</text>
+                    <rect x="138" y="138" width="46" height="46" fill="#242424" stroke="#6c6c78"/><text x="161" y="167" fill="#e8e8e8">-4</text>
+                  </g>
+                  <text x="594" y="286" font-family="Montserrat, sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">High scores trace the vertical edge</text>
+
+                  <!-- Arrow 2 -->
+                  <path d="M706 150 H760 M760 150 L749 140 M760 150 L749 160" stroke="#c9ff8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  <text x="733" y="132" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" fill="#c9ff8a" text-anchor="middle">ReLU</text>
+
+                  <!-- Stage 3: 4x4 After ReLU with 2x2 Pooling Quadrants -->
+                  <text x="872" y="24" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">3. ReLU + 2x2 PATCHES</text>
+                  <g transform="translate(780, 58)" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+                    <!-- Row 0: 0 6 6 0 -->
+                    <rect x="0" y="0" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="23" y="29" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="46" y="0" width="46" height="46" fill="#c9ff8a" stroke="#6c6c78"/><text x="69" y="29" fill="#000024">6</text>
+                    <rect x="92" y="0" width="46" height="46" fill="#c9ff8a" stroke="#6c6c78"/><text x="115" y="29" fill="#000024">6</text>
+                    <rect x="138" y="0" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="161" y="29" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- Row 1: 0 6 6 0 -->
+                    <rect x="0" y="46" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="23" y="75" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="46" y="46" width="46" height="46" fill="#9be15d" stroke="#6c6c78"/><text x="69" y="75" fill="#000024">6</text>
+                    <rect x="92" y="46" width="46" height="46" fill="#9be15d" stroke="#6c6c78"/><text x="115" y="75" fill="#000024">6</text>
+                    <rect x="138" y="46" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="161" y="75" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- Row 2: 0 6 4 0 -->
+                    <rect x="0" y="92" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="23" y="121" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="46" y="92" width="46" height="46" fill="#c9ff8a" stroke="#6c6c78"/><text x="69" y="121" fill="#000024">6</text>
+                    <rect x="92" y="92" width="46" height="46" fill="#c9ff8a" stroke="#6c6c78"/><text x="115" y="121" fill="#000024">4</text>
+                    <rect x="138" y="92" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="161" y="121" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- Row 3: 0 4 2 0 -->
+                    <rect x="0" y="138" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="23" y="167" fill="#e8e8e8" opacity="0.55">0</text>
+                    <rect x="46" y="138" width="46" height="46" fill="#b7e4c7" stroke="#6c6c78"/><text x="69" y="167" fill="#000024">4</text>
+                    <rect x="92" y="138" width="46" height="46" fill="#b7e4c7" stroke="#6c6c78"/><text x="115" y="167" fill="#000024">2</text>
+                    <rect x="138" y="138" width="46" height="46" fill="#1c1c1c" stroke="#6c6c78"/><text x="161" y="167" fill="#e8e8e8" opacity="0.55">0</text>
+                    <!-- 2x2 Quadrant dividers -->
+                    <rect x="0" y="0" width="92" height="92" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6 4"/>
+                    <rect x="92" y="0" width="92" height="92" fill="none" stroke="#c9ff8a" stroke-width="2.5" stroke-dasharray="6 4"/>
+                    <rect x="0" y="92" width="92" height="92" fill="none" stroke="#c9ff8a" stroke-width="2.5" stroke-dasharray="6 4"/>
+                    <rect x="92" y="92" width="92" height="92" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6 4"/>
+                  </g>
+                  <text x="872" y="286" font-family="Montserrat, sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">Negatives cleared to 0; grouped 2x2</text>
+
+                  <!-- Arrow 3 -->
+                  <path d="M986 150 H1064 M1064 150 L1053 140 M1064 150 L1053 160" stroke="#c9ff8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  <text x="1025" y="132" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" fill="#c9ff8a" text-anchor="middle">MAX POOL</text>
+
+                  <!-- Stage 4: 2x2 Pooled Summary -->
+                  <text x="1204" y="24" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#c9ff8a" text-anchor="middle" letter-spacing="1.2">4. POOLED MAP (2x2)</text>
+                  <g transform="translate(1118, 66)" font-family="Montserrat, sans-serif" font-size="28" font-weight="700" text-anchor="middle">
+                    <rect x="0" y="0" width="86" height="86" fill="#c9ff8a" stroke="#000024" stroke-width="3"/><text x="43" y="53" fill="#000024">6</text>
+                    <rect x="86" y="0" width="86" height="86" fill="#c9ff8a" stroke="#000024" stroke-width="3"/><text x="129" y="53" fill="#000024">6</text>
+                    <rect x="0" y="86" width="86" height="86" fill="#c9ff8a" stroke="#000024" stroke-width="3"/><text x="43" y="139" fill="#000024">6</text>
+                    <rect x="86" y="86" width="86" height="86" fill="#9be15d" stroke="#000024" stroke-width="3"/><text x="129" y="139" fill="#000024">4</text>
+                  </g>
+                  <text x="1204" y="286" font-family="Montserrat, sans-serif" font-size="14" font-weight="400" fill="#c9ff8a" text-anchor="middle">75% smaller; peak signals kept</text>
+                </svg>
+              </div>
+              <div class="s3sp-callouts">
+                <div class="s3sp-note">
+                  <span class="s3sp-note-kicker">Parameter sharing</span>
+                  <p>The same 9 filter weights scan all 16 positions instead of learning separate weights per pixel</p>
+                </div>
+                <div class="s3sp-note is-secondary">
+                  <span class="s3sp-note-kicker">Translational invariance</span>
+                  <p>Max pooling keeps the strongest signal even if the lesion shifts slightly inside the frame</p>
+                </div>
+              </div>
+            </div>
+            <p class="ie-band">Sharing filters cuts weights, and pooling helps spot shifted patterns</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: worked example adapted from Google Cloud, <a href="https://cloud.google.com/discover/what-are-convolutional-neural-networks" target="_blank" rel="noopener noreferrer">What is a convolutional neural network?</a></p>
+      </section>
+
+      <section id="session-03-cnn-uses" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame safe-frame--open">
+          <div class="ie-auto-fit">
+            <h2>CNNs read any grid-like pattern</h2>
+            <p class="s3cu-lead">Inspired by human vision, CNNs excel on images and any data arranged in a spatial or 1D grid</p>
+            <div class="s3cu-grid" aria-label="Core computer vision and domain applications of convolutional neural networks">
+              <article class="ie-card-light s3cu-card">
+                <div class="s3cu-viz" aria-hidden="true">
+                  <svg viewBox="0 0 186 158" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="18" y="16" width="150" height="86" rx="8" fill="#ffffff" stroke="#000024" stroke-width="2"/>
+                    <circle cx="93" cy="59" r="32" fill="#e8e8e8"/>
+                    <path d="M74 58 C76 42, 102 36, 110 52 C117 65, 106 79, 89 77 C76 76, 72 68, 74 58 Z" fill="#000024"/>
+                    <path d="M84 56 C88 49, 99 50, 101 58 C102 65, 93 69, 86 65 Z" fill="#6c6c78"/>
+                    <rect x="18" y="114" width="150" height="28" rx="4" fill="#000024"/>
+                    <text x="93" y="132" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#c9ff8a" text-anchor="middle" letter-spacing="0.6">CLASS: SUSPICIOUS</text>
+                  </svg>
+                </div>
+                <div class="s3cu-copy">
+                  <span class="s3cu-tag">Computer vision</span>
+                  <h3>Image classification</h3>
+                  <p>Assigns one label to a whole image, from everyday objects to dermatoscope skin lesions</p>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3cu-card">
+                <div class="s3cu-viz" aria-hidden="true">
+                  <svg viewBox="0 0 186 158" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="18" y="16" width="150" height="126" rx="8" fill="#ffffff" stroke="#000024" stroke-width="2"/>
+                    <ellipse cx="64" cy="82" rx="28" ry="44" fill="#e8e8e8"/>
+                    <ellipse cx="122" cy="82" rx="28" ry="44" fill="#e8e8e8"/>
+                    <circle cx="118" cy="68" r="10" fill="#000024"/>
+                    <rect x="97" y="48" width="42" height="40" rx="3" fill="rgba(201,255,138,0.28)" stroke="#6fb52e" stroke-width="2.5" stroke-dasharray="5 3"/>
+                    <rect x="97" y="30" width="60" height="18" rx="2" fill="#6fb52e"/>
+                    <text x="127" y="43" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">FIND 0.92</text>
+                  </svg>
+                </div>
+                <div class="s3cu-copy">
+                  <span class="s3cu-tag">Computer vision</span>
+                  <h3>Object detection</h3>
+                  <p>Identifies objects and pinpoints their exact location inside a frame or clinical scan</p>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3cu-card is-focus">
+                <div class="s3cu-viz" aria-hidden="true">
+                  <svg viewBox="0 0 186 158" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="44" y="18" width="108" height="84" rx="6" fill="#e8e8e8" stroke="#6c6c78" stroke-width="1.5"/>
+                    <rect x="34" y="30" width="108" height="84" rx="6" fill="#ffffff" stroke="#6c6c78" stroke-width="1.5"/>
+                    <rect x="24" y="42" width="108" height="84" rx="6" fill="#000024" stroke="#6fb52e" stroke-width="2.5"/>
+                    <ellipse cx="78" cy="84" rx="36" ry="28" fill="none" stroke="#b7e4c7" stroke-width="2"/>
+                    <circle cx="90" cy="78" r="11" fill="#c9ff8a"/>
+                    <text x="93" y="146" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#000024" text-anchor="middle" letter-spacing="0.6">2D &amp; 3D SCAN SLICES</text>
+                  </svg>
+                </div>
+                <div class="s3cu-copy">
+                  <span class="s3cu-tag">Healthcare focus</span>
+                  <h3>Medical image analysis</h3>
+                  <p>Detects tumours, fractures and organ borders in X-rays, MRIs<sup class="ie-note-marker">1</sup> and CT<sup class="ie-note-marker">2</sup> scans</p>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3cu-card">
+                <div class="s3cu-viz" aria-hidden="true">
+                  <svg viewBox="0 0 186 158" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Molecule hexagon -->
+                    <polygon points="56,28 76,40 76,62 56,74 36,62 36,40" fill="none" stroke="#000024" stroke-width="2.2"/>
+                    <line x1="76" y1="40" x2="96" y2="28" stroke="#000024" stroke-width="2.2"/>
+                    <circle cx="56" cy="28" r="5" fill="#6fb52e"/>
+                    <circle cx="76" cy="40" r="5" fill="#000024"/>
+                    <circle cx="76" cy="62" r="5" fill="#000024"/>
+                    <circle cx="56" cy="74" r="5" fill="#6fb52e"/>
+                    <circle cx="36" cy="62" r="5" fill="#000024"/>
+                    <circle cx="36" cy="40" r="5" fill="#000024"/>
+                    <circle cx="96" cy="28" r="5" fill="#9be15d" stroke="#000024" stroke-width="1.2"/>
+                    <!-- 1D signal / spectrogram bars -->
+                    <g transform="translate(22, 92)">
+                      <rect x="0" y="24" width="12" height="22" rx="2" fill="#e8e8e8"/>
+                      <rect x="18" y="14" width="12" height="32" rx="2" fill="#b7e4c7"/>
+                      <rect x="36" y="4" width="12" height="42" rx="2" fill="#6fb52e"/>
+                      <rect x="54" y="10" width="12" height="36" rx="2" fill="#9be15d"/>
+                      <rect x="72" y="20" width="12" height="26" rx="2" fill="#b7e4c7"/>
+                      <rect x="90" y="8" width="12" height="38" rx="2" fill="#6fb52e"/>
+                      <rect x="108" y="18" width="12" height="28" rx="2" fill="#000024"/>
+                      <rect x="126" y="28" width="12" height="18" rx="2" fill="#e8e8e8"/>
+                    </g>
+                    <text x="142" y="54" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#6c6c78" text-anchor="middle">1D &amp; 2D</text>
+                    <text x="142" y="68" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#6c6c78" text-anchor="middle">GRIDS</text>
+                  </svg>
+                </div>
+                <div class="s3cu-copy">
+                  <span class="s3cu-tag">Beyond photos</span>
+                  <h3>Molecules and 1D signals</h3>
+                  <p>Screens drug structures and scans 1D grids such as audio spectrograms, text and time series</p>
+                </div>
+              </article>
+            </div>
+            <p class="ie-band">Whenever nearby values form a meaningful pattern, a CNN can learn it</p>
+          </div>
+        </div>
+        <p class="ie-source-line">Sources: Google Cloud, <a href="https://cloud.google.com/discover/what-are-convolutional-neural-networks" target="_blank" rel="noopener noreferrer">What is a convolutional neural network?</a> Notes: <sup class="ie-note-marker">1</sup>MRI, magnetic resonance imaging; <sup class="ie-note-marker">2</sup>CT, computed tomography</p>
+      </section>
+
+      <section id="session-03-cnn-vs-traditional" class="ie-slide ie-compare ie-compare-dark" data-transition="fade" aria-label="Traditional neural network compared with Convolutional neural network">
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-dark-accent.svg" alt="IE University School of Science and Technology"></div>
+        <header class="ie-compare-title"><h2>CNN or traditional neural network</h2></header>
+        <div class="ie-compare-grid">
+          <div class="ie-compare-col is-a">
+            <div class="ie-compare-head"><h3>Traditional network</h3><span class="ie-compare-tag">Dense layers</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Input data type</h4>
+                  <p class="ie-compare-desc">Tabular rows or flattened vectors</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Spatial relationships</h4>
+                  <p class="ie-compare-desc">Treats each pixel alone; loses neighbours</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Parameter sharing</h4>
+                  <p class="ie-compare-desc">Every connection needs its own weight</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Efficiency on images</h4>
+                  <p class="ie-compare-desc">Huge parameter count; prone to overfitting</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Position shifts</h4>
+                  <p class="ie-compare-desc">Sensitive when a feature moves in the frame</p></div></li>
+            </ul>
+          </div>
+          <div class="ie-compare-col is-b">
+            <div class="ie-compare-head"><h3>Convolutional network</h3><span class="ie-compare-tag">Spatial filters</span></div>
+            <ul class="ie-compare-list">
+              <li class="ie-compare-row"><span class="ie-compare-num">1</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Input data type</h4>
+                  <p class="ie-compare-desc">Grid data: images, scans, audio and 1D series</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">2</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Spatial relationships</h4>
+                  <p class="ie-compare-desc">Preserves pixel adjacency and local shapes</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">3</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Parameter sharing</h4>
+                  <p class="ie-compare-desc">Reuses each filter across the whole image</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">4</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Efficiency on images</h4>
+                  <p class="ie-compare-desc">Fewer weights via shared filters and pooling</p></div></li>
+              <li class="ie-compare-row"><span class="ie-compare-num">5</span>
+                <div class="ie-compare-txt"><h4 class="ie-compare-label">Position shifts</h4>
+                  <p class="ie-compare-desc">Recognises features almost anywhere in frame</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="ie-compare-takeaway"><p>CNNs win on images by keeping <span class="ie-compare-accent">spatial structure</span> intact</p></footer>
+        <p class="ie-source-line">Sources: Google Cloud, <a href="https://cloud.google.com/discover/what-are-convolutional-neural-networks" target="_blank" rel="noopener noreferrer">What is a convolutional neural network?</a></p>
       </section>
 
       <section id="session-03-cnn-wins" class="ie-slide ie-light ie-split ie-split-left ie-statement-split" data-transition="fade">
