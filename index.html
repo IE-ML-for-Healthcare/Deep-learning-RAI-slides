@@ -419,6 +419,158 @@
     .reveal .slides section#session-03-cnn-uses .ie-band {
       margin-top: 0;
     }
+
+    /* Session 3 CNNs in healthcare six applications (slide-scoped) */
+    .reveal .slides section#session-03-cnn-healthcare-apps .ie-auto-fit {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-header {
+      padding-right: 224px;
+      margin-bottom: 12px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps h2 {
+      font-size: var(--ie-title-size-compact);
+      line-height: 1.04;
+      letter-spacing: 0.015em;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-lead {
+      margin-top: 6px;
+      font-size: var(--ie-lead-size-compact);
+      line-height: 1.2;
+      color: rgb(var(--ie-navy-950-rgb) / 0.78);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-grid {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 16px 20px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+      padding: 0;
+      overflow: hidden;
+      border-top: 5px solid var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-media {
+      flex: 0 0 140px;
+      width: 100%;
+      height: 140px;
+      background: rgb(var(--ie-shadow-rgb) / 1);
+      overflow: hidden;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 8px 14px 9px;
+      gap: 5px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-head {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-card h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-sys {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--ie-navy-900);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-task {
+      flex-shrink: 0;
+      padding: 2px 7px;
+      border: 1px solid rgb(var(--ie-dark-green-rgb) / 0.28);
+      border-radius: 3px;
+      background: rgb(var(--ie-lime-rgb) / 0.36);
+      color: var(--ie-dark-green);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-desc {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-desc p {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.24;
+      color: rgb(var(--ie-navy-950-rgb) / 0.88);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-key {
+      font-weight: 700;
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-evidence {
+      margin-top: auto;
+      padding: 6px 9px;
+      border-left: 4px solid var(--ie-dark-green);
+      background: rgb(var(--ie-lime-rgb) / 0.24);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-evidence p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.24;
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-metric {
+      font-weight: 700;
+      color: var(--ie-navy-950);
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-src {
+      color: var(--ie-navy-900);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      white-space: nowrap;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .s3hc-src:focus-visible {
+      outline: 2px solid var(--ie-navy-900);
+      outline-offset: 2px;
+    }
+    .reveal .slides section#session-03-cnn-healthcare-apps .ie-source-line {
+      padding-right: 112px;
+    }
   </style>
 </head>
 
@@ -1026,6 +1178,161 @@
             <p class="ie-process-takeaway">Filters are <span class="ie-process-emphasis">learned, not designed</span>, which is where the black box starts</p>
           </div>
         </div>
+      </section>
+
+      <section id="session-03-cnn-healthcare-apps" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
+        <!-- Image provenance (all CC BY 4.0, retrieved 2026-11-24, stored locally in media/dl-rai/s3-cnn-apps/):
+             01-diabetic-retinopathy.jpg: Representative AI diabetic retinopathy fundus + activation overlay, PLOS ONE 2026 (PMC13773331, DOI 10.1371/journal.pone.0360848, Fig. 9, CC BY 4.0); distinct from LumineticsCore UI.
+             02-breast-mammogram-transpara.jpg: Product-specific Transpara output (lesion box 64 mass, case score 10 Elevated), European Radiology 2026 (PMC13212635, DOI 10.1007/s00330-026-12359-0, Fig. 3, CC BY 4.0).
+             03-colonoscopy-gi-genius.jpg: Product-specific GI Genius / Cosmo CADe-CADx colonoscopy green detection box, npj Digital Medicine 2022 (PMC9247164, DOI 10.1038/s41746-022-00633-6, Fig. 1, CC BY 4.0).
+             04-stroke-cta-lvo.jpg: Representative AI brain CTA vessel segmentation and occluded MCA territory highlight, European Radiology 2025 (PMC12417235, DOI 10.1007/s00330-025-11442-2, Fig. 1, CC BY 4.0); distinct from Viz LVO UI.
+             05-echonet-cardiac.jpg: Left-ventricle segmentation mask and diameter tracings on EchoNet-Dynamic dataset, Diagnostics 2023 (PMC10340260, DOI 10.3390/diagnostics13132155, Fig. 4, CC BY 4.0).
+             06-tuberculosis-cxr.jpg: Representative active-TB chest X-ray + CNN Grad-CAM heatmap, Scientific Reports 2023 (PMC9845381, DOI 10.1038/s41598-023-28079-0, Fig. 4, CC BY 4.0); distinct from qXR UI. -->
+        <div class="ie-logo"><img src="logos/ie-scitech-horizontal-light-accent.svg" alt="IE University School of Science and Technology"></div>
+        <div class="safe-frame safe-frame--dense">
+          <div class="ie-auto-fit">
+            <header class="s3hc-header">
+              <h2>CNNs in healthcare: from images to clinical decisions</h2>
+              <p class="s3hc-lead">Six real-world applications backed by clinical evidence</p>
+            </header>
+            <div class="s3hc-grid" aria-label="Six clinically validated applications of convolutional neural networks in healthcare">
+
+              <article class="ie-card-light s3hc-card">
+                <div class="s3hc-media">
+                  <img src="media/dl-rai/s3-cnn-apps/01-diabetic-retinopathy.jpg" alt="Representative orange-red diabetic retinopathy retinal fundus photograph beside a CNN activation heatmap highlighting abnormal regions">
+                </div>
+                <div class="s3hc-body">
+                  <div class="s3hc-head">
+                    <h3>Diabetic retinopathy detection</h3>
+                    <div class="s3hc-meta-row">
+                      <p class="s3hc-sys">LumineticsCore (formerly IDx-DR)</p>
+                      <span class="s3hc-task">Classification</span>
+                    </div>
+                  </div>
+                  <div class="s3hc-desc">
+                    <p><span class="s3hc-key">Does:</span> Analyzes retinal photos to detect diabetic eye disease autonomously</p>
+                    <p><span class="s3hc-key">Why:</span> Enables primary-care screening without specialist review of every exam</p>
+                  </div>
+                  <div class="s3hc-evidence">
+                    <p><span class="s3hc-metric">87.2% sensitivity | 90.7% specificity</span> in pivotal trial; 1st FDA-authorized autonomous AI (2018) <a class="s3hc-src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6550188/" target="_blank" rel="noopener noreferrer" aria-label="Abramoff et al. 2018 pivotal trial on PubMed Central">PMC6550188</a></p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3hc-card">
+                <div class="s3hc-media">
+                  <img src="media/dl-rai/s3-cnn-apps/02-breast-mammogram-transpara.jpg" alt="Screening mammogram showing a spiculated breast mass alongside Transpara AI white bounding box labeled 64 mass and case score 10 Elevated">
+                </div>
+                <div class="s3hc-body">
+                  <div class="s3hc-head">
+                    <h3>Breast cancer screening</h3>
+                    <div class="s3hc-meta-row">
+                      <p class="s3hc-sys">Transpara | MASAI Trial | Support</p>
+                      <span class="s3hc-task">Detection</span>
+                    </div>
+                  </div>
+                  <div class="s3hc-desc">
+                    <p><span class="s3hc-key">Does:</span> Flags suspicious mammogram regions and helps prioritize radiologist reviews</p>
+                    <p><span class="s3hc-key">Why:</span> Improves cancer detection while reducing radiologists' screening workload</p>
+                  </div>
+                  <div class="s3hc-evidence">
+                    <p><span class="s3hc-metric">80.5% vs 73.8% screening sensitivity</span> (AI vs conventional); RCT of 105,934 women (2026) <a class="s3hc-src" href="https://pubmed.ncbi.nlm.nih.gov/41620232/" target="_blank" rel="noopener noreferrer" aria-label="Gommers et al. 2026 MASAI trial on PubMed">Lancet 2026</a></p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3hc-card">
+                <div class="s3hc-media">
+                  <img src="media/dl-rai/s3-cnn-apps/03-colonoscopy-gi-genius.jpg" alt="Live colonoscopy frames of pink colonic mucosa with a suspected adenoma polyp framed inside a green AI detection bounding box">
+                </div>
+                <div class="s3hc-body">
+                  <div class="s3hc-head">
+                    <h3>Real-time colon polyp detection</h3>
+                    <div class="s3hc-meta-row">
+                      <p class="s3hc-sys">GI Genius | Medtronic | Support</p>
+                      <span class="s3hc-task">Detection</span>
+                    </div>
+                  </div>
+                  <div class="s3hc-desc">
+                    <p><span class="s3hc-key">Does:</span> Detects potentially precancerous polyps during live colonoscopy</p>
+                    <p><span class="s3hc-key">Why:</span> Helps doctors identify lesions they might otherwise miss</p>
+                  </div>
+                  <div class="s3hc-evidence">
+                    <p><span class="s3hc-metric">56.6% vs 48.4% adenoma detection rate</span> with vs without AI; UK RCT, 2,032 patients (2024) <a class="s3hc-src" href="https://pubmed.ncbi.nlm.nih.gov/39153491/" target="_blank" rel="noopener noreferrer" aria-label="Seager et al. 2024 COLO-DETECT trial on PubMed">Lancet GH 2024</a></p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3hc-card">
+                <div class="s3hc-media">
+                  <img src="media/dl-rai/s3-cnn-apps/04-stroke-cta-lvo.jpg" alt="Representative brain CT angiography with blue AI cerebral vessel segmentation beside red and green outlines contrasting an occluded middle cerebral artery territory">
+                </div>
+                <div class="s3hc-body">
+                  <div class="s3hc-head">
+                    <h3>Stroke detection and triage</h3>
+                    <div class="s3hc-meta-row">
+                      <p class="s3hc-sys">Viz LVO | Viz.ai | Triage</p>
+                      <span class="s3hc-task">Detection</span>
+                    </div>
+                  </div>
+                  <div class="s3hc-desc">
+                    <p><span class="s3hc-key">Does:</span> Scans brain CT angiography for blocked arteries and alerts stroke specialists</p>
+                    <p><span class="s3hc-key">Why:</span> Accelerates specialist review during time-critical stroke treatment</p>
+                  </div>
+                  <div class="s3hc-evidence">
+                    <p><span class="s3hc-metric">73% vs 98% confirmed LVO<sup class="ie-note-marker">1</sup> detected</span> vs competing AI (2026 evaluation): value and limits <a class="s3hc-src" href="https://pubmed.ncbi.nlm.nih.gov/42134993/" target="_blank" rel="noopener noreferrer" aria-label="Sachdev et al. 2026 AJNR evaluation on PubMed">AJNR 2026</a></p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3hc-card">
+                <div class="s3hc-media">
+                  <img src="media/dl-rai/s3-cnn-apps/05-echonet-cardiac.jpg" alt="Apical four-chamber echocardiogram from EchoNet-Dynamic showing a red left-ventricle segmentation mask beside ventricular diameter measurement tracings">
+                </div>
+                <div class="s3hc-body">
+                  <div class="s3hc-head">
+                    <h3>Automated heart function assessment</h3>
+                    <div class="s3hc-meta-row">
+                      <p class="s3hc-sys">EchoNet-Dynamic | Stanford / Cedars-Sinai</p>
+                      <span class="s3hc-task">Segmentation</span>
+                    </div>
+                  </div>
+                  <div class="s3hc-desc">
+                    <p><span class="s3hc-key">Does:</span> Analyzes cardiac ultrasound videos to measure left-ventricle pumping</p>
+                    <p><span class="s3hc-key">Why:</span> Improves consistency and efficiency in cardiac assessment</p>
+                  </div>
+                  <div class="s3hc-evidence">
+                    <p><span class="s3hc-metric">16.8% vs 27.2%</span> AI vs sonographer reads substantially corrected; RCT of 3,495 echoes (2023) <a class="s3hc-src" href="https://www.nature.com/articles/s41586-023-05947-3" target="_blank" rel="noopener noreferrer" aria-label="He et al. 2023 Nature randomized trial">Nature 2023</a></p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ie-card-light s3hc-card">
+                <div class="s3hc-media">
+                  <img src="media/dl-rai/s3-cnn-apps/06-tuberculosis-cxr.jpg" alt="Representative active pulmonary tuberculosis chest X-ray beside a CNN Grad-CAM heatmap highlighting bilateral upper-lobe cavities and opacities">
+                </div>
+                <div class="s3hc-body">
+                  <div class="s3hc-head">
+                    <h3>Tuberculosis screening</h3>
+                    <div class="s3hc-meta-row">
+                      <p class="s3hc-sys">qXR | Qure.ai | Screening triage</p>
+                      <span class="s3hc-task">Classification</span>
+                    </div>
+                  </div>
+                  <div class="s3hc-desc">
+                    <p><span class="s3hc-key">Does:</span> Analyzes chest X-rays to flag abnormalities suggestive of tuberculosis</p>
+                    <p><span class="s3hc-key">Why:</span> Scales screening where radiologists are scarce; positives need confirmation</p>
+                  </div>
+                  <div class="s3hc-evidence">
+                    <p><span class="s3hc-metric">WHO 2025:</span> 1 of 6 AI systems meeting WHO TB screening standards (aged 15+) <a class="s3hc-src" href="https://www.who.int/publications/i/item/9789240110373" target="_blank" rel="noopener noreferrer" aria-label="WHO 2025 CAD tuberculosis policy statement">WHO 2025</a></p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+        <p class="ie-source-line is-wrap">Sources: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6550188/" target="_blank" rel="noopener noreferrer">Abràmoff et al. (2018)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/41620232/" target="_blank" rel="noopener noreferrer">Gommers et al. (2026)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/39153491/" target="_blank" rel="noopener noreferrer">Seager et al. (2024)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/42134993/" target="_blank" rel="noopener noreferrer">Sachdev et al. (2026)</a>; <a href="https://www.nature.com/articles/s41586-023-05947-3" target="_blank" rel="noopener noreferrer">He et al. (2023)</a>; <a href="https://www.who.int/publications/i/item/9789240110373" target="_blank" rel="noopener noreferrer">WHO (2025)</a>. Notes: <sup class="ie-note-marker">1</sup>LVO, large-vessel occlusion; Transpara and GI Genius show product outputs, others show CC BY 4.0 representative scans; positive TB screens need confirmatory testing; commercial CNNs evolve</p>
       </section>
 
       <section id="session-03-cnn-layers" class="ie-slide ie-light ie-logo-tr" data-transition="fade">
